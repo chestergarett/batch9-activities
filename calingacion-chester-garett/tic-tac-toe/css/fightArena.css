@@ -1,0 +1,72 @@
+.select-pane{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    opacity: 1;
+}
+
+.input-name{
+    display: flex;
+    align-items: space-around;
+    width: 100%;
+    justify-content: space-between;
+    color: white;
+}
+
+.input-name-x, .input-name-y{
+    padding: 10px;
+}
+
+.x-name-block, .y-name-block{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.enter-name{
+    padding: 15px;
+    
+}
+
+.label-fight-arena{
+    color: white;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+[contenteditable=true]:empty:before{
+    content: attr(placeholder);
+    pointer-events: none;
+    display: block; /* For Firefox */
+    color: gray;
+    font-style: italic;
+  }
+
+.fight-arena{
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+}
+
+.fight-arena img{
+    width: 300px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.section-timer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+#time-left{
+    padding-top: 20px;
+    color: yellow;
+    font-size: 50px;
+}
+

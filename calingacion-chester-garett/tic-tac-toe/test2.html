@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <style>
+        section{
+            padding: 10px;
+        }
+
+        #board{
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3,1fr);
+            width: 50vh;
+            grid-gap: 10px;
+        }
+
+        .board-tile{
+            border: 1px solid black;
+            height: 100px;
+            width:100px;
+        }
+    </style>
+</head>
+<body>
+    <section class='tic-tac-toe-board'>
+        <div id='board'>
+            <div id='square-1' class='board-tile'>1</div>
+            <div id='square-2' class='board-tile'>2</div>
+            <div id='square-3' class='board-tile'>3</div>
+            <div id='square-4' class='board-tile'>4</div>
+            <div id='square-5' class='board-tile'>5</div>
+            <div id='square-6' class='board-tile'>6</div>
+            <div id='square-7' class='board-tile'>7</div>
+            <div id='square-8' class='board-tile'>8</div>
+            <div id='square-9' class='board-tile'>9</div>
+        </div>
+    </section>
+
+    <section class='bottom-buttons'>
+        <div id='prev-next-buttons'>
+            <button id='prevButton'>Previous</button>
+            <button id='nextButton'>Next</button>
+        </div>
+    </section>
+</body>
+
+<script>
+    var board = document.getElementById('board')
+    var boardTile = document.querySelectorAll('.board-tile')
+    var prevButton = document.getElementById('prevButton')
+    var nextButton = document.getElementById('nextButton')
+
+    function startGame(){
+        let history = []
+        boardTile.forEach(item =>{
+            item.addEventListener('click', function(){
+                item.innerHTML = 'X'
+                history.push(item)
+                console.log(item)
+            })
+        })
+
+        let previousLength = history.length-1;
+        
+        function previous(){
+            //let stepBack = history.length-2;
+            //previousItem = history[stepBack];
+            currentItem = history[previousLength];
+            currentItem.innerHTML = '';
+            console.log(previousLength)
+            previousLength -=1;
+            console.log(previousLength)
+        }
+
+
+        prevButton.addEventListener('click', previous)
+    }
+
+    
+    startGame()
+    
+</script>
+</html>

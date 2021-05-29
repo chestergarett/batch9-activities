@@ -2,31 +2,120 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' type='text/css' href='css/main.css'>
-    <script src='js/main.js' defer></script>
-    <title>Chessboard</title>
+    <title>Tic Tac Toe </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="css/wickedcss.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fightArena.css">
+    <!----KEYBOARD WIDGETS-->
+    <!-- jQuery (required) & jQuery UI + theme (optional) -->
+    <link href="docs/jquery-ui.min.css" rel="stylesheet">
+    <script src="docs/jquery-latest-slim.min.js"></script>
+    <script src="docs/jquery-migrate-3.1.0.min.js"></script>
+    <script src="docs/jquery-ui-custom.min.js"></script>
+    <!-- keyboard widget css & script (required) -->
+    <link href="docs/keyboard.css" rel="stylesheet">
+    <script src="docs/jquery.keyboard.js"></script>
+    <!--<link href="docs/css/tipsy.css" rel="stylesheet">-->
+    <!--<link href="docs/css/prettify.css" rel="stylesheet">-->
+    <!--<script src="docs/js/bootstrap.min.js"></script>-->
+	  <script src="docs/demo.js"></script>
+	  <script src="docs/jquery.tipsy.min.js"></script>
 </head>
 <body>
-    <div class="board" id="board">
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
-        <div class="cell" data-cell></div>
+  <!-- select box -->
+  <div class="select-box">
+    <header class="floater">Tic Tac Toe</header>
+    <div class="content">
+      <div class="title">Select which you want to be?</div>
+      <div class="options">
+        <button class="playerX">Player (X)</button>
+        <button class="playerO">Player (O)</button>
+      </div>
     </div>
-    <div class='previous-next-btns'>
-        <button id='previousButton'>Previous</button>
-        <button id='nextButton'>Next</button>
+  </div>
+
+  <div class='blink_me'>
+    <span>Insert coin & <span style="color: yellow">play</span> now!</span>
+  </div>
+
+  <!---select pane section---->
+  <div class='select-pane'>
+    <section class='section-timer'>
+      <span> Game starts in </span>
+      <span id="time-left">15</span>
+    </section>
+
+    <section class='input-name'>
+      <div class='x-name-block'>
+        <div class='enter-name'>Enter Name</div>
+        <input type='text' class='input-name-x contenteditable' contenteditable="true" placeholder="Player (X)" id='player-x-name'>
+      </div>
+      <div class='y-name-block'>
+        <div class='enter-name'>Enter Name</div>
+        <input type='text' class='input-name-y contenteditable' contenteditable="true" placeholder="Player (O)" id='player-y-name'>
+      </div>
+    </section>
+    <section class='section-arena'>
+      <div class='label-fight-arena'>CHOOSE ARENA&emsp;<span id='arena-name'></span></div>
+      <div class='fight-arena'>
+        <img src='images/pixel-bg2.jpg' class='option-default'>
+        <img src='images/city.gif' class='option-city'>
+        <img src='images/cityroad.jpg' class='option-road'>
+        <img src='images/contra.gif' class='option-contra'>
+        <img src='images/forest.jpg' class='option-forest'>
+        <img src='images/underwater.png' class='option-underwater'>
+        <img src='images/sunset.jpg' class='option-sunset'>
+        <img src='images/bridge.png' class='option-bridge'>
+      </div>
+    </section>
+  </div>
+ 
+  <!-- playboard section -->
+  <div class="play-board">
+    <div class="details">
+      <div class="players">
+        <span class="Xturn">X's Turn</span>
+        <span class="Oturn">O's Turn</span>
+        <div class="slider"></div>
+      </div>
     </div>
-    <div class="winning-message" id="winningMessage">
-        <div data-winning-message-text>X Wins!</div>
-        <button id="restartButton">Restart</button>
+    <div class="play-area">
+      <section>
+        <span class="cell box1"></span>
+        <span class="cell box2"></span>
+        <span class="cell box3"></span>
+      </section>
+      <section>
+        <span class="cell box4"></span>
+        <span class="cell box5"></span>
+        <span class="cell box6"></span>
+      </section>
+      <section>
+        <span class="cell box7"></span>
+        <span class="cell box8"></span>
+        <span class="cell box9"></span>
+      </section>
     </div>
+  </div>
+
+  <!-- result box -->
+  <div class="result-box">
+    <div class="won-text"></div>
+    <div class="btn">
+      <button id='prevBtn'>Prev</button>
+      <button id='nextBtn' disabled>Next</button>
+      <button id='restartBtn'>Play Again</button>
+    </div>
+  </div>
+ 
+  <script src='js/animate.js'></script>
+  <script src="js/fightArena.js"></script>
+  <script type='module' src="js/main.js"></script>
+  
+  
+ 
 </body>
 </html>
