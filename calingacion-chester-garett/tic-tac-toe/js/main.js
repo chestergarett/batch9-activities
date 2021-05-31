@@ -1,16 +1,12 @@
-import {colorButton} from './fightArena.js';
-//require = require('colorButton')(module)
-//module.exports = require('./fightArena.js')
-
 //selecting all required elements
 const selectBox = document.querySelector(".select-box"),
 selectBtnX = selectBox.querySelector(".options .playerX"),
 cells = document.querySelectorAll('.cell'),
 selectBtnO = selectBox.querySelector(".options .playerO"),
 playBoard = document.querySelector(".play-board"),
+playArea = document.querySelector("play-area"),
 players = document.querySelector(".players"),
 allBox = document.querySelectorAll(".cell"),
-//allBox = document.querySelectorAll("section span"),
 resultBox = document.querySelector(".result-box"),
 wonText = resultBox.querySelector(".won-text"),
 prevBtn = document.getElementById("prevBtn"),
@@ -20,10 +16,179 @@ selectPane = document.querySelector(".select-pane"),
 playerXname = document.getElementById("player-x-name"),
 playerYname = document.getElementById("player-y-name"),
 playerXblock = document.querySelector('.x-name-block'),
-playerYblock = document.querySelector('.y-name-block')
+playerYblock = document.querySelector('.y-name-block'),
+tallyBox = document.querySelector('.tally-box'),
+tallyText = document.querySelector('.tally-text'),
+blinkArea = document.querySelector('.blink_me')
+//fight arena
+const optionDefault = document.querySelector('.option-default'),
+optionCity = document.querySelector('.option-city'),
+optionRoad = document.querySelector('.option-road'),
+optionContra = document.querySelector('.option-contra'),
+optionForest = document.querySelector('.option-forest'),
+optionUnderwater = document.querySelector('.option-underwater'),
+optionSunset = document.querySelector('.option-sunset'),
+optionBridge = document.querySelector('.option-bridge'),
+body = document.getElementsByTagName('body')[0],
+arenaName = document.getElementById('arena-name'),
+slider = document.querySelector(".players .slider"),
+buttons = document.querySelectorAll(".btn button"),
+disabledColor = 'darkgrey'
 
-let maxMovements
+//assigning null default values
+let colorButton, maxMovements, playerName, loserName, playerDefault
+//tictactoe logic main variables
+let playerXIcon = "fas fa-times"; //class name of fontawesome cross icon
+let playerOIcon = "far fa-circle"; //class name of fontawesome circle icon
+let playerSign = "X"; //this is a global variable beacuse we've used this variable inside multiple functions
+let opponentBot = true; //to determine whether opponent is bot or person
+let runBot = true; //this also a global variable with boolen value..we used this variable to stop the bot once match won by someone or drawn
+let move = 0 
+let moveHistory = [
+    {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''},
+    {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''},
+    {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''}
+];
 
+////////////////////////set theme color /////////////////////////////////////////////////////
+//in case player did not choose theme
+buttons.forEach((button)=>{
+    if(!button.disabled){
+        button.style.background = '#56baed';
+        colorButton = '#56baed';
+    }
+})
+
+//applying theme colors
+optionDefault.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/pixel-bg2.jpg)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'SKY CASTLE';
+    arenaName.style.color = 'yellow';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#56baed';
+            colorButton = '#56baed';
+        }
+    })
+})
+
+optionCity.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/city.gif)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'METRO MANILA';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#00178b';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#00178b';
+            colorButton = '#00178b';
+        }
+    })
+})
+
+optionContra.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/contra.gif)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'CONTRA 4';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#00b300';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#00b300';
+            colorButton = '#00b300';
+        }
+    })
+})
+
+optionRoad.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/cityroad.jpg)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'CITY DRIVE';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#333';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#333';
+            colorButton = '#333';
+        }
+    })
+})
+
+optionForest.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/forest.jpg)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'LAND OF DAWN';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#00b300';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#00b300';
+            colorButton = '#00b300';
+        }
+    })
+})
+
+optionUnderwater.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/underwater.png)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'FEEDING FRENZY';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#2162e3';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#2162e3';
+            colorButton = '#2162e3';
+        }
+    })
+})
+
+optionSunset.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/sunset.jpg)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'MALIBU SUNSET';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#FF6666';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#FF6666';
+            colorButton = '#FF6666';
+        }
+    })
+})
+
+optionBridge.addEventListener('click', function(){
+    body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/bridge.png)";
+    body.style.backgroundPosition =  'center';
+    body.style.backgroundSize = 'cover';
+    body.style.backgroundAttachment = 'fixed';
+    arenaName.innerHTML = 'ILOG PASIG';
+    arenaName.style.color = 'yellow';
+    slider.style.background = '#a65ba6';
+    buttons.forEach((button)=>{
+        if(!button.disabled){
+            button.style.background = '#a65ba6';
+            colorButton = '#a65ba6';
+        }
+    })
+})
+
+
+//main game code//
 window.onload = ()=>{ //once window loaded
     for (let i = 0; i < allBox.length; i++) { //add onclick attribute in all available span
        allBox[i].setAttribute("onclick", "clickedBox(this)");
@@ -32,20 +197,19 @@ window.onload = ()=>{ //once window loaded
 
 document.addEventListener('DOMContentLoaded', () =>{
     const timeLeftDisplay = document.querySelector('#time-left')
-    let timeLeft = 2
+    let timeLeft = 15
 
     function countDown(){
         setInterval(function(){
             if(timeLeft <=0){
-                clearInterval(timeLeft = 0)
+                clearInterval(timeLeft = 15)
                 playBoard.classList.add("show"); //show the playboard section
                 selectPane.style.display = 'none';
             }
             timeLeftDisplay.innerHTML = timeLeft
             timeLeft -=1
-        },1000)
-    }
-    
+        },1000);
+    }    
     selectBtnX.addEventListener('click', countDown)
     selectBtnO.addEventListener('click', countDown)
 })
@@ -53,31 +217,20 @@ document.addEventListener('DOMContentLoaded', () =>{
 selectBtnX.onclick = ()=>{
     selectBox.classList.add("hide"); //hide select box
     selectPane.style.display = 'flex'; //show fight arena
-    //playerYblock.style.opacity = '0'; //disable player Y form if you chose to be player X
     playerYname.disabled = true; //disable player Y form if you chose to be player X
-    //playBoard.classList.add("show"); //show the playboard section
+    blinkArea.innerHTML = '<span>Insert coin & challenge opponent now!</span>'
+    playerDefault = 'X'; //assign variable to determine what the player has chosen: to use to access when a challenger enters battle
 }
 
 selectBtnO.onclick = ()=>{ 
     selectBox.classList.add("hide"); //hide select box
     selectPane.style.display = 'flex';
-    //playBoard.classList.add("show"); //show the playboard section
     players.setAttribute("class", "players active player"); //set class attribute in players with players active player values
-    //playerXblock.style.opacity = '0'; //disable player X form if you chose to be player X
     playerXname.disabled = true; //disable player X form if you chose to be player X
+    blinkArea.innerHTML = '<span>Insert coin & challenge opponent now!</span>'
+    playerDefault = 'Y'; //assign variable to determine what the player has chosen: to use to access when a challenger enters battle
 }
 
-
-let playerXIcon = "fas fa-times"; //class name of fontawesome cross icon
-let playerOIcon = "far fa-circle"; //class name of fontawesome circle icon
-let playerSign = "X"; //this is a global variable beacuse we've used this variable inside multiple functions
-let runBot = true; //this also a global variable with boolen value..we used this variable to stop the bot once match won by someone or drawn
-let move = 0 
-let moveHistory = [
-    {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''},
-    {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''},
-    {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''}
-];
 
 // user click function
 function clickedBox(element){
@@ -97,10 +250,13 @@ function clickedBox(element){
     element.style.pointerEvents = "none"; //once user select any box then that box can'be clicked again
     playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
     let randomTimeDelay = ((Math.random() * 1000) + 200).toFixed(); //generating random number so bot will randomly delay to select unselected box
-    setTimeout(()=>{
-        bot(); //calling bot function
-    }, randomTimeDelay); //passing random delay value
-    
+    if (opponentBot){
+        setTimeout(()=>{
+            bot(); //calling bot function
+        }, randomTimeDelay); //passing random delay value
+    }else{
+        player2Challenge(element);
+    }
     //log movements to element
     let assignedClass = element.className
     let assignedIndex = assignedClass.slice(assignedClass.length - 7).split('')[0]-1
@@ -142,7 +298,6 @@ function bot(){
         allBox[randomBox].style.pointerEvents = "none"; //once bot select any box then user can't click on that box
         playBoard.style.pointerEvents = "auto"; //add pointerEvents auto in playboard so user can again click on box
         playerSign = "X"; //if player has chosen X then bot will be O right then we change the playerSign again to X so user will X because above we have changed the playerSign to O for bot
-
         //log movements to element
         moveHistory[randomBox].move = move
         moveHistory[randomBox].sign = botSign
@@ -154,7 +309,7 @@ function getIdVal(classname){
     return document.querySelector(".box" + classname).id; //return id value
 }
 
-let playerName;
+
 
 function checkIdSign(val1, val2, val3, sign){ //checking all id value is equal to sign (X or O) or not if yes then return true
     if(getIdVal(val1) == sign && getIdVal(val2) == sign && getIdVal(val3) == sign){
@@ -169,25 +324,40 @@ function selectWinner(){ //if the one of following winning combination match the
         setTimeout(()=>{ //after match won by someone then hide the playboard and show the result box after 700ms
             resultBox.classList.add("show");
             prevBtn.classList.add("show");
-            nextBtn.classList.add("show");   
+            nextBtn.classList.add("show");
+            tallyBox.classList.add("show");
+            playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
         }, 700); //1s = 1000ms
         if(playerSign=='X'){
             if (playerXname.value === ''){
-                playerName = 'Player X';    
+                playerName = 'Player X';    //assigning default name to winning player
             }
             else{
-                playerName = playerXname.value;
+                playerName = playerXname.value; //get winning player name
+            }
+            if (playerYname.value === ''){
+                loserName = 'Player O';    //assigning default name to losing player
+            }
+            else{
+                loserName = playerYname.value; //get losing player name
             }
         }
         else{
             if (playerYname.value === ''){
-                playerName = 'Player Y';    
+                playerName = 'Player O';    
             }
             else{
                 playerName = playerYname.value;
             }
+            if (playerXname.value === ''){
+                loserName = 'Player X';    //assigning default name to losing player
+            }
+            else{
+                loserName = playerXname.value; //get losing player name
+            }
         }
-        wonText.innerHTML = `<span style="color:yellow">${playerName}</span> &nbsp; won the game!`; //displaying winning text with passing playerSign (X or O)
+        wonText.innerHTML = `<span style="color:yellow">${playerName}</span>&nbsp; won the game!`; //displaying winning text with passing playerSign (X or O)
+        tallyText.innerHTML = `<span style="color:yellow">${loserName}</span>&nbsp; was beaten in ${maxMovements} moves!`
     }else{ //if all boxes/element have id value and still no one win then draw the match
         if(getIdVal(1) != "" && getIdVal(2) != "" && getIdVal(3) != "" && getIdVal(4) != "" && getIdVal(5) != "" && getIdVal(6) != "" && getIdVal(7) != "" && getIdVal(8) != "" && getIdVal(9) != ""){
             runBot = false; //passing the false boolen value to runBot so bot won't run again
@@ -196,23 +366,64 @@ function selectWinner(){ //if the one of following winning combination match the
                 resultBox.classList.add("show");
                 prevBtn.classList.add("show");
                 nextBtn.classList.add("show");
+                tallyBox.classList.add("show");
+                playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
             }, 700); //1s = 1000ms
             wonText.textContent = "Match has been drawn!"; //displaying draw match text
+            tallyText.textContent = "Play again to determine the real champion!" //displaying draw match text
         }
     }
 }
 
-replayBtn.onclick = ()=>{
-    window.location.reload(); //reload the current page on replay button click
-}
-
-////////  PHASE 2 //////////
 //clear table div
 function clearBoard(){
     cells.forEach((cell) =>{
-        cell.innerHTML =''
+        cell.innerHTML =''; //reset innerHTML elements
+        cell.style.pointerEvents = "auto"; //once user select any box then that box can'be clicked again
+        cell.removeAttribute('id'); //remove Id attributes
+        let cellClassList = cell.classList //remove move class attributes
+        cellClassList.forEach((assignedClass)=>{
+            if(assignedClass.startsWith('move')){
+                cell.classList.remove(assignedClass)
+            }
+        })
     })
+    playBoard.style.pointerEvents = "auto"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
+    moveHistory = [
+        {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''},
+        {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''},
+        {move:'',sign:''}, {move:'',sign:''}, {move:'',sign:''}
+    ]; //reset move history
+    move = 0 //reset move count
+    previousMove = 0; //reset previous move count;
+    runBot = true; //reset bot
+    players.classList.remove("active"); ///reset active class in players
 }
+
+
+function resetGame(){
+    //window.location.reload();
+    selectPane.style.display = 'flex'; //show fight arena
+    selectBox.classList.add("hide"); //hide select box
+    playBoard.classList.remove("show"); //show the playboard section
+    resultBox.classList.remove("show");
+    prevBtn.classList.remove("show");
+    nextBtn.classList.remove("show");
+    tallyBox.classList.remove("show");
+    if(playerDefault=='X'){
+        playerXname.disabled = true;
+        playerXname.style.background = disabledColor;
+        playerXname.style.cursor = 'not-allowed'
+    }else{
+        playerYname.disabled = true;
+        playerYname.style.background = disabledColor;
+        playerYname.style.cursor = 'not-allowed'
+    }
+    clearBoard();
+}
+
+////////  PHASE 2 //////////
+
 
 //assign new array in moveHistory
 //get maximum moves of game
@@ -239,14 +450,21 @@ function prevMove(){
     previousMove-=1;
     if (previousMove<=0){
         prevBtn.disabled =true;
-        //prevBtn.style.visibility = 'visible';
-        //prevBtn.style.visibility = 'visible';
+        prevBtn.style.background = disabledColor;
+        prevBtn.style.cursor = 'not-allowed';
+        nextBtn.disabled = false;
+        nextBtn.style.background = colorButton;
+        nextBtn.style.cursor = 'pointer';
     }
     else{
         nextBtn.disabled = false;
         nextBtn.style.background = colorButton;
-        //nextBtn.style.visibility = 'visible';
+        nextBtn.style.cursor = 'pointer';
+        prevBtn.disabled = false;
+        prevBtn.style.background = colorButton;
+        prevBtn.style.cursor = 'pointer';
     }
+    playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
 }
 
 //function nextMove()
@@ -266,19 +484,69 @@ function nextMove(){
         }
         if(previousMove == maxMovements){
             nextBtn.disabled = true;
-            //style
-            //nextBtn.style.visibility = 'hidden';
+            nextBtn.style.background = disabledColor;
+            nextBtn.style.cursor = 'not-allowed';
+            prevBtn.disabled = false;
+            prevBtn.style.background = colorButton;
+            prevBtn.style.cursor = 'pointer';
         }
         else{
             nextBtn.disabled = false;
+            nextBtn.style.background = colorButton;
+            nextBtn.style.cursor = 'pointer';
             prevBtn.disabled = false;
-            //nextBtn.style.visibility = 'visible';
-            //prevBtn.style.visibility = 'visible';
+            prevBtn.style.background = colorButton;
+            prevBtn.style.cursor = 'pointer';
         }
     })
-    console.log(previousMove)
+    playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
 }
 
 prevBtn.addEventListener('click', prevMove, false)
 nextBtn.addEventListener('click',nextMove, false)
+replayBtn.addEventListener('click', resetGame, false)
 
+/// FOR MULTIPLAYER - PLAY WITH NO BOT BUT WITH A FRIEND ///
+
+function enablePlayer2(){
+    resetGame()
+    if(playerDefault==='X'){
+        playerYname.disabled = false;
+    }
+    else{
+        playerXname.disabled = false;
+    }
+    opponentBot = false;
+}
+
+function player2Challenge(element){
+    if(playerDefault==='X'){
+        playerSign = 'O';
+        element.innerHTML = `<i class="${playerOIcon}"></i>`; //adding circle icon tag inside user clicked element/box
+        players.classList.add("active"); ///add active class in players
+        element.setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
+        element.classList.add("move"+move); ///add move
+    }
+    else{
+        playerSign = 'X';
+        element.innerHTML = `<i class="${playerOIcon}"></i>`; //adding circle icon tag inside user clicked element/box
+        players.classList.add("active"); ///add active class in players
+        element.setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
+        element.classList.add("move"+move); ///add move
+    }
+    element.style.pointerEvents = "none"; //once user select any box then that box can'be clicked again
+    playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
+    //log movements to element
+    let assignedClass = element.className
+    let assignedIndex = assignedClass.slice(assignedClass.length - 7).split('')[0]-1
+    moveHistory[assignedIndex].move = move
+    moveHistory[assignedIndex].sign = playerSign
+    maxMove() //count the maximum move
+    selectWinner(); //calilng selectWinner function
+    playerSign = playerDefault;
+    clickedBox(element)
+    console.log(moveHistory)
+}
+
+
+blinkArea.addEventListener('click',enablePlayer2, false)

@@ -17,15 +17,12 @@ body{
   background-attachment: fixed;
 }
 
-.select-box, .play-board{
+.select-box{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: all 0.3s ease;
-}
-
-.select-box{
   background: #fff;
   padding: 20px 25px 25px;
   border-radius: 5px;
@@ -33,6 +30,15 @@ body{
   width: 400px;
   /*display: flex;*/
 }
+
+.play-board{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+}
+
 .select-box.hide{
   opacity: 0;
   pointer-events: none;
@@ -94,16 +100,15 @@ body{
 
 input[type="text"]:disabled{
   background: darkgrey;
+  cursor: not-allowed;
 }
 
 .btn button:disabled,
 .btn button[disabled]{
   background: darkgrey;
+  cursor: not-allowed;
 }
 
-.btn .disabled{
-  background: darkgrey;
-}
 
 .play-board{
   opacity: 0;
@@ -183,8 +188,8 @@ input[type="text"]:disabled{
 }
 .play-area section span{
   display: block;
-  height: 90px;
-  width: 90px;
+  height: 110px;
+  width: 110px;
   margin: 2px;
   color: #333;
   font-size: 40px;
@@ -221,7 +226,9 @@ input[type="text"]:disabled{
   font-weight: 500;
   display: flex;
   justify-content: center;
+  margin-top: 15px;
 }
+
 .result-box .won-text p{
   font-weight: 600;
   margin: 0 5px;
@@ -230,6 +237,34 @@ input[type="text"]:disabled{
 .result-box .btn{
   width: 100%;
   margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.tally-box{
+  padding: 25px 20px;
+  border-radius: 5px;
+  width: 100%;
+  opacity: 0;
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+  /*transform: translate(-50%, -50%) scale(0.9);*/
+  position: absolute;
+  bottom: 10%;
+  /*left: 30%;*/
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tally-box.show{
+  opacity: 1;
+}
+
+.tally-text{
+  font-size: 20px;
+  font-weight: 500;
   display: flex;
   justify-content: center;
 }
