@@ -17,9 +17,13 @@ playerXname = document.getElementById("player-x-name"),
 playerYname = document.getElementById("player-y-name"),
 playerXblock = document.querySelector('.x-name-block'),
 playerYblock = document.querySelector('.y-name-block'),
+xSlider = document.querySelector('.Xturn'),
+oSlider = document.querySelector('.Oturn'),
 tallyBox = document.querySelector('.tally-box'),
 tallyText = document.querySelector('.tally-text'),
-blinkArea = document.querySelector('.blink_me')
+blinkArea = document.querySelector('.blink_me'),
+quickModal = document.querySelector('.quick-modal'),
+quickModalbg = document.querySelector('.quick-modal-bg')
 //fight arena
 const optionDefault = document.querySelector('.option-default'),
 optionCity = document.querySelector('.option-city'),
@@ -36,7 +40,7 @@ buttons = document.querySelectorAll(".btn button"),
 disabledColor = 'darkgrey'
 
 //assigning null default values
-let colorButton, maxMovements, playerName, loserName, playerDefault
+let colorButton, maxMovements, playerName, loserName, playerXNameScreen, playerYNameScreen, playerDefault, playerTurn, lastSign
 //tictactoe logic main variables
 let playerXIcon = "fas fa-times"; //class name of fontawesome cross icon
 let playerOIcon = "far fa-circle"; //class name of fontawesome circle icon
@@ -205,11 +209,16 @@ document.addEventListener('DOMContentLoaded', () =>{
                 clearInterval(timeLeft = 15)
                 playBoard.classList.add("show"); //show the playboard section
                 selectPane.style.display = 'none';
+
+                //to change blinking text
+                if(!opponentBot){
+                    changeBlinkMe()
+                } 
             }
             timeLeftDisplay.innerHTML = timeLeft
             timeLeft -=1
         },1000);
-    }    
+    }
     selectBtnX.addEventListener('click', countDown)
     selectBtnO.addEventListener('click', countDown)
 })
@@ -228,22 +237,33 @@ selectBtnO.onclick = ()=>{
     players.setAttribute("class", "players active player"); //set class attribute in players with players active player values
     playerXname.disabled = true; //disable player X form if you chose to be player X
     blinkArea.innerHTML = '<span>Insert coin & challenge opponent now!</span>'
-    playerDefault = 'Y'; //assign variable to determine what the player has chosen: to use to access when a challenger enters battle
+    playerDefault = 'O'; //assign variable to determine what the player has chosen: to use to access when a challenger enters battle
 }
 
 
 // user click function
 function clickedBox(element){
     move+=1;
-    if(players.classList.contains("player")){
+    if((players.classList.contains("player") && opponentBot) || playerTurn=="O"){
         playerSign = "O"; //if player choose (O) then change playerSign to O
         element.innerHTML = `<i class="${playerOIcon}"></i>`; //adding circle icon tag inside user clicked element/box
-        players.classList.add("active"); ///add active class in players
+        if (opponentBot){
+            players.classList.add("active"); ///add active class in players
+        }
+        else{
+            players.classList.remove("active"); ///add active class in players
+        } 
         element.setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
         element.classList.add("move"+move); ///add move
     }else{
+        playerSign ="X"; //if player choose (X) then change playerSign to X
         element.innerHTML = `<i class="${playerXIcon}"></i>`; //adding cross icon tag inside user clicked element/box
-        players.classList.add("active"); //add active class in players
+        if (opponentBot){
+            players.classList.add("active"); //add active class in players
+        }
+        else{
+            players.classList.remove("active"); ///add active class in players
+        }
         element.setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
         element.classList.add("move"+move); ///add move
     }
@@ -255,15 +275,28 @@ function clickedBox(element){
             bot(); //calling bot function
         }, randomTimeDelay); //passing random delay value
     }else{
-        player2Challenge(element);
+        swapTurns();
     }
     //log movements to element
     let assignedClass = element.className
     let assignedIndex = assignedClass.slice(assignedClass.length - 7).split('')[0]-1
     moveHistory[assignedIndex].move = move
     moveHistory[assignedIndex].sign = playerSign
+    
     maxMove() //count the maximum move
-    selectWinner(); //calilng selectWinner function
+    selectWinner(); //calling selectWinner function
+}
+
+//function swapClass
+function swapTurns(){
+    if(playerSign == 'X'){
+        playerTurn = 'O';
+        players.classList.add('active');
+    }
+    else{
+        playerTurn = 'X'
+        players.classList.remove('active');
+    }
 }
 
 // bot auto select function
@@ -326,17 +359,16 @@ function selectWinner(){ //if the one of following winning combination match the
             prevBtn.classList.add("show");
             nextBtn.classList.add("show");
             tallyBox.classList.add("show");
-            playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
         }, 700); //1s = 1000ms
         if(playerSign=='X'){
             if (playerXname.value === ''){
-                playerName = 'Player X';    //assigning default name to winning player
+                playerName = opponentBot ? 'Player Bot' : 'Player X';  //assigning default name to winning player
             }
             else{
                 playerName = playerXname.value; //get winning player name
             }
             if (playerYname.value === ''){
-                loserName = 'Player O';    //assigning default name to losing player
+                loserName =  opponentBot ? 'Player Bot' : 'Player O';  //assigning default name to losing player
             }
             else{
                 loserName = playerYname.value; //get losing player name
@@ -344,13 +376,13 @@ function selectWinner(){ //if the one of following winning combination match the
         }
         else{
             if (playerYname.value === ''){
-                playerName = 'Player O';    
+                playerName =  opponentBot ? 'Player Bot' : 'Player O';  
             }
             else{
                 playerName = playerYname.value;
             }
             if (playerXname.value === ''){
-                loserName = 'Player X';    //assigning default name to losing player
+                loserName = opponentBot ? 'Player Bot' : 'Player X';  //assigning default name to losing player
             }
             else{
                 loserName = playerXname.value; //get losing player name
@@ -358,6 +390,8 @@ function selectWinner(){ //if the one of following winning combination match the
         }
         wonText.innerHTML = `<span style="color:yellow">${playerName}</span>&nbsp; won the game!`; //displaying winning text with passing playerSign (X or O)
         tallyText.innerHTML = `<span style="color:yellow">${loserName}</span>&nbsp; was beaten in ${maxMovements} moves!`
+        playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard 
+        lastSign = playerSign //determine the lastSign of the winner
     }else{ //if all boxes/element have id value and still no one win then draw the match
         if(getIdVal(1) != "" && getIdVal(2) != "" && getIdVal(3) != "" && getIdVal(4) != "" && getIdVal(5) != "" && getIdVal(6) != "" && getIdVal(7) != "" && getIdVal(8) != "" && getIdVal(9) != ""){
             runBot = false; //passing the false boolen value to runBot so bot won't run again
@@ -367,11 +401,12 @@ function selectWinner(){ //if the one of following winning combination match the
                 prevBtn.classList.add("show");
                 nextBtn.classList.add("show");
                 tallyBox.classList.add("show");
-                playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
             }, 700); //1s = 1000ms
             wonText.textContent = "Match has been drawn!"; //displaying draw match text
             tallyText.textContent = "Play again to determine the real champion!" //displaying draw match text
+            playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard 
         }
+        lastSign = playerDefault
     }
 }
 
@@ -420,6 +455,8 @@ function resetGame(){
         playerYname.style.cursor = 'not-allowed'
     }
     clearBoard();
+    opponentBot = true;
+    console.log(lastSign)
 }
 
 ////////  PHASE 2 //////////
@@ -508,45 +545,41 @@ replayBtn.addEventListener('click', resetGame, false)
 
 /// FOR MULTIPLAYER - PLAY WITH NO BOT BUT WITH A FRIEND ///
 
+function changeBlinkMe(){
+    playerYNameScreen = (playerYname.value == '') ? 'Player Y': playerYname.value
+    playerXNameScreen = (playerXname.value == '') ? 'Player X': playerXname.value
+    blinkArea.style.background = colorButton;
+    blinkArea.style.padding = '5px';
+    blinkArea.style.borderRadius = '10px';
+    if(playerDefault === 'X'){
+        blinkArea.innerHTML = `${playerYNameScreen} has challenged ${playerXNameScreen}!`
+    }else{
+        blinkArea.innerHTML = `${playerXNameScreen} has challenged ${playerYNameScreen}!`
+    }
+}
+
+function challengerAnimation(){
+    quickModalbg.style.display = 'block';
+    quickModal.style.display = 'block';
+    quickModal.classList.add('zoomer');
+    quickModal.style.background = colorButton;
+    setTimeout(function(){
+        $('.quick-modal').fadeOut('fast');
+        $('.quick-modal-bg').fadeOut('fast');
+    },2000)
+}
+
 function enablePlayer2(){
+    changeBlinkMe()
+    challengerAnimation()
     resetGame()
+    opponentBot = false;
     if(playerDefault==='X'){
         playerYname.disabled = false;
     }
     else{
         playerXname.disabled = false;
     }
-    opponentBot = false;
 }
 
-function player2Challenge(element){
-    if(playerDefault==='X'){
-        playerSign = 'O';
-        element.innerHTML = `<i class="${playerOIcon}"></i>`; //adding circle icon tag inside user clicked element/box
-        players.classList.add("active"); ///add active class in players
-        element.setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
-        element.classList.add("move"+move); ///add move
-    }
-    else{
-        playerSign = 'X';
-        element.innerHTML = `<i class="${playerOIcon}"></i>`; //adding circle icon tag inside user clicked element/box
-        players.classList.add("active"); ///add active class in players
-        element.setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
-        element.classList.add("move"+move); ///add move
-    }
-    element.style.pointerEvents = "none"; //once user select any box then that box can'be clicked again
-    playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard so user can't immediately click on any other box until bot select
-    //log movements to element
-    let assignedClass = element.className
-    let assignedIndex = assignedClass.slice(assignedClass.length - 7).split('')[0]-1
-    moveHistory[assignedIndex].move = move
-    moveHistory[assignedIndex].sign = playerSign
-    maxMove() //count the maximum move
-    selectWinner(); //calilng selectWinner function
-    playerSign = playerDefault;
-    clickedBox(element)
-    console.log(moveHistory)
-}
-
-
-blinkArea.addEventListener('click',enablePlayer2, false)
+blinkArea.addEventListener('click',enablePlayer2, {once: true})

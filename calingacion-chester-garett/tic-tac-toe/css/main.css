@@ -111,11 +111,13 @@ input[type="text"]:disabled{
 
 
 .play-board{
+  display: none;
   opacity: 0;
   pointer-events: none;
   transform: translate(-50%, -50%) scale(0.9);
 }
 .play-board.show{
+  display: block;
   opacity: 1;
   pointer-events: auto;
   transform: translate(-50%, -50%) scale(1);
@@ -207,7 +209,7 @@ input[type="text"]:disabled{
   text-align: center;
   color: #fff;
   pointer-events: none;
-  /*transform: translate(-50%, -50%) scale(0.9);*/
+  transform: translate(-50%, -50%) scale(0.9);
   position: absolute;
   top: 10%;
   left: 50%;
@@ -291,6 +293,7 @@ input[type="text"]:disabled{
   bottom: 5%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
 }
 
 @keyframes blinker {
