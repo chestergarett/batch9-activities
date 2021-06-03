@@ -70,3 +70,26 @@
     font-size: 50px;
 }
 
+@media (max-width: 991px) {
+    .fight-arena{
+        display:flex;
+        flex-direction: column;
+    }
+    .input-name{
+        flex-direction: column;
+        padding: 20px;
+        margin: 20px;
+    }
+    .enter-name{
+        display: none;
+    }
+    #player-x-name, #player-y-name{
+        margin: 10px;
+    }
+    .blink_me{
+        display: none;
+    }
+    .label-fight-arena{
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,1584 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+    <meta name="description" content="Do you like Street Fighter 2? Do you like tic tac toe? No? Oh OK. Nvm.">
+    <meta name="author" content="JM Taylor">
+    <title>Street Fighter II: The TicTacToe Warrior</title> 
+    
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/world-map/ryu-char-select.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/world-map/guile-char-select.jpg" as=image>    
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/world-map/ryu-selected-flag.jpg"  as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/world-map/guile-selected-flag.jpg"  as=image>   
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/vs-screen/guile-vs-screen.jpg"  as=image>   
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X.jpg"  as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/world-map/ryu-selected-animated.gif"  as=image>   
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/world-map/guile-selected-animated.gif"  as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/ryu/ryu-shoryuken.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/ryu/ryu-KO.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/ryu/ryu-win1.gif" as=image> 
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/ryu/ryu-win2.gif" as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/ryu/ryu-draw.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/guile/guile-draw.gif" as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/draw.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/round1.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/round2.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/round3.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/round4.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/round5.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/you-lose.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/round/you-win.gif" as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/guile/guile-flash-kick.gif" as=image>  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/guile/guile-KO.gif" as=image>     
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/animated/guile/guile-win.gif" as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/O.gif" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/X.gif" as=image>    
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-0win-1win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-0win-2win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-0win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-1win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-2win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-2win-0win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-2win-1win.jpg" as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-0win-1win.jpg" as=image>    
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-0win-2win.jpg" as=image>        
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-0win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-1win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-2win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-2win-0win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-2win-1win.jpg" as=image>
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/guile-win-ryu-lose.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-win.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose-1.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose-2.jpg" as=image>    
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose-2.jpg" as=image>
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose-1.jpg" as=image>  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose-2.jpg" as=image>  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose-3.jpg" as=image>  
+  
+    <link rel="preload" href="https://streetfighter2ttt.com/resources/audio/sfx/system/click-to-start.mp3" as=audio type=audio/mp3>    
+    
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <style>
+        html {
+  overflow: hidden;
+  height: 100%;
+}
+body {
+  height: 100%;
+  overflow: auto;
+	margin: 0;
+	padding: 0;
+	background-color: black;
+}
+/*=================================================*/
+/*Frame*/
+/*=================================================*/
+#frame {
+	position: relative;
+	width: 896px;
+	height: 494px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+/*=================================================*/
+/*Loading screen*/
+/*=================================================*/
+#loading-screen {
+  position: absolute;
+  z-index: 4000;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+#loading-message {
+  text-align: center;
+  margin-top: 5%;
+}
+/*Source - https://www.w3schools.com/howto/howto_css_loader.asp*/
+.loader {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  border: 16px solid orange;
+  border-top: 16px solid orangered;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+/*=================================================*/
+/*Play button screen*/
+/*=================================================*/
+#play-button-screen {
+	font-size: 24px;
+	font-family: 'Permanent Marker', sans-serif;
+	color: orange;
+	text-align: center;
+	background-color: black;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 2000;
+}
+#play-button {
+	border: 5px solid orange;
+	border-radius: 5px;
+	position: absolute;
+	height: auto;
+	width: auto;
+	padding: 0 10px 0 10px;
+	z-index: 3000;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+@-webkit-keyframes spancolor {
+  to { color: orangered; }
+}
+@keyframes spancolor {
+  to { color: orangered; }
+}
+#play-button p span {
+	font-size: 36px;
+	-webkit-animation-name: spancolor;
+	        animation-name: spancolor;
+	-webkit-animation-duration: 2s;
+	        animation-duration: 2s;
+	-webkit-animation-delay: 1s;
+	        animation-delay: 1s;
+	-webkit-animation-iteration-count: infinite;
+	        animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	        animation-timing-function: linear;
+	-webkit-animation-direction: alternate;
+	        animation-direction: alternate;	
+}
+#play-button-screen p a {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	color: #333333;
+	text-decoration: none;
+	font-family: Helvetica, serif;
+  font-size: 12px;
+}
+/*=================================================*/
+/*Intro video screen*/
+/*=================================================*/
+#title-screen, #title-screen-video {
+  width: 100%;
+  height: 100%;
+}
+#title-screen {
+	background-color: black;	
+	position: absolute;
+  z-index: 1000;
+}
+/*=================================================*/
+/*Difficulty mode select screen*/
+/*=================================================*/
+#difficulty-select-screen {
+	background-color: black;
+	z-index: 750;
+	position: absolute;
+	height: 100%; 
+	width: 100%;
+}
+#title-screen-partial img{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 900;
+}
+.difficulty-mode {
+	position: absolute;	
+	height: auto;	
+  left: 50%;
+	max-width: 100%;    
+	z-index: 900;
+	zoom: 0.7;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);	
+}
+.selection img:hover{
+  -webkit-filter: brightness(130%);
+          filter: brightness(130%);
+}
+/* SOURCE - https://stackoverflow.com/questions/12115247/how-do-you-make-an-image-blink*/
+@keyframes blink {
+  0% {
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+  }
+  49% {
+    -webkit-filter: brightness(150%);
+    filter: brightness(150%);
+  }
+  50% {
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+  }
+  100% {
+    -webkit-filter: brightness(100%);
+    filter: brightness(100%);
+  }
+}
+.selected-blink {
+  -webkit-animation: blink .4s;
+          animation: blink .4s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.selected {
+  -webkit-filter: brightness(130%);
+          filter: brightness(130%);
+}
+#easy{ top: 76%; }
+#normal{ top: 83%; }
+#hard{ top: 90%; }
+/*=================================================*/
+/*Character select screen*/
+/*=================================================*/
+#char-select-screen {
+  background-color: #01025e;
+  height: 100vh;
+  width: 100vw;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 500;
+	overflow: hidden;
+}
+#map-image img{
+	height: 100%;
+	width: 100%;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;	
+}
+#player-icons {
+	position: absolute;
+	height: auto;
+	top: 65%;
+	left: 50%;
+	zoom: 0.7;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+#player-icons img{
+	width: 100px;
+	height: auto;
+}
+.player-select{ float: left; }
+/*=================================================*/
+/*VS screen*/
+/*=================================================*/
+#vs-screen {
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	z-index: 400;
+	position: absolute;
+}
+#vs-screen-image {
+	height: 100%;
+	width: auto;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*=================================================*/
+/*Main screen*/
+/*=================================================*/
+/*Stage*/
+#main-screen, #blackout { 
+	position: absolute;
+	background-color: black; 
+	height: 100%;
+	width: 100%;
+}
+#blackout {
+	opacity: 0;
+	z-index: 300;
+}
+.fade-in-and-out {
+	-webkit-animation: fadeOut 2s ease-out;
+	        animation: fadeOut 2s ease-out;
+	-webkit-animation-fill-mode:forwards;
+	        animation-fill-mode:forwards;
+}
+@-webkit-keyframes fadeOut {
+	0% { opacity: 0; }
+	25% { opacity: 1; }
+	75% { opacity: 1; }
+	100% { opacity: 0; }
+}
+@keyframes fadeOut {
+	0% { opacity: 0; }
+	25% { opacity: 1; }
+	75% { opacity: 1; }
+	100% { opacity: 0; }
+}
+#ryu-stage {
+	height: 100%;
+	width: 100%;
+}
+#round-image {
+	width: 300px;
+	height: auto;
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(.6);
+	   -moz-transform: translateX(-50%) translateY(-50%) scale(.6);
+	    -ms-transform: translateX(-50%) translateY(-50%) scale(.6);
+	        transform: translateX(-50%) translateY(-50%) scale(.6);	
+}
+/*Squares*/
+.char-css {
+	position: absolute;
+	top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+.board {
+	zoom: 0.7;
+	z-index: 300;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.board-row { clear: both; }
+.board-square {
+	float: left;
+	border: 3px solid black;
+	line-height: 50px;
+	width: 80px;
+	height: 80px;
+	display: inline-block;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+}
+/* SOURCE - https://stackoverflow.com/questions/21003535/anyway-to-prevent-the-blue-highlighting-of-elements-in-chrome-when-clicking-quic*/
+.no-select {
+	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+   -khtml-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+/* END SOURCE */
+.row-1 > :first-child  {
+	border-top: none; 
+	border-left: none;
+}
+.row-1 > :nth-child(2) { border-top: none; }
+.row-1 > :last-child {
+	border-top: none; 
+	border-right: none;	
+}
+.row-2 > :first-child {	border-left: none; }
+.row-2 > :last-child { border-right: none; }
+.row-3 > :first-child {
+	border-bottom: none; 
+	border-left: none;
+}
+.row-3 > :nth-child(2) { border-bottom: none; }
+.row-3 > :last-child {
+	border-bottom: none; 
+	border-right: none;	
+}
+/*Characters*/
+#player-1-char { left: 20%; }
+#player-2-char { right: 20%; }
+.position {
+	position: fixed;
+	top: 33%;	
+}
+.size {
+  width: 150px;
+	height: 150px;
+  -webkit-transform: scale(2.8);
+     -moz-transform: scale(2.8);
+      -ms-transform: scale(2.8);
+          transform: scale(2.8);
+}
+.flipped {
+  -webkit-transform: scaleX(-1) scale(2.8);
+     -moz-transform: scaleX(-1) scale(2.8);
+      -ms-transform: scaleX(-1) scale(2.8);
+          transform: scaleX(-1) scale(2.8);
+}
+/*=================================================*/
+/*End screen*/
+/*=================================================*/
+#end-screen {
+	background-color: black;
+	height: 100%;
+	width: 100%;
+}
+#end-screen-image {
+	height: 100%;
+	width: auto;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;		
+}
+/*=================================================*/
+/*Character animation frames*/
+/*=================================================*/
+/*Ryu*/
+.ryu-idle { background-image: url("https://streetfighter2ttt.com/resources/img/animated/ryu/ryu-idle.gif"); }
+/*Attack frames*/
+.ryu-punch-frame1 { background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") 0 0; }
+.ryu-punch-frame2 { background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -151px 0; }
+.ryu-punch-frame3 { background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -302px 0; }
+.ryu-punch-frame4 { background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -453px 0; }
+.ryu-punch-frame5 { background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -604px 0; }
+
+.ryu-punch2-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") 0 -151px; }
+.ryu-punch2-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -151px -151px; }
+.ryu-punch2-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -302px -151px; }
+.ryu-punch2-frame4{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -453px -151px; }
+.ryu-punch2-frame5{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -604px -151px; }
+
+.ryu-kick-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") 0 -302px; }
+.ryu-kick-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -151px -302px; }
+.ryu-kick-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -302px -302px; }
+.ryu-kick-frame4{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -453px -302px; }
+.ryu-kick-frame5{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -604px -302px; }
+/*Hit frames*/
+.ryu-hit-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") 0 -453px; }
+.ryu-hit-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -151px -453px; }
+.ryu-hit-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -302px -453px; }
+.ryu-hit-frame4{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/ryu-map.gif") -453px -453px; }
+/*Guile*/
+.guile-idle { background-image: url("https://streetfighter2ttt.com/resources/img/animated/guile/guile-idle.gif"); }
+/*Attack frames*/
+.guile-punch-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") 0 0; }
+.guile-punch-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -151px 0; }
+.guile-punch-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -302px 0; }
+.guile-punch-frame4{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -453px 0; }
+.guile-punch-frame5{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -604px 0; }
+
+.guile-kick-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") 0 -151px; }
+.guile-kick-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -151px -151px; }
+.guile-kick-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -302px -151px; }
+.guile-kick-frame4{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -453px -151px; }
+.guile-kick-frame5{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -604px -151px; }
+.guile-kick-frame6{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") 0 -302px; }
+.guile-kick-frame7{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -151px -302px; }
+.guile-kick-frame8{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -302px -302px; }
+
+.guile-kick2-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") 0 -453px; }
+.guile-kick2-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -151px -453px; }
+.guile-kick2-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -302px -453px; }
+.guile-kick2-frame4{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -453px -453px; }
+.guile-kick2-frame5{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -604px -453px; }
+/*Hit frames*/
+.guile-hit-frame1{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") 0 -604px; }
+.guile-hit-frame2{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -151px -604px; }
+.guile-hit-frame3{ background: url("https://streetfighter2ttt.com/resources/img/sprite-maps/guile-map.gif") -302px -604px; }
+    </style>
+  </head>
+  
+  <body>
+    
+  <audio id="vs-bgm">
+      <source src="" type="audio/mp3">
+  </audio>
+  <audio id="end-bgm">
+      <source src="" type="audio/mp3">
+  </audio>
+  <div id="frame">
+    <div id="loading-screen">
+      <div id="loading-message">Loading...</div>
+      <div class="loader"></div>
+    </div>  
+    <div id="play-button-screen">
+        <div id="play-button">
+          <p><span>Enter boss battle!</span></p>
+        </div>
+    </div>
+  
+    <div id="title-screen">
+      <video id="title-screen-video" loop>
+      <source src="https://streetfighter2ttt.com/resources/video/sf2ttt-intro.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  
+    <div id="difficulty-select-screen">
+      <div id="title-screen-partial"><img src="https://streetfighter2ttt.com/resources/img/screens/difficulty/difficulty-select-screen.jpg" alt="Street Fighter 2 - The Tic Tac Toe Warrior difficulty select screen"></div>
+      <div class="difficulty-mode selection" id="easy"><img src="https://streetfighter2ttt.com/resources/img/screens/difficulty/easy-text.png" alt="Easy mode"></div>
+      <div class="difficulty-mode selection" id="normal"><img src="https://streetfighter2ttt.com/resources/img/screens/difficulty/normal-text.png" alt="Normal mode"></div>
+      <div class="difficulty-mode selection" id="hard"><img src="https://streetfighter2ttt.com/resources/img/screens/difficulty/hard-text.png" alt="Hard mode"></div>
+    </div>
+  
+    <div id="char-select-screen">
+      <div id="map-image"><img id="map-image-file" src="https://streetfighter2ttt.com/resources/img/screens/world-map/ryu-char-select.jpg" alt="Street Fighter 2 - The Tic Tac Toe Warrior character select screen"></div>
+      <div id="player-icons">
+        <div id="O" class="player-select selection"><img src="https://streetfighter2ttt.com/resources/img/screens/world-map/ryu-icon.jpg" alt="Ryu's icon"></div>
+        <div id="X" class="player-select selection"><img src="https://streetfighter2ttt.com/resources/img/screens/world-map/guile-icon.jpg" alt="Guile's icon"></div>
+      </div>
+    </div>
+  
+    <div id="vs-screen"><img id="vs-screen-image" src="https://streetfighter2ttt.com/resources/img/screens/vs-screen/ryu-vs-screen.jpg" alt="Street Fighter 2 - The Tic Tac Toe Warrior VS screen"></div>
+  
+  <div id="main-screen">
+    <div id="blackout"></div>
+    <img id="round-image" src="">
+    <img id="ryu-stage" src="https://streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O.jpg" alt="Street Fighter 2 - The Tic Tac Toe Warrior Ryu stage">
+    <div class="board">
+      <div class="board-row row-1">
+        <div id="0" class="board-square no-select"></div>
+        <div id="1" class="board-square no-select"></div>
+        <div id="2" class="board-square no-select"></div>
+      </div>
+      <div class="board-row row-2">
+        <div id="3" class="board-square no-select"></div>
+        <div id="4" class="board-square no-select"></div>
+        <div id="5" class="board-square no-select"></div>
+      </div>
+      <div class="board-row row-3">
+        <div id="6" class="board-square no-select"></div>
+        <div id="7" class="board-square no-select"></div>
+        <div id="8" class="board-square no-select"></div>
+      </div>
+    </div>
+    <div id="player-1-char" class="ryu-idle size position"><img id="player-1-char-img" src=""></div>
+    <div id="player-2-char" class="guile-idle flipped size position"><img id="player-2-char-img" src=""></div>
+  </div> <!-- #main-screen -->
+  
+    <div id="end-screen">
+      <img id="end-screen-image" src="https://streetfighter2ttt.com/resources/img/screens/end-game/ryu-win-guile-lose.jpg" alt="Street Fighter 2 - The Tic Tac Toe Warrior end screen">
+    </div>
+  </div> <!-- #frame -->
+  <script>
+      "use strict";
+
+// HTML elements
+const vsBGMElement = document.getElementById('vs-bgm');
+const endBGMElement = document.getElementById('end-bgm');
+
+const loadingScreen = document.getElementById('loading-screen');
+const playButtonScreen = document.getElementById('play-button-screen');
+const playButton = document.getElementById('play-button');
+const titleScreen = document.getElementById("title-screen");
+const titleScreenVideo = document.getElementById("title-screen-video");
+const difficultySelectScreen = document.getElementById("difficulty-select-screen");
+const difficultyMode = document.getElementsByClassName("difficulty-mode");
+const charSelectScreen = document.getElementById("char-select-screen");
+const mapImageFile = document.getElementById("map-image-file");
+const playerSelect = document.getElementsByClassName("player-select");
+const vsScreen = document.getElementById("vs-screen");
+const vsScreenImage = document.getElementById("vs-screen-image");
+const mainScreen = document.getElementById("main-screen");
+const ryuStageImage = document.getElementById("ryu-stage");
+const blackOut = document.getElementById("blackout");
+const roundImage = document.getElementById("round-image");
+const boardSquares = document.getElementsByClassName("board-square");
+const player1Char = document.getElementById("player-1-char");
+const player2Char = document.getElementById("player-2-char");
+const player1CharImg = document.getElementById("player-1-char-img");
+const player2CharImg = document.getElementById("player-2-char-img");
+const endScreenImage = document.getElementById("end-screen-image");
+// Music
+const clickToStartAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/system/click-to-start.mp3");
+const charSelectedAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/system/char-selected.mp3");
+const airplaneAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/system/airplane-audio.mp3");
+// Round - Win - Lose
+const round1Audio = new Audio("https://streetfighter2ttt.com/resources/audio/round/round1.mp3");
+const round2Audio = new Audio("https://streetfighter2ttt.com/resources/audio/round/round2.mp3");
+const round3Audio = new Audio("https://streetfighter2ttt.com/resources/audio/round/round3.mp3");
+const round4Audio = new Audio("https://streetfighter2ttt.com/resources/audio/round/round4.mp3");
+const round5Audio = new Audio("https://streetfighter2ttt.com/resources/audio/round/round5.mp3");
+const youWin = new Audio("https://streetfighter2ttt.com/resources/audio/round/you-win.mp3");
+const youLose = new Audio("https://streetfighter2ttt.com/resources/audio/round/you-lose.mp3");
+//SFX
+const attackAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/attack-audio.mp3");
+const hitAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/hit-audio.mp3");
+const shoryukenAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/shoryuken-audio.mp3");
+const KOscream = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/KO-scream.mp3");
+
+var gameStarted = false;
+var titleScreenOn = true;
+var selectScreenOn = true;
+var gameover = false;
+var currentGameState = {};
+var human = {};
+var computerAI = {};
+var openSquares = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+var selectedDifficulty;
+var rounds = 0;
+
+var lastFrameName;
+var frameCount = 1;
+
+//WebAudio
+var context, bufferLoader, introBGM, mainBGM, gainNode, webAudioBufferLoader;
+
+// BLOB
+// SOURCE - http://dinbror.dk/blog/how-to-preload-entire-html5-video-before-play-solved/
+var vsBGMBlob;
+var req = new XMLHttpRequest();
+req.open('GET', 'https://streetfighter2ttt.com/resources/audio/bgm/vs-screen-bgm-low.mp3', true);
+req.responseType = 'blob';
+
+req.onload = function() {
+   if (this.status === 200) {
+      vsBGMBlob = this.response;
+      var vsBGM = URL.createObjectURL(vsBGMBlob);
+      vsBGMElement.src = vsBGM;
+   }
+}
+req.onerror = function() {
+   console.log("Something went wrong with loading the vs-bgm blob!");
+}
+
+req.send();
+URL.revokeObjectURL(vsBGMBlob);
+
+var endBGMBlob;
+var req = new XMLHttpRequest();
+req.open('GET', 'https://streetfighter2ttt.com/resources/audio/bgm/end-game-low.mp3', true);
+req.responseType = 'blob';
+
+req.onload = function() {
+  if (this.status === 200) {
+    endBGMBlob = this.response;
+    var endBGM = URL.createObjectURL(endBGMBlob);
+    endBGMElement.src = endBGM;
+  }
+}
+req.onerror = function() {
+   console.log("Something went wrong with loading the endgame-bgm blob!");
+}
+
+req.send();
+URL.revokeObjectURL(endBGMBlob);
+// END BLOB
+
+// LOADING SCREEN
+// SOURCE - https://davidwalsh.name/document-readystate
+var interval = setInterval(function() {
+    if(document.readyState === 'complete') {
+        clearInterval(interval);
+        console.log("DONE!");
+        loadingScreen.remove();
+    } else {
+        console.log("Still loading");
+    }    
+}, 100);
+
+var timer = 0;
+var interval2 = setInterval(function() {
+    if(!document.body.contains(loadingScreen)) {
+        clearInterval(interval2);
+    } else {
+        timer += 100;
+        if (timer === 10000) {
+            document.getElementById('loading-message').innerHTML = "<p>Is it taking a long time?</p><p>Check your internet connection.</p>";
+        }
+        if (timer === 20000) {
+            document.getElementById('loading-message').innerHTML = "<p>Are you using Chrome?</p><p>Try going into Incognito Mode.</p>";
+        }
+        if (timer === 30000) {
+            document.getElementById('loading-message').innerHTML = "<p>Incognito Mode:</p><p>Command + Shift + n (Mac) / Ctrl + Shift + n (Win/Linux)</p>";
+        }
+        if (timer === 40000) {
+            document.getElementById('loading-message').innerHTML = "<p>Hmm... Something must be wrong.</p><p>Try again later!</p>";
+        }
+    }
+}, 100);
+// END LOADING SCREEN
+
+// Web Audio and Bufferloader used for background music
+// WEB AUDIO
+// SOURCE - https://www.html5rocks.com/en/tutorials/webaudio/intro/
+function webAudioBGM(clip1, clip2) {
+
+  window.onload = initBGM();
+
+  function initBGM() {
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    context = new AudioContext();
+
+    webAudioBufferLoader = new BufferLoader(
+      context,
+      [
+        clip1,
+        clip2
+      ],
+      playWebAudio
+      );
+  }
+    webAudioBufferLoader.load();
+
+}
+function playWebAudio(bufferList) {
+
+    introBGM = context.createBufferSource();
+    mainBGM = context.createBufferSource();
+    introBGM = context.createBufferSource();
+    mainBGM = context.createBufferSource();
+    
+    introBGM.buffer = bufferList[0];
+    mainBGM.buffer = bufferList[1];
+    
+    gainNode = context.createGain();
+    gainNode.gain.setValueAtTime(1, context.currentTime);
+
+    mainBGM.connect(gainNode);
+
+    gainNode.connect(context.destination);
+    introBGM.connect(context.destination);
+    
+    introBGM.start(0);
+    introBGM.onended = function(){
+      mainBGM.start();
+      mainBGM.loop = true;
+    }
+    
+}
+// END WEB AUDIO
+
+// BUFFER LOADER
+// SOURCE - https://stackoverflow.com/questions/17333777/uncaught-reference-error-bufferloader-is-not-defined
+function BufferLoader(context, urlList, callback) {
+  this.context = context;
+  this.urlList = urlList;
+  this.onload = callback;
+  this.bufferList = new Array();
+  this.loadCount = 0;
+}
+BufferLoader.prototype.loadBuffer = function(url, index) {
+  var request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.responseType = "arraybuffer";
+
+  var loader = this;
+
+  request.onload = function() {
+    loader.context.decodeAudioData(
+      request.response,
+      function(buffer) {
+        if (!buffer) {
+          alert('error decoding file data: ' + url);
+          return;
+        }
+        loader.bufferList[index] = buffer;
+        if (++loader.loadCount == loader.urlList.length)
+          loader.onload(loader.bufferList);
+      },
+      function(error) {
+        console.error('decodeAudioData error', error);
+      }
+    );
+  }
+
+  request.onerror = function() {
+    alert('BufferLoader: XHR error');
+  }
+
+  request.send();
+}
+BufferLoader.prototype.load = function() {
+  for (var i = 0; i < this.urlList.length; ++i)
+  this.loadBuffer(this.urlList[i], i);
+}
+//END BUFFER LOADER
+
+init();
+
+function init() {
+  rounds++;
+  
+  currentGameState = new GameState();  
+  
+  if (!gameStarted) {
+    human = {};
+    computerAI = {};
+    selectedDifficulty = undefined;
+    //Event listeners for difficulty mode
+    for(let i = 0; i < difficultyMode.length; i++) {
+      difficultyMode[i].addEventListener("click", difficultyModeSelect);
+      difficultyMode[i].addEventListener("mouseenter", modeHoverAudio);
+    }
+    //Event listeners for character select
+    for(let i = 0; i < playerSelect.length; i++) {
+      playerSelect[i].addEventListener("click", charSelect);
+      playerSelect[i].addEventListener("mouseenter", charHover);
+    }
+    
+    gameStarted = true;
+  }
+  
+  for(let i = 0; i < boardSquares.length; i++) {
+    boardSquares[i].onclick = humanMove; 
+  }
+  
+  human.turnActive = true;
+}
+
+function GameState() {
+  this.turnsTaken = 0;
+  this.boardState = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+}
+
+playButton.addEventListener("click", playVid);
+
+function playVid() {
+  titleScreenVideo.play();
+  playButton.remove();
+  playButtonScreen.remove();
+}
+
+titleScreenVideo.addEventListener("click", titleScreenClicked);
+//removes title screen
+function titleScreenClicked(){
+  clickToStartAudio.play();
+  titleScreenVideo.pause();
+  setTimeout(function(){ titleScreen.remove(); }, 2500);
+  titleScreenOn = false;
+  titleScreenVideo.removeEventListener("click", titleScreenClicked);
+}
+//sound for hovering over difficulty modes
+function modeHoverAudio() {
+  let sound = new Audio("https://www.streetfighter2ttt.com/resources/audio/sfx/system/mode-hover.mp3");
+  sound.play();  
+}
+//gets difficulty mode and moves to next screen
+function difficultyModeSelect() {
+  if(!titleScreenOn) {
+    selectedDifficulty = this.id;
+    this.classList.add("selected-blink");
+    clickToStartAudio.play()
+    for(let i = 0; i < difficultyMode.length; i++) {
+      difficultyMode[i].removeEventListener("mouseenter", modeHoverAudio);
+      difficultyMode[i].removeEventListener("click", difficultyModeSelect);
+      difficultyMode[i].classList.remove("selection");
+    }
+    setTimeout(function(){
+      difficultySelectScreen.remove();
+      webAudioBGM('https://streetfighter2ttt.com/resources/audio/bgm/char-select-intro-low.ogg', 'https://streetfighter2ttt.com/resources/audio/bgm/char-select-main-low.ogg');
+    }, 2500);
+  }
+}
+//hover over character icon in character select screen
+function charHover() {
+  let sound = new Audio("https://www.streetfighter2ttt.com/resources/audio/sfx/system/char-icon-hover.mp3");
+  sound.play();  
+  if (this.id === "O")
+    mapImageFile.src="https://www.streetfighter2ttt.com/resources/img/screens/world-map/ryu-char-select.jpg";
+  else
+    mapImageFile.src="https://www.streetfighter2ttt.com/resources/img/screens/world-map/guile-char-select.jpg";
+}
+//assigns character to player and com, assigns difficulty to com, and moves to next screen
+function charSelect() {
+  charSelectedAudio.play();
+  for(let i = 0; i < playerSelect.length; i++) {
+    playerSelect[i].removeEventListener("mouseenter", charHover);
+    playerSelect[i].removeEventListener("click", charSelect);
+    playerSelect[i].classList.remove("selection");
+  }
+  human = new Player(this.id);
+  this.classList.add("selected");
+  this.classList.remove("selection");
+  if (this.id === "O") { 
+    computerAI = new Computer("X");
+    mapImageFile.src= "https://www.streetfighter2ttt.com/resources/img/screens/world-map/ryu-selected-flag.jpg";
+  } else {
+    computerAI = new Computer("O");
+    mapImageFile.src= "https://www.streetfighter2ttt.com/resources/img/screens/world-map/guile-selected-flag.jpg";
+    vsScreenImage.src= "https://www.streetfighter2ttt.com/resources/img/screens/vs-screen/guile-vs-screen.jpg";
+    ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X.jpg";
+    player1Char.classList.remove("ryu-idle");
+    player1Char.classList.add("guile-idle");      
+    player2Char.classList.remove("guile-idle");
+    player2Char.classList.add("ryu-idle");
+  }
+  computerAI.difficulty = selectedDifficulty;
+  selectScreenOn = false;
+  setTimeout(function(){
+    airplaneAudio.play();
+    if (human.char === "O") {
+      mapImageFile.src="https://www.streetfighter2ttt.com/resources/img/screens/world-map/ryu-selected-animated.gif";
+    } else {
+      mapImageFile.src="https://www.streetfighter2ttt.com/resources/img/screens/world-map/guile-selected-animated.gif";
+    }
+  }, 1000);
+  setTimeout(function(){
+    charSelectScreen.remove();
+    mainBGM.stop();
+    vsBGMElement.play();
+  }, 4000);
+  setTimeout(function(){
+    vsScreen.remove();
+    webAudioBGM('https://www.streetfighter2ttt.com/resources/audio/bgm/ryu-theme-intro-low.ogg', 'https://www.streetfighter2ttt.com/resources/audio/bgm/ryu-theme-main-low.ogg');
+    roundMedia();
+  },9000);
+}
+//logic for clicking on a square
+function humanMove(){
+  //runs only if com's turn is not active
+  if (!computerAI.turnActive) {    
+    let noWinner;
+    let squareId = this.id;
+    // check if square is still open
+    if (openSquares.indexOf(squareId) !== -1){
+      noWinner = moveLogic(squareId, human.char);
+      // if no winner and game not finished, run attack and hit animation, then it's com's turn
+      if (noWinner && gameover === false) {
+        attackHitMedia(human.char, player1Char, computerAI.char, player2Char);
+        computerAI.turnActive = true;
+        human.turnActive = false;
+        setTimeout(computerAI.move, 2500);
+      } 
+    }
+  } 
+}
+// plays both attack and hit animations and sound
+function attackHitMedia(char1, char1Element, char2, char2Element) {
+  setupAndRunAnimation(char1, char1Element, true);
+  attackAudio.play();
+  setTimeout(function(){
+    setupAndRunAnimation(char2, char2Element, false);
+    hitAudio.play();
+  }, 300);
+}
+// finds and assigns each animation frame from css
+function setupAndRunAnimation(char, playerSide, attack) {
+  let frameName;
+  let gifLength;
+  let val = getRandomNum(3);
+  // attacker's animation
+  if (attack) {
+    //if ryu
+    if (char === "O") {
+      if (val == 0) {
+        frameName = "ryu-punch-frame";
+        gifLength = 5; 
+      } else if (val == 1) {
+        frameName = "ryu-punch2-frame";
+        gifLength = 5; 
+      } else {
+        frameName = "ryu-kick-frame";
+        gifLength = 5; 
+      }        
+    } else {
+      //if guile
+      if (val == 0) {
+        frameName = "guile-punch-frame";
+        gifLength = 5; 
+      } else if (val == 1) {
+        frameName = "guile-kick-frame";
+        gifLength = 8; 
+      } else {
+        frameName = "guile-kick2-frame";
+        gifLength = 5; 
+      }        
+    }
+  } else {
+    // hit character's animation
+    if (char === "O") {
+      //if ryu
+      frameName = "ryu-hit-frame";
+      gifLength = 4;        
+    } else {
+      //if guile
+      frameName = "guile-hit-frame";
+      gifLength = 3;  
+    }
+  }
+  // assigns animation frames to characters
+  if (playerSide === player1Char) {
+      let player1AnimationObj = new runAnimationObject(playerSide, frameName, gifLength, attack);
+      player1AnimationObj.runAnimation();
+  }  
+
+  if (playerSide === player2Char) {
+      let player2AnimationObj = new runAnimationObject(playerSide, frameName, gifLength, attack);
+      player2AnimationObj.runAnimation();
+  }
+} 
+// runs the animation by adding/removing classes
+function runAnimationObject(player, frameName, gifLength, attack) {
+    var $that = this;
+    this.idle;
+    this.player = player;
+    this.frameName = frameName;
+    this.gifLength = gifLength;
+    this.lastFrameName;
+    this.frameCount = 1;
+    if (attack) {
+      this.intervalTime = 100;  
+    } else{
+      this.intervalTime = 200;
+    }
+    this.runAnimation = function() {
+      let intervalID = setInterval(function(){
+        if ($that.player == player1Char) {
+          if (human.char == "O") { $that.idle = "ryu-idle"; }
+          else { $that.idle = "guile-idle"; }
+        } else {
+          if (computerAI.char =="O") { $that.idle = "ryu-idle"; }
+          else { $that.idle = "guile-idle"; }
+        }
+        if ($that.player.classList.contains($that.idle)){
+          $that.player.classList.remove($that.idle);
+          $that.lastFrameName = $that.frameName + $that.frameCount;
+          $that.player.classList.add($that.lastFrameName);
+        } else if ($that.frameCount <= $that.gifLength) {
+          $that.player.classList.remove($that.lastFrameName);
+          $that.lastFrameName = $that.lastFrameName.slice(0, -1) + $that.frameCount;
+          $that.player.classList.add($that.lastFrameName);
+          $that.frameCount++;
+        } else {
+          $that.player.classList.remove($that.lastFrameName);
+          $that.player.classList.add($that.idle);
+          $that.frameCount = 1;
+          clearInterval(intervalID);
+        }
+      }, $that.intervalTime);
+  }  
+}
+// places X O in board, removes space from open squares, check for winner
+function moveLogic(squareId, char){
+  let result;  
+  let charImg = document.createElement("img");
+  
+  charImg.classList.add("char-css");
+  
+  if (char === "O") {
+    charImg.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/O.gif";
+  } else {
+    charImg.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/X.gif";
+  }
+  
+  removeFromOpen(squareId);
+  currentGameState.boardState[squareId] = char;
+  document.getElementById(squareId).appendChild(charImg);
+  currentGameState.turnsTaken++;
+  // check for winner only after 5 turns
+  if (currentGameState.turnsTaken > 4) {
+    result = checkForWinner(char);
+    // if there is winner, run win animation
+    if (result) {
+      if(rounds !== 5) {
+        // run win and ko animations
+        roundWinAnimation(char);
+        // prevents human move
+        computerAI.turnActive = true;
+        // reset rounds
+        setTimeout(function(){ reset(); }, 10000);
+      } else {
+        // don't reset if last round (5) is reached
+        roundWinAnimation(char);
+      }
+    } else {
+      // if no winner and last square is used, run attack hit animation and draw
+      if (currentGameState.turnsTaken === 9) {
+        let char1, char2, elementAttack, elementHit;
+        if (char === human.char) {
+          elementAttack = player1Char;
+          elementHit = player2Char;
+        } else {
+          elementAttack = player2Char;
+          elementHit = player1Char;
+        }
+        if (char === "O") {
+          char1 = "O"; 
+          char2 = "X"; 
+        } else { 
+          char1 = "X";
+          char2 = "O";
+        }
+        attackHitMedia(char1, elementAttack, char2, elementHit);
+        drawImage();
+        // if not last round, reset
+        if (rounds !== 5) {
+          // prevents human move
+          computerAI.turnActive = true;
+          setTimeout(function(){ reset(); }, 6000);
+        } else {
+          // if last round, end game
+          gameover = true;
+          endGame(human.wins, computerAI.wins);
+        }
+      }  else {
+        // if no winner and open squares exist
+        return true;
+      }
+    }
+  }
+  // if no result
+  if (!result) { return true; }
+}
+// handles animation when draw game
+function drawImage() {
+  gainNode.gain.linearRampToValueAtTime(0, context.currentTime + 4);
+  if (human.char === "O")  {
+    setTimeout(function(){              
+      player1Char.classList.remove("ryu-idle");
+      player2Char.classList.remove("guile-idle");
+      player1CharImg.src = "https://www.streetfighter2ttt.com/resources/img/animated/ryu/ryu-draw.gif";
+      player2CharImg.src ="https://www.streetfighter2ttt.com/resources/img/animated/guile/guile-draw.gif"; 
+    },3000);      
+  } else {
+    setTimeout(function(){              
+      player1Char.classList.remove("guile-idle");
+      player2Char.classList.remove("ryu-idle");
+      player1CharImg.src = "https://www.streetfighter2ttt.com/resources/img/animated/guile/guile-draw.gif";
+      player2CharImg.src = "https://www.streetfighter2ttt.com/resources/img/animated/ryu/ryu-draw.gif"; 
+    },3000);     
+  }
+  setTimeout(function(){ roundImage.src = "https://www.streetfighter2ttt.com/resources/img/animated/round/draw.gif"; },3500);
+}
+// checks for winner by checking winning combination
+function checkForWinner(char) {
+    if (winCombination(currentGameState.boardState, char)) {
+      let result = winScore(char);
+      return result;
+    } else {
+      return false;
+    }
+}   
+function winCombination(board, char) {
+  if (
+    (char === board[0] && board[0] === board[1] && board[1] === board[2]) ||
+    (char === board[3] && board[3] === board[4] && board[4] === board[5]) ||
+    (char === board[6] && board[6] === board[7] && board[7] === board[8]) ||
+    (char === board[0] && board[0] === board[3] && board[3] === board[6]) ||
+    (char === board[1] && board[1] === board[4] && board[4] === board[7]) ||
+    (char === board[2] && board[2] === board[5] && board[5] === board[8]) ||
+    (char === board[0] && board[0] === board[4] && board[4] === board[8]) ||
+    (char === board[2] && board[2] === board[4] && board[4] === board[6])       
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+}
+// adds to player score and changes background to reflect wins
+function winScore(char) {
+  if (char === human.char){    
+    human.wins++;
+    if (char == "O") {
+      if (human.wins == 1 && computerAI.wins == 0) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-0win.jpg"; } 
+      else if (human.wins == 1 && computerAI.wins == 1) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-1win.jpg"; } 
+      else if (human.wins == 2 && computerAI.wins == 0) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-2win-0win.jpg";
+        gameover = true;
+        endGame(human.char);
+      } 
+      else if (human.wins == 2 && computerAI.wins == 1) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-2win-1win.jpg";    
+        gameover = true;      
+        endGame(human.char);
+      }
+    } else {
+      if (human.wins == 1 && computerAI.wins == 0) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-0win.jpg"; } 
+      else if (human.wins == 1 && computerAI.wins == 1) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-1win.jpg"; } 
+      else if (human.wins == 2 && computerAI.wins == 0) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-2win-0win.jpg";
+        gameover = true;
+        endGame(human.char);
+      } 
+      else if (human.wins == 2 && computerAI.wins == 1) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-2win-1win.jpg";     
+        gameover = true;
+        endGame(human.char);
+      }  
+    }
+  } else {
+    computerAI.wins++;
+    if (char == "X") {
+      if (human.wins == 0 && computerAI.wins == 1) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-0win-1win.jpg"; } 
+      else if (human.wins == 1 && computerAI.wins == 1) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-1win.jpg"; } 
+      else if (human.wins == 0 && computerAI.wins == 2) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-0win-2win.jpg";
+        gameover = true;        
+        endGame(computerAI.char);
+      } else if (human.wins == 1 && computerAI.wins == 2) {
+         ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-O-1win-2win.jpg";     
+         gameover = true;
+         endGame(computerAI.char);
+      }
+    } else {
+      if (human.wins == 0 && computerAI.wins == 1) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-0win-1win.jpg"; } 
+      else if (human.wins == 1 && computerAI.wins == 1) { ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-1win.jpg"; } 
+      else if (human.wins == 0 && computerAI.wins == 2) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-0win-2win.jpg";
+        gameover = true;
+        endGame(computerAI.char);
+      } else if (human.wins == 1 && computerAI.wins == 2) {
+        ryuStageImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/ryu-stage/ryu-stage-X-1win-2win.jpg";     
+        gameover = true;
+        endGame(computerAI.char);
+      }      
+    }
+  }
+  return true;
+} 
+// handles animation and audio for final attack and hit, win and lose pose
+function roundWinAnimation(char) {
+  let player, playerImg, opponent, opponentImg, idleGif, winAttackGif, winAttackAudio, opponentIdleGif, KOgif, guileWinStance, KOinterval, youWinLose, youWinLoseAudio;
+
+  if (char === "O") {
+    idleGif = "ryu-idle";
+    winAttackGif = "https://www.streetfighter2ttt.com/resources/img/animated/ryu/ryu-shoryuken.gif"
+    winAttackAudio = shoryukenAudio;
+    opponentIdleGif = "guile-idle";
+    KOgif = "https://www.streetfighter2ttt.com/resources/img/animated/guile/guile-KO.gif";
+  } else {
+    idleGif = "guile-idle";
+    winAttackGif = "https://www.streetfighter2ttt.com/resources/img/animated/guile/guile-flash-kick.gif";
+    opponentIdleGif = "ryu-idle";
+    winAttackAudio = attackAudio;
+    KOgif = "https://www.streetfighter2ttt.com/resources/img/animated/ryu/ryu-KO.gif";
+    guileWinStance = "https://www.streetfighter2ttt.com/resources/img/animated/guile/guile-win.gif";
+  }
+  if (human.char === char) { 
+    player = player1Char;
+    playerImg = player1CharImg;
+    opponent = player2Char;
+    opponentImg = player2CharImg;
+    youWinLose = "https://www.streetfighter2ttt.com/resources/img/animated/round/you-win.gif";      
+    youWinLoseAudio = youWin;      
+  } else {
+    player = player2Char;
+    playerImg = player2CharImg;
+    opponent = player1Char;
+    opponentImg = player1CharImg;
+    youWinLose = "https://www.streetfighter2ttt.com/resources/img/animated/round/you-lose.gif";   
+    youWinLoseAudio = youLose;      
+  }
+  // win attack
+  player.classList.remove(idleGif);
+  playerImg.src = winAttackGif;
+  winAttackAudio.play();
+  // winnning stance for ryu
+  if (idleGif === "ryu-idle") {
+    KOinterval = 300;
+    setTimeout(function(){
+      playerImg.src = "https://www.streetfighter2ttt.com/resources/img/animated/ryu/ryu-win1.gif";
+      gainNode.gain.linearRampToValueAtTime(0, context.currentTime + 4);
+      setTimeout(function(){ playerImg.src = "https://www.streetfighter2ttt.com/resources/img/animated/ryu/ryu-win2.gif"; },200);
+    },3800); 
+  // winning stance for guile
+  } else {
+    KOinterval = 400;
+    setTimeout(function(){ 
+      playerImg.src = guileWinStance; 
+      gainNode.gain.linearRampToValueAtTime(0, context.currentTime + 4);
+    },3800); 
+  }
+  // opponent KO
+  setTimeout(function(){
+    opponent.classList.remove(opponentIdleGif);
+    opponentImg.src = KOgif;
+    hitAudio.play();
+    setTimeout(function(){ KOscream.play(); },1000);
+    setTimeout(function(){ playFallAudio(); },1500);    
+    setTimeout(function(){ playFallAudio(); },2300);
+  }, KOinterval);   
+  setTimeout(function(){ 
+    roundImage.src = youWinLose;
+    youWinLoseAudio.play();
+  },3800);   
+
+  function playFallAudio() {
+    let sound = new Audio("https://www.streetfighter2ttt.com/resources/audio/sfx/character/fall-audio.mp3");
+    sound.play();
+  }
+}
+
+function Player(char) {
+  this.char = char;
+  this.wins = 0;
+  this.turnActive = false;
+}
+
+function Computer(char) {
+  Player.call(this, char); 
+  this.difficulty;
+  this.turnActive = true;
+  this.move = () => {
+    if (this.difficulty === "easy") { this.easyAI(); } 
+    else if (this.difficulty === "normal") { this.normalAI(); } 
+    else { this.hardAI(); }
+  }
+  this.easyAI = () => {
+    let noWinner;
+    //select random num from 0 to 8 inclusive (dependent on number of squares)
+    if(openSquares.length !== 0) {
+      let squareNum = getRandomNum(openSquares.length);
+      let squareId = openSquares[squareNum];
+      noWinner = moveLogic(squareId, this.char);
+      if (noWinner) {
+        attackHitMedia(this.char, player2Char, human.char, player1Char);
+        setTimeout(function(){ computerAI.turnActive = false; },1600);
+      }
+    }
+  }
+  //normal mode selects randomly selects easy or hard mode on each move
+  this.normalAI = () => {
+    let modeSelector = getRandomNum(2);
+    if (modeSelector === 0) {
+      this.easyAI();
+      console.log("easy");
+    } else {
+      this.hardAI();
+      console.log("hard");
+    }
+  }
+  //hard mode uses minimax function to ensure human never wins
+  this.hardAI = () => {
+    let noWinner;
+    let result = minimax(currentGameState.boardState, computerAI.char).index;
+    let squareId = currentGameState.boardState[result];
+    noWinner = moveLogic(squareId, this.char);
+    if (noWinner) {
+      attackHitMedia(this.char, player2Char, human.char, player1Char);
+      setTimeout(function(){ computerAI.turnActive = false; },1600);
+    }
+  }
+}
+// MINIMAX
+//SOURCE - minimax function from https://medium.freecodecamp.org/how-to-make-your-tic-tac-toe-game-unbeatable-by-using-the-minimax-algorithm-9d690bad4b37
+//and https://codepen.io/abdolsa/pen/vgjoMb
+function minimax(reboard, player) {
+  var array = availableSquares(reboard);
+  if (winCombination(reboard, human.char)) {
+    return { score: -10 };
+  } else if (winCombination(reboard, computerAI.char)) {
+    return { score: 10 };
+  } else if (array.length === 0) {
+    return { score: 0 };
+  }
+
+  var moves = [];
+
+  for (var i = 0; i < array.length; i++) {
+    var move = {};
+    move.index = reboard[array[i]];
+    reboard[array[i]] = player;
+
+    if (player == computerAI.char) {
+      var result = minimax(reboard, human.char);
+      move.score = result.score;
+    } else {
+      var result = minimax(reboard, computerAI.char);
+      move.score = result.score;
+    }
+    reboard[array[i]] = move.index;
+    moves.push(move);
+  }
+
+  var bestMove;
+  if (player === computerAI.char) {
+    var bestScore = -10000;
+    for (var i = 0; i < moves.length; i++) {
+      if (moves[i].score > bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  } else {
+    var bestScore = 10000;
+    for (var i = 0; i < moves.length; i++) {
+      if (moves[i].score < bestScore) {
+        bestScore = moves[i].score;
+        bestMove = i;
+      }
+    }
+  }
+  return moves[bestMove];
+
+  function availableSquares(board) {
+    var result = board.filter(square => square !== "X" && square !=="O");
+    return result;
+  }
+}
+// END MINIMAX
+function getRandomNum(value) {
+  return Math.floor(Math.random() * Math.floor(value));
+}
+
+function removeFromOpen (squareId) {
+  if(openSquares.indexOf(squareId) !== -1) {
+    let index = openSquares.indexOf(squareId);
+    openSquares.splice(index, 1);
+  }
+}
+// handles round number animation and audio
+function roundMedia() {
+  setTimeout(function(){
+    switch(rounds) {
+      case 1: 
+        roundImage.src = "https://www.streetfighter2ttt.com/resources/img/animated/round/round1.gif";
+        round1Audio.play();
+        break;
+        
+      case 2: 
+        roundImage.src = "https://www.streetfighter2ttt.com/resources/img/animated/round/round2.gif";
+        round2Audio.play();
+        break;
+        
+      case 3: 
+        roundImage.src = "https://www.streetfighter2ttt.com/resources/img/animated/round/round3.gif";
+        round3Audio.play();
+        break; 
+        
+      case 4: 
+        roundImage.src = "https://www.streetfighter2ttt.com/resources/img/animated/round/round4.gif";
+        round4Audio.play();
+        break; 
+        
+      case 5: 
+        roundImage.src = "https://www.streetfighter2ttt.com/resources/img/animated/round/round5.gif";
+        round5Audio.play();
+        break;
+    }
+    setTimeout(function(){
+      computerAI.turnActive = false;
+      roundImage.src = "";
+    }, 3000);
+  }, 1000);
+}
+
+function reset() {
+  // reset between rounds only
+  if (!gameover) {
+    blackOut.classList.add("fade-in-and-out");
+    mainBGM.stop();
+    // resets to player idle animation
+    setTimeout(function(){
+      player1CharImg.src = "";
+      player2CharImg.src = "";
+      roundImage.src = "";
+      if (human.char === "O") {
+        player1Char.classList.add("ryu-idle", "ryu-1p");
+        player2Char.classList.add("guile-idle", "guile-2p");
+      } else {
+        player2Char.classList.add("ryu-idle", "ryu-1p");
+        player1Char.classList.add("guile-idle", "guile-2p");
+      }
+    },1000);
+    setTimeout(function(){ blackOut.classList.remove("fade-in-and-out"); },2000);
+    // removes X and O
+    for(let i = 0; i < boardSquares.length; i++) { boardSquares[i].innerHTML = ''; }
+    openSquares = ["0", "1", "2", "3", "4", "5", "6", "7", "8"];
+    currentGameState = {};
+    human.turnActive = false;
+    init();
+    setTimeout(function(){ 
+      webAudioBGM('https://www.streetfighter2ttt.com/resources/audio/bgm/ryu-theme-intro-low.ogg', 'https://www.streetfighter2ttt.com/resources/audio/bgm/ryu-theme-main-low.ogg');
+      roundMedia(); 
+    },1000)
+  }
+}
+
+function endGame(val, val2) {
+  setTimeout(function(){ setEndScreen(val, val2); },8000);
+  function setEndScreen(val, val2) {
+    if (val2 !== undefined) {
+      // if no side reaches 2 wins, win num is compared
+      if (val > val2) {
+        if (human.char === "O") {
+          endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-win-guile-lose.jpg";
+        } else {
+          endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-win-ryu-lose.jpg";
+        } 
+      } else if (val < val2) {
+        if (computerAI.char === "O") {
+          endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-win.jpg";
+        } else {
+          endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-win.jpg";
+        }
+      // if draw game  
+      } else {
+        let num = getRandomNum(10);
+        if(human.char ==="O") {
+          if (num < 7) { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose.jpg"; 
+          } else if (num === 7) { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose-1.jpg"; 
+          } else if (num === 8) { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose-2.jpg"; 
+          } else { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-lose-3.jpg"; 
+          }
+        } else {
+          if (num < 7) { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose.jpg"; 
+          } else if (num === 7) { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose-1.jpg"; 
+          } else if (num === 8) { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose-2.jpg"; 
+          } else { 
+            endScreenImage.src = "https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-lose-3.jpg"; 
+          }
+        }
+      }
+    } else {
+      // if a side reaches 2 wins
+      if (val == human.char) {
+        if (val == "X") { 
+          endScreenImage.src ="https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-win-ryu-lose.jpg"; 
+        }
+      } else {
+        if (val == "O") { 
+          endScreenImage.src ="https://www.streetfighter2ttt.com/resources/img/screens/end-game/guile-lose-ryu-win.jpg"; 
+        } else { 
+          endScreenImage.src ="https://www.streetfighter2ttt.com/resources/img/screens/end-game/ryu-lose-guile-win.jpg"; 
+        }
+      }
+    }
+    setTimeout(function(){
+      mainScreen.remove();
+      endBGMElement.play();
+    },500);
+  }
+  // resets game, works in codepen only if in full view
+  setTimeout(function(){ history.go(0); }, 16000);
+}
+  </script>   
+  </body>

@@ -58,19 +58,21 @@ let moveHistory = [
 //in case player did not choose theme
 buttons.forEach((button)=>{
     if(!button.disabled){
-        button.style.background = '#56baed';
-        colorButton = '#56baed';
+        button.style.background = '#333';
+        colorButton = '#333';
     }
 })
 
 //applying theme colors
 optionDefault.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/pixel-bg2.jpg)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
     body.style.backgroundAttachment = 'fixed';
     arenaName.innerHTML = 'SKY CASTLE';
     arenaName.style.color = 'yellow';
+    slider.style.background = '#56baed';
     buttons.forEach((button)=>{
         if(!button.disabled){
             button.style.background = '#56baed';
@@ -80,6 +82,7 @@ optionDefault.addEventListener('click', function(){
 })
 
 optionCity.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/city.gif)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -96,6 +99,7 @@ optionCity.addEventListener('click', function(){
 })
 
 optionContra.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/contra.gif)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -112,6 +116,7 @@ optionContra.addEventListener('click', function(){
 })
 
 optionRoad.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/cityroad.jpg)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -128,6 +133,7 @@ optionRoad.addEventListener('click', function(){
 })
 
 optionForest.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/forest.jpg)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -144,6 +150,7 @@ optionForest.addEventListener('click', function(){
 })
 
 optionUnderwater.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/underwater.png)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -160,6 +167,7 @@ optionUnderwater.addEventListener('click', function(){
 })
 
 optionSunset.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/sunset.jpg)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -176,6 +184,7 @@ optionSunset.addEventListener('click', function(){
 })
 
 optionBridge.addEventListener('click', function(){
+    charSelectedAudio.play();
     body.style.background = "linear-gradient( rgba(0, 0, 0, 0.501), rgba(0,0,0,0.501)), url(images/bridge.png)";
     body.style.backgroundPosition =  'center';
     body.style.backgroundSize = 'cover';
@@ -197,33 +206,42 @@ window.onload = ()=>{ //once window loaded
     for (let i = 0; i < allBox.length; i++) { //add onclick attribute in all available span
        allBox[i].setAttribute("onclick", "clickedBox(this)");
     }
+    backgroundMusic.play()
+    backgroundMusic.loop= true;
 }
 
-document.addEventListener('DOMContentLoaded', () =>{
-    const timeLeftDisplay = document.querySelector('#time-left')
-    let timeLeft = 15
+//setting timer
+const timeLeftDisplay = document.querySelector('#time-left')
+let timeLeft = 15
 
-    function countDown(){
-        setInterval(function(){
-            if(timeLeft <=0){
-                clearInterval(timeLeft = 15)
-                playBoard.classList.add("show"); //show the playboard section
-                selectPane.style.display = 'none';
-
-                //to change blinking text
-                if(!opponentBot){
-                    changeBlinkMe()
-                } 
+function countDown(){
+    setInterval(function(){
+        if(timeLeft <=0){
+            if(timeLeft == 0){
+                gameStartAudio.play();
+                backgroundMusic.pause();
             }
-            timeLeftDisplay.innerHTML = timeLeft
-            timeLeft -=1
-        },1000);
-    }
-    selectBtnX.addEventListener('click', countDown)
-    selectBtnO.addEventListener('click', countDown)
-})
+            clearInterval(timeLeft = 0)
+            playBoard.classList.add("show"); //show the playboard section
+            selectPane.style.display = 'none';
+            //to change blinking text
+            if(!opponentBot){
+                changeBlinkMe()
+            } 
+        }
+        timeLeftDisplay.innerHTML = timeLeft
+        timeLeft -=1
+    },1000);
+}
+
+function resetCountDown(){
+    timeLeft = 15;
+    backgroundMusic.play();
+}
 
 selectBtnX.onclick = ()=>{
+    modeHoverAudio();
+    countDown();
     selectBox.classList.add("hide"); //hide select box
     selectPane.style.display = 'flex'; //show fight arena
     playerYname.disabled = true; //disable player Y form if you chose to be player X
@@ -232,6 +250,8 @@ selectBtnX.onclick = ()=>{
 }
 
 selectBtnO.onclick = ()=>{ 
+    modeHoverAudio();
+    countDown();
     selectBox.classList.add("hide"); //hide select box
     selectPane.style.display = 'flex';
     players.setAttribute("class", "players active player"); //set class attribute in players with players active player values
@@ -244,11 +264,13 @@ selectBtnO.onclick = ()=>{
 // user click function
 function clickedBox(element){
     move+=1;
+    hitAudio.play()
+    backgroundMusic.play()
     if((players.classList.contains("player") && opponentBot) || playerTurn=="O"){
         playerSign = "O"; //if player choose (O) then change playerSign to O
         element.innerHTML = `<i class="${playerOIcon}"></i>`; //adding circle icon tag inside user clicked element/box
         if (opponentBot){
-            players.classList.add("active"); ///add active class in players
+            players.classList.remove("active"); ///add active class in players
         }
         else{
             players.classList.remove("active"); ///add active class in players
@@ -316,7 +338,7 @@ function bot(){
                 playerSign = "X"; //if player has chosen O then bot will X
                 botSign = "X";
                 allBox[randomBox].innerHTML = `<i class="${playerXIcon}"></i>`; //adding cross icon tag inside bot selected element
-                players.classList.remove("active"); //remove active class in players
+                players.classList.add("active"); //remove active class in players
                 allBox[randomBox].setAttribute("id", playerSign); //set id attribute in span/box with player choosen sign
                 allBox[randomBox].classList.add("move"+move); ///add move
             }else{
@@ -354,6 +376,7 @@ function selectWinner(){ //if the one of following winning combination match the
     if(checkIdSign(1,2,3,playerSign) || checkIdSign(4,5,6, playerSign) || checkIdSign(7,8,9, playerSign) || checkIdSign(1,4,7, playerSign) || checkIdSign(2,5,8, playerSign) || checkIdSign(3,6,9, playerSign) || checkIdSign(1,5,9, playerSign) || checkIdSign(3,5,7, playerSign)){
         runBot = false; //passing the false boolen value to runBot so bot won't run again
         bot(); //calling bot function
+        lastSign = playerSign //determine the lastSign of the winner
         setTimeout(()=>{ //after match won by someone then hide the playboard and show the result box after 700ms
             resultBox.classList.add("show");
             prevBtn.classList.add("show");
@@ -388,10 +411,19 @@ function selectWinner(){ //if the one of following winning combination match the
                 loserName = playerXname.value; //get losing player name
             }
         }
-        wonText.innerHTML = `<span style="color:yellow">${playerName}</span>&nbsp; won the game!`; //displaying winning text with passing playerSign (X or O)
-        tallyText.innerHTML = `<span style="color:yellow">${loserName}</span>&nbsp; was beaten in ${maxMovements} moves!`
+        if(playerDefault===lastSign){
+            backgroundMusic.pause();
+            youWin.play();
+        }else{
+            backgroundMusic.pause();
+            youLose.play();
+        }
+        wonText.innerHTML = `<span style="color:yellow; padding-right: 15px">${playerName}</span>won the game!`; //displaying winning text with passing playerSign (X or O)
+        tallyText.innerHTML = `<span style="color:yellow; padding-right: 15px">${loserName}</span>was beaten in ${maxMovements} moves!`
         playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard 
-        lastSign = playerSign //determine the lastSign of the winner
+        cells.forEach((cell)=>{
+            cell.style.pointerEvents = 'none';
+        })
     }else{ //if all boxes/element have id value and still no one win then draw the match
         if(getIdVal(1) != "" && getIdVal(2) != "" && getIdVal(3) != "" && getIdVal(4) != "" && getIdVal(5) != "" && getIdVal(6) != "" && getIdVal(7) != "" && getIdVal(8) != "" && getIdVal(9) != ""){
             runBot = false; //passing the false boolen value to runBot so bot won't run again
@@ -401,12 +433,15 @@ function selectWinner(){ //if the one of following winning combination match the
                 prevBtn.classList.add("show");
                 nextBtn.classList.add("show");
                 tallyBox.classList.add("show");
+                backgroundMusic.pause();
             }, 700); //1s = 1000ms
             wonText.textContent = "Match has been drawn!"; //displaying draw match text
             tallyText.textContent = "Play again to determine the real champion!" //displaying draw match text
             playBoard.style.pointerEvents = "none"; //add pointerEvents none to playboard 
+            cells.forEach((cell)=>{
+                cell.style.pointerEvents = 'none';
+            })
         }
-        lastSign = playerDefault
     }
 }
 
@@ -438,6 +473,7 @@ function clearBoard(){
 
 function resetGame(){
     //window.location.reload();
+    resetCountDown();
     selectPane.style.display = 'flex'; //show fight arena
     selectBox.classList.add("hide"); //hide select box
     playBoard.classList.remove("show"); //show the playboard section
@@ -456,7 +492,10 @@ function resetGame(){
     }
     clearBoard();
     opponentBot = true;
-    console.log(lastSign)
+    if(player2){
+        playerSign = playerDefault;
+    }
+    player2 = false;
 }
 
 ////////  PHASE 2 //////////
@@ -476,6 +515,7 @@ function maxMove(){
     
 //previous move
 function prevMove(){    
+    attackAudio.play()
     cells.forEach((cell)=>{
         if(cell.className.includes('move')){
             let cellMove = cell.className.slice(cell.className.length-1)
@@ -506,6 +546,7 @@ function prevMove(){
 
 //function nextMove()
 function nextMove(){
+    attackAudio.play()
      previousMove+=1
      cells.forEach((cell)=>{
         if(cell.className.includes('move')){
@@ -567,12 +608,14 @@ function challengerAnimation(){
         $('.quick-modal').fadeOut('fast');
         $('.quick-modal-bg').fadeOut('fast');
     },2000)
+    backgroundMusic.pause()
+    challengerAudio.play()
 }
-
+let player2;
 function enablePlayer2(){
-    changeBlinkMe()
-    challengerAnimation()
-    resetGame()
+    resetGame();
+    changeBlinkMe();
+    challengerAnimation();
     opponentBot = false;
     if(playerDefault==='X'){
         playerYname.disabled = false;
@@ -580,6 +623,24 @@ function enablePlayer2(){
     else{
         playerXname.disabled = false;
     }
+    player2 = true;
 }
 
 blinkArea.addEventListener('click',enablePlayer2, {once: true})
+
+
+//APPLYING SPECIAL EFFECTS
+
+const charSelectedAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/system/char-selected.mp3");
+const gameStartAudio = new Audio("https://streetfighter2ttt.com/resources/audio/bgm/vs-screen-bgm-low.mp3");
+const backgroundMusic = new Audio("https://vgmsite.com/soundtracks/street-fighter-2-turbo/ioknnojn/05.%20Ken%20Stage.mp3")
+const youWin = new Audio("https://streetfighter2ttt.com/resources/audio/round/you-win.mp3");
+const youLose = new Audio("https://streetfighter2ttt.com/resources/audio/round/you-lose.mp3");
+const attackAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/attack-audio.mp3");
+const hitAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/hit-audio.mp3");
+const challengerAudio = new Audio("https://vgmsite.com/soundtracks/street-fighter-2-turbo/iicfyvjk/04.%20Vs.mp3")
+
+function modeHoverAudio() {
+    let sound = new Audio("https://www.streetfighter2ttt.com/resources/audio/sfx/system/mode-hover.mp3");
+    sound.play();  
+}
