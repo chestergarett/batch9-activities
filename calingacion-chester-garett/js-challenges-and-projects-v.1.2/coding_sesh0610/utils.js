@@ -72,4 +72,4 @@ class Store {
 
 Object.assign(Store.prototype, itemFunctions)
 
-export {Item,Store}
+export {Item,Store} 

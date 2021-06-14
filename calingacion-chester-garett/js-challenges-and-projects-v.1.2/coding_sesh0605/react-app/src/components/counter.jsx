@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class Counter extends Component {
     state = {
-        count: 0,
-        tags: []
+        value: this.props.value
     };
 
+
     handleIncrement = () => {
-        this.setState({count: this.state.count + 1})
+        this.setState({count: this.state.value + 1})
     }
 
     renderTags(){
@@ -17,6 +17,7 @@ class Counter extends Component {
     render() {
         return( 
             <div>
+                {this.props.children}
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
                 <button onClick={this.handleIncrement} className='btn btn-secondary btn-sm'>Increment</button>
             </div>
