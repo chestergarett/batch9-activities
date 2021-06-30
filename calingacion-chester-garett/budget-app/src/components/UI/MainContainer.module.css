@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    top: 6rem;
+    left: 25rem;
+    width: 43rem;
+    border-radius: 12px;
+    margin: 0;
+  }

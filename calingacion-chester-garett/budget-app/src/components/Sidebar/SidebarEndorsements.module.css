@@ -1,0 +1,39 @@
+.endorsements{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+}
+
+.endorsements li{
+    background-color: white;
+    padding-left: 0;
+    padding-bottom: 3px;
+    border-radius: 12px;
+    width: 100%;
+}
+
+.endorsements li div{
+    padding: 5px;
+}
+
+.imgDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.endorsements img{
+    width: 4rem;
+}
+
+.innerLabels{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.detailLabels{
+    text-align: justify;
+    font-size: 15px;
+}

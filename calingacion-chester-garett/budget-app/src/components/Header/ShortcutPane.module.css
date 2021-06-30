@@ -1,0 +1,77 @@
+.shortcut{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 15rem;
+    position: relative;
+    margin-left: 120px;
+}
+
+.iconsGroup:hover{
+    background-color: whitesmoke;
+    height: 90%;
+    border-radius: 15px;
+}
+
+.selected{
+    border-bottom: 3px solid green;
+}
+
+.icons{
+    padding: .7rem;
+    margin: .3rem;
+    cursor: pointer;
+}
+
+.iconsSelected{
+    color: green;
+}
+
+.circle1{
+    position: absolute;
+    border-radius: 50%;
+    background: #D22B2B;
+    color: white;
+    padding: 8px;
+    height: 5px;
+    width: 5px;
+    font-size: 12px;
+    top: 10px;
+    left: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle2{
+    position: absolute;
+    border-radius: 50%;
+    background: #D22B2B;
+    color: white;
+    padding: 8px;
+    height: 5px;
+    width: 5px;
+    font-size: 12px;
+    top: 10px;
+    left: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle3{
+    position: absolute;
+    border-radius: 50%;
+    background: #D22B2B;
+    color: white;
+    padding: 8px;
+    height: 5px;
+    width: 5px;
+    font-size: 12px;
+    top: 10px;
+    left: 213px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
