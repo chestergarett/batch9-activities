@@ -7,7 +7,8 @@ export default makeStyles(() => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingLeft: '3rem',
+        marginLeft: '0',
+        // paddingLeft: '1rem',
     },
     homeCard: {
         width: '35rem',

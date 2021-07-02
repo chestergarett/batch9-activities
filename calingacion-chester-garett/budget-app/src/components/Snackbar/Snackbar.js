@@ -12,10 +12,11 @@ const CustomizedSnackbar = ({open, setOpen}) => {
 
         setOpen(false);
     }
+    
     return (
         <div className={classes.root}>
             <Snackbar
-                anchorOrigin={{vertical: 'top', horizontal: 'right'}}
+                anchorOrigin={{vertical: 'top', horizontal: 'center'}}
                 open={open}
                 autoHideDuration={3000}
                 onClose={handleClose}

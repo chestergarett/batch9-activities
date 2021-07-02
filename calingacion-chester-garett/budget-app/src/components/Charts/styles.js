@@ -10,7 +10,8 @@ export default makeStyles(()=> ({
     },
     income: {
         borderBottom: '10px solid rgba(0, 255, 0, 0.5)',
-        width: '80%',
+        width: '90%',
+        height: '30%',
         display: 'flex',
         flexDirection: 'column',
         marginBottom: '20px',
@@ -18,7 +19,8 @@ export default makeStyles(()=> ({
     },
     expense: {
         borderBottom: '10px solid rgba(255, 0, 0, 0.5)',
-        width: '80%',
+        width: '90%',
+        height: '30%',
         display: 'flex',
         flexDirection: 'column',
         marginBottom: '20px',

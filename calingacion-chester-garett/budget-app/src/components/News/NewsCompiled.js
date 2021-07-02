@@ -16,7 +16,6 @@ const NewsCompiled = () => {
         .catch(error => console.log(error));
     }, [])
 
-    console.log(news)
     return(
     <MainContainer>
         {news.length!==0 ? news.articles.map(n=>{

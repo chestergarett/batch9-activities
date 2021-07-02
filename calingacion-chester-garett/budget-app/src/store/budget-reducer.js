@@ -1,21 +1,21 @@
 
 
 const BudgetReducer = (state,action) => {
-    let transactions;
+    let budget;
 
     switch (action.type){
-        case 'DELETE_TRANSACTION':
-            transactions = state.filter((t) => t.id !== action.payload);
+        case 'DELETE_BUDGET':
+            budget = state.filter((t) => t.id !== action.payload);
             
-            localStorage.setItem('transactions', JSON.stringify(transactions));
+            localStorage.setItem('budget', JSON.stringify(budget));
 
-            return transactions;
-        case 'ADD_TRANSACTION':
-            transactions = [action.payload, ...state]
+            return budget;
+        case 'ADD_BUDGET':
+            budget = [action.payload, ...state]
             
-            localStorage.setItem('transactions', JSON.stringify(transactions))
+            localStorage.setItem('budget', JSON.stringify(budget))
 
-            return transactions;
+            return budget;
         default:
             return state;
     }

@@ -1,7 +1,9 @@
-import {Fragment} from 'react'
 import 'firebase/firestore';
 import 'firebase/auth';
 import firebase from 'firebase/app';
+import {Paper,Card, CardMedia, Fab} from '@material-ui/core'
+import AirplayIcon from '@material-ui/icons/Airplay';
+import Community from '../../assets/community.png'
 
 const SignIn = ({auth}) => {
     const signInWithGoogle = () => {
@@ -10,10 +12,18 @@ const SignIn = ({auth}) => {
     }
 
     return (
-        <Fragment>
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
-        <p>Do not violate the community guidelines or you will be banned for life!</p>
-        </Fragment>
+        <Card style={{height: '40rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+            <CardMedia
+            src={Community}
+            component="img"
+            title="Community"
+            />
+            <Fab variant="extended" onClick={signInWithGoogle} style={{marginBottom: '1rem', padding: '1rem'}}>
+                <AirplayIcon style={{marginRight: '.5rem'}}/>
+                Sign In with Google
+            </Fab>
+            <Paper elevation={0} style={{padding: '1rem', borderRadius: '12px'}}>Do not violate the community guidelines or you will be banned for life.</Paper>
+        </Card>
     )
 }
 

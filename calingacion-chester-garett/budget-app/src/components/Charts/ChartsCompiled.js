@@ -1,4 +1,5 @@
-import Charts from './Charts';
+import ChartTotal from './ChartTotal';
+import ChartDetail from './ChartDetail';
 import MainContainer from '../UI/MainContainer'
 import useStyles from './styles';
 
@@ -9,8 +10,10 @@ const ChartsCompiled = () => {
     return (
         <MainContainer>   
             <div className={classes.main}>
-            <Charts title="Income"/> 
-            <Charts title="Expense"/> 
+                <ChartTotal title="Income"/> 
+                <ChartDetail title="Income" />
+                <ChartTotal title="Expense"/> 
+                <ChartDetail title="Expense"/>
             </div> 
         </MainContainer>
         

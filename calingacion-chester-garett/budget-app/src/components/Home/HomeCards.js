@@ -51,7 +51,7 @@ const projects = [
         id: v4(),
         title: 'Budget App',
         image: budgetApp,
-        link: '/BudgetMain'
+        link: '/Income'
     },
 ]
 

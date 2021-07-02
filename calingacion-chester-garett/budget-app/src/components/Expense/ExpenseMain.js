@@ -2,15 +2,14 @@ import {useContext} from 'react';
 import {Link} from 'react-router-dom';
 import {Card, Paper, CardContent, Typography, Grid, Divider} from '@material-ui/core';
 import MainContainer from '../UI/MainContainer'
-import BudgetContext from '../../store/budget-context.js'
-
+import ActualContext from '../../store/actual-context.js'
 import useStyles from './mainStyles';
-import BudgetForm from './BudgetForm';
-import BudgetList from './BudgetList';
+import ExpenseForm from './ExpenseForm';
+import ExpenseList from './ExpenseList';
 
-const BudgetMain = () => {
+const ExpenseMain = () => {
     const classes = useStyles();
-    const {budgetBalance, weekEndingBalance} = useContext(BudgetContext);
+    const {expenseBalance} = useContext(ActualContext)
     return(
         <MainContainer>
             <Paper style={{display: 'flex', flexDirection: 'column', backgroundColor: 'transparent', border: 'none'}}>
@@ -18,21 +17,21 @@ const BudgetMain = () => {
                     <Link to='/Income' style={{textDecoration: 'none', margin:'0',padding:'0'}}>  
                         <Typography align='left' variant='subtitle1' style={{height:'65%', color: 'white', borderTopRightRadius: '12px', padding: '.5rem', width: '10rem', backgroundColor: '#d3d3d3', display:'flex',alignItems:'flex-end'}}>Income</Typography>
                     </Link>
-                    <Link to='/Expense' style={{textDecoration: 'none', margin:'0',padding:'0'}}>  
-                    <Typography align='left' variant='subtitle1' style={{height:'65%', color: 'white', borderTopRightRadius: '12px', padding: '.5rem', width: '10rem', backgroundColor: '#d3d3d3', display:'flex',alignItems:'flex-end'}}>Expense</Typography>
+                    <Typography align='left' variant='h6' style={{color: 'white', borderTopRightRadius: '12px', padding: '.5rem', width: '10rem', backgroundColor: '#f44336', display:'flex'}}>Expense</Typography>
+                    <Link to='/Budget' style={{textDecoration: 'none', margin:'0',padding:'0'}}>  
+                    <Typography align='left' variant='subtitle1' style={{height:'65%', color: 'white', borderTopRightRadius: '12px', padding: '.5rem', width: '10rem', backgroundColor: '#d3d3d3', display:'flex', alignItems: 'flex-end'}}>Budget</Typography>
                     </Link>
-                    <Typography align='left' variant='h6' style={{color: 'black', borderTopRightRadius: '12px', padding: '.5rem', width: '10rem', backgroundColor: '#fada5f', display:'flex'}}>Budget</Typography>
             </Card>
             
             <Card>
                 <CardContent>
-                    <Typography align='center' variant='h5' style={{padding: '1rem'}}>₱ {budgetBalance}</Typography>
-                    <Typography align='center' variant='subtitle2'>Total Budget</Typography>
+                    <Typography align='center' variant='h5' style={{padding: '1rem'}}>₱ {expenseBalance}</Typography>
+                    <Typography align='center' variant='subtitle2'>Actual Expenses</Typography>
                     <Divider style={{paddingBottom: '.5rem'}}/>
-                    <BudgetForm/>
+                    <ExpenseForm/>
                     <CardContent className={classes.cardContent}>
                         <Grid item xs={12}>
-                            <BudgetList />
+                            <ExpenseList />
                         </Grid>
                     </CardContent>
                 </CardContent>
@@ -42,4 +41,4 @@ const BudgetMain = () => {
     )
 }
 
-export default BudgetMain;
+export default ExpenseMain;

@@ -16,13 +16,13 @@ const Navigation = () => {
     
     return <ul className={classes.navigation}>
         <li key='1'>
-            <Link to='/Expense' className={classes.navigationItem}>
-                <FcBriefcase className={classes.icons}/><span>Track Expense</span>
+            <Link to='/Income' className={classes.navigationItem}>
+                <FcMoneyTransfer className={classes.icons}/><span>Actual Cash Flows</span>
             </Link>
         </li>
         <li key='2'>
-            <Link to='/Income' className={classes.navigationItem}>
-                <FcMoneyTransfer className={classes.icons}/><span>Track Income</span>
+            <Link to='/Budget' className={classes.navigationItem}>
+                <FcBriefcase className={classes.icons}/><span>Budgeted Cash Flows</span>
             </Link>
         </li>
         <li key='3'>

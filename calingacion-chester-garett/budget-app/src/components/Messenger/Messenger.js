@@ -6,7 +6,8 @@ import 'firebase/auth';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 
-import {Card, FormControl, Button, TextField,Container} from '@material-ui/core';
+import {Card, Button, TextField} from '@material-ui/core';
+import SendIcon from '@material-ui/icons/Send';
 import MainContainer from '../UI/MainContainer';
 
 import SignIn from './SignIn';
@@ -68,15 +69,22 @@ const ChatRoom = () => {
         console.log(formValue)
     }
 
-    console.log(messages)
     return (
-        <Container >
-            {messages && messages.map( msg => <ChatMessage key={msg.id} message={msg} auth={auth} />)}
-            <form onSubmit={sendMessage}>
-                <input value={formValue} onChange={(e)=>setFormValue(e.target.value)}/>
-                <Button type="submit" disabled={!formValue}>Submit</Button>
+        <Card style={{height: "35rem"}}>
+            <Card style={{height: "30rem", overflowY: "scroll"}}>
+                {messages && messages.map( msg => <ChatMessage key={msg.id} message={msg} auth={auth} />)}
+            </Card>
+            <form onSubmit={sendMessage} style={{display: "flex", justifyContent: "center", paddingTop: "1rem"}}>
+                <TextField
+                id="outlined-size-normal"
+                variant="outlined"
+                value={formValue} 
+                onChange={(e)=>setFormValue(e.target.value)}
+                size="small"
+                />
+                <Button type="submit" disabled={!formValue}><SendIcon/>Submit</Button>
             </form>
-        </Container>
+        </Card>
     )
 }
 
