@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { Paper, Card, TextField, Button, InputAdornment} from "@material-ui/core"
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
 import {v4} from 'uuid';
+import BudgetDropdown from './BudgetDropDown';
 
 import BudgetContext from '../../store/budget-context.js'
 
@@ -26,6 +27,20 @@ const initialState = {
     type: 'Budget',
 }
 
+const categories = [
+    {id: v4(), value:'Netflix'},
+    {id: v4(), value:'Spotify'},
+    {id: v4(), value:'Rent'},
+    {id: v4(), value:'Breakfast'},
+    {id: v4(), value:'Lunch'},
+    {id: v4(), value:'Dinner'},
+    {id: v4(), value:'Snacks'},
+    {id: v4(), value:'Water'},
+    {id: v4(), value:'Electricity'},
+    {id: v4(), value:'Girlfriend'},
+    {id: v4(), value:'Internet'},
+    {id: v4(), value:'Load'},
+]
 
 const BudgetForm = () => {
 
@@ -68,6 +83,7 @@ const BudgetForm = () => {
 
     return (
         <Paper style={{display: 'flex', flexDirection: 'column', width: '30rem'}} elevation={0}>
+            <BudgetDropdown title='Select' items={categories} multiSelect/>
             <Card style={{padding: '1rem', display: 'flex', justifyContent: 'center'}} elevation={0}>
                     <TextField 
                         id="WeekEnding"
