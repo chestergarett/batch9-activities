@@ -4,7 +4,6 @@ import {randomRGB} from './utils/randomRGB.js';
 import { incomeCategories, expenseCategories, resetCategories} from './constants/categories';
 
 
-
 const useTransactions = (title) => {
     resetCategories();
     const { transactions } = useContext(ActualContext)
@@ -31,6 +30,17 @@ const useTransactions = (title) => {
           detailCategoryGroup.push(res[value.category])
         }
         res[value.category].amount += value.amount;
+        return res;
+      }, {});
+
+      //grouping by function by Week
+    let weeklyGroup = []
+    transactionsPerType.reduce(function(res, value) {
+        if (!res[value.weekEndingText]) {
+          res[value.weekEndingText] = { category: value.weekEndingText, amount: 0 };
+          weeklyGroup.push(res[value.weekEndingText])
+        }
+        res[value.weekEndingText].amount += value.amount;
         return res;
       }, {});
 
@@ -61,8 +71,16 @@ const useTransactions = (title) => {
         labels: detailFilteredCategories.map((c)=>c.category)
     }
 
-    console.log(detailChartData)
-    return { total, chartData, detailChartData}
-}
+    //detail grouping data
+    const weeklyFilteredCategories = weeklyGroup.filter(c => c.amount>0);
+    const weeklyChartData = {
+        datasets: [{
+            data: weeklyFilteredCategories.map((c)=> c.amount),
+            backgroundColor: weeklyFilteredCategories.map((c)=> randomRGB())
+        }],
+        labels: weeklyFilteredCategories.map((c)=>c.category)
+    }
 
+    return { total, chartData, detailChartData,weeklyChartData}
+}
 export default useTransactions;

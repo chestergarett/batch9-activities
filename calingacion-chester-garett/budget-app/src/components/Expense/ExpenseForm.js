@@ -26,14 +26,15 @@ const ExpenseForm = () => {
 
     const createTransaction = () => {
        
-        if(typeof(Number(formData.amount))!=='number' || formData.amount === '' || formData.amount === '0' ||!formData.date.includes('-')){
+        if(typeof(Number(formData.amount))!=='number' || formData.amount === '' || formData.amount === '0' ||  Number(formData.amount) < 0 ||
+        !formData.date.includes('-')){
             setFormData(initialState);
             return;
         } 
         
-        const transaction = {...formData, amount: Number(formData.amount), id: v4(), icon: iconIndex};
+        const transaction = {...formData, amount: Number(formData.amount), id: v4(), weekEndingText: getWeekNumber(new Date(formData.date))[0], icon: iconIndex};
         
-        console.log(getWeekNumber(new Date(formData.date)));
+        console.log(transaction);
         addTransaction(transaction);
         setFormData(initialState);
     }
@@ -61,7 +62,7 @@ const ExpenseForm = () => {
                         type="number"
                         onChange={(e)=> setFormData({...formData, amount: e.target.value})}
                         value={formData.amount || ''}
-                        inputProps={{ inputmode: 'numeric', pattern: '[0-9]'}}
+                        inputProps={{ inputMode: 'numeric', pattern: '[0-9]'}}
                     />
                     <TextField 
                         id="date"

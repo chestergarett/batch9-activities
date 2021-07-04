@@ -14,7 +14,7 @@ const BudgetList = () => {
     return(
         <List dense={false} className={classes.list}>
             {budget.map((budgetItem) => {
-                if(budgetItem.type==='Budget'){
+                // if(budgetItem.type==='Budget'){
                     return <Slide direction='down' in mountOnEnter unmountOnExit key={budgetItem.id}>
                     <ListItem>
                         <ListItemAvatar>
@@ -30,7 +30,7 @@ const BudgetList = () => {
                         </ListItemSecondaryAction>
                     </ListItem>
                 </Slide>
-                }
+                // }
                
             })}
         </List>    

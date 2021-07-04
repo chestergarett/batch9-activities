@@ -4,18 +4,18 @@ import useStyles from './styles';
 
 import useTransactions from '../../useTransactions';
 
-const ChartDetail = ({title}) => {
+const ChartWeekly = ({title}) => {
     const classes = useStyles();
 
-    const { detailChartData } = useTransactions(title);
+    const { weeklyChartData } = useTransactions(title);
 
     return( 
             <Card className={title === "Income" ? classes.income : classes.expense}>
-                <Typography variant="subtitle1" style={{margin: '3px', padding: 0, paddingTop: '3px'}}>{title} breakdown by Subcategory </Typography>
+                <Typography variant="subtitle1" style={{margin: '3px', padding: 0, paddingTop: '3px'}}> Expenses per Week </Typography>
                 <CardContent>
                     <div style={{position: 'relative', height:'15rem', width:'100%'}}>
-                        <Bar data={detailChartData} 
-                            options={{ indexAxis: 'y', maintainAspectRatio: false, plugins: {
+                        <Bar data={weeklyChartData} 
+                            options={{ maintainAspectRatio: false, plugins: {
                                     legend: {
                                             display: false,
                         }, }}} />
@@ -25,4 +25,4 @@ const ChartDetail = ({title}) => {
     )
 }
 
-export default ChartDetail;
+export default ChartWeekly;

@@ -9,7 +9,7 @@ import ExpenseList from './ExpenseList';
 
 const ExpenseMain = () => {
     const classes = useStyles();
-    const {expenseBalance} = useContext(ActualContext)
+    const {expenseBalance,totalBalance} = useContext(ActualContext)
     return(
         <MainContainer>
             <Paper style={{display: 'flex', flexDirection: 'column', backgroundColor: 'transparent', border: 'none'}}>
@@ -34,6 +34,12 @@ const ExpenseMain = () => {
                             <ExpenseList />
                         </Grid>
                     </CardContent>
+                </CardContent>
+            </Card>
+            <Card>
+                <CardContent style={{backgroundColor:'#f44336', color:'white'}}>
+                    <Typography align='center' variant='subtitle2' style={{padding: '.2rem',display: 'flex', justifyContent: 'center'}}>Net Income</Typography>
+                    <Typography align='center' variant='h5'>₱ {totalBalance}</Typography>
                 </CardContent>
             </Card>
         </Paper>

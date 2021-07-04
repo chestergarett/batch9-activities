@@ -23,6 +23,7 @@ const initialState = {
     Girlfriend: '0',
     Internet: '0',
     Load: '0',
+    type: 'Budget',
 }
 
 
@@ -44,13 +45,14 @@ const BudgetForm = () => {
                     return;
         } 
         
-        const budgetItem = {...formData, weekEnding:formData.weekEnding.split('-'), id: v4(),
+        const budgetItem = {...formData, weekEndingText:formData.weekEnding, weekEnding:formData.weekEnding.split('-'), 
+            id: v4(),
             Netflix: Number(formData.Netflix),
             Spotify: Number(formData.Spotify),
             Rent: Number(formData.Rent),
             Breakfast: Number(formData.Breakfast),
             Lunch: Number(formData.Lunch),
-            Dinner: Number(formData.Dinner),
+            Dinner: Number(formData.Dinner),    
             Snacks: Number(formData.Snacks),
             Water: Number(formData.Water),
             Electricity: Number(formData.Electricity),
@@ -70,7 +72,7 @@ const BudgetForm = () => {
                     <TextField 
                         id="WeekEnding"
                         type="week" 
-                        label="Start Date" 
+                        label="Week" 
                         value={formData.weekEnding}
                         onChange={(e)=> setFormData({...formData, weekEnding: e.target.value})}
                     />
@@ -81,6 +83,7 @@ const BudgetForm = () => {
                     id="Netflix"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Netflix}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -91,6 +94,7 @@ const BudgetForm = () => {
                     id="Spotify"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Spotify}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -101,6 +105,7 @@ const BudgetForm = () => {
                     id="Rent"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Rent}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -113,6 +118,7 @@ const BudgetForm = () => {
                     id="Breakfast"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Breakfast}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -123,6 +129,7 @@ const BudgetForm = () => {
                     id="Lunch"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Lunch}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -133,6 +140,7 @@ const BudgetForm = () => {
                     id="Dinner"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Dinner}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -145,6 +153,7 @@ const BudgetForm = () => {
                     id="Snacks"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Snacks}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -155,6 +164,7 @@ const BudgetForm = () => {
                     id="Water"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Water}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -165,6 +175,7 @@ const BudgetForm = () => {
                     id="Electricity"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Electricity}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -177,6 +188,7 @@ const BudgetForm = () => {
                     id="Girlfriend"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Girlfriend}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -187,6 +199,7 @@ const BudgetForm = () => {
                     id="Internet"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Internet}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}
@@ -197,6 +210,7 @@ const BudgetForm = () => {
                     id="Load"
                     type="number"
                     className={clsx(classes.margin, classes.textField)}
+                    value={formData.Load}
                     InputProps={{
                         startAdornment: <InputAdornment position="start">₱</InputAdornment>,
                     }}

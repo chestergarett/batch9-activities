@@ -22,7 +22,8 @@ const IncomeForm = () => {
 
 
     const createTransaction = () => {
-        if(typeof(Number(formData.amount))!=='number' || formData.amount === '' || formData.amount === '0'  || !formData.date.includes('-')){
+        if(typeof(Number(formData.amount))!=='number' || formData.amount === '' || formData.amount === '0'  || Number(formData.amount) < 0 
+        || !formData.date.includes('-')){
             setFormData(initialState);
             return;
         } 
@@ -57,7 +58,7 @@ const IncomeForm = () => {
                         type="number"
                         value={formData.amount || ''}
                         onChange={(e)=> setFormData({...formData, amount: e.target.value})}
-                        inputProps={{ inputmode: 'numeric', pattern: '[0-9]'}}
+                        inputProps={{ inputMode: 'numeric', pattern: '[0-9]'}}
                         />
                     <TextField 
                         id="date"

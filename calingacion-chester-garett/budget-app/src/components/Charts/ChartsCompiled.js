@@ -1,5 +1,7 @@
 import ChartTotal from './ChartTotal';
 import ChartDetail from './ChartDetail';
+import ChartVariance from './ChartVariance';
+import ChartWeekly from './ChartWeekly';
 import MainContainer from '../UI/MainContainer'
 import useStyles from './styles';
 
@@ -14,6 +16,7 @@ const ChartsCompiled = () => {
                 <ChartDetail title="Income" />
                 <ChartTotal title="Expense"/> 
                 <ChartDetail title="Expense"/>
+                <ChartWeekly title="Expense"/>
             </div> 
         </MainContainer>
         
@@ -21,4 +24,3 @@ const ChartsCompiled = () => {
 }
 
 export default ChartsCompiled;
-
