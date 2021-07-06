@@ -9,7 +9,7 @@ import {IoCalendarOutline} from 'react-icons/io5';
 
 const ShortcutPane = () =>{
     return (
-        <div className={classes.shortcut}>
+        <div className={classes.shortcut} data-testid="shortcuts">
             <IconContext.Provider value={{size: '30', color: 'black'}}>
                 <Link to='/'>
                     <div className={`${classes.iconsGroup} ${classes.selected}`}><IoHomeOutline className={classes.icons} color='green'/><span className={classes.circle1}><span>3</span></span></div>

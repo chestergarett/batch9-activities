@@ -12,6 +12,7 @@ const BudgetDropDown = ({title, items =[], multiSelect=false}) => {
     function handleOnClick(item){
         if(!selection.some(current => current.id === item.id)){
             if(!multiSelect){
+                console.log(item.id)
                 setSelection([item]);
             } else if (multiSelect){
                 setSelection([...selection, item]);

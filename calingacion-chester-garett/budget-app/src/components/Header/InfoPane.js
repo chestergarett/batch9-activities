@@ -10,7 +10,7 @@ import profilePic from '../../assets/logo_photo.jpg'
 const InfoPane = () => {
     const profileName = `Chester Garett`
 
-    return <ul className={classes['info-pane']}>
+    return <ul className={classes['info-pane']} data-testid="infobar">
         <li className={classes['profile-pic']}><img src={profilePic} alt="Chester-Garett"/>{profileName}</li> 
         <IconContext.Provider value={{size: '20', color: 'black', fill: 'whitesmoke'}}>
             <li><FaPlus className={classes.icons}/></li> 

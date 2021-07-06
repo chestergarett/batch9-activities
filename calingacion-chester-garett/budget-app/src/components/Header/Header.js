@@ -16,7 +16,7 @@ const Header = () => {
             <FaCuttlefish className={classes['header-logo']}/>
             <SearchBar/>
         </div>
-        <ShortcutPane/>
+        <ShortcutPane />
         <InfoPane/>
     </header>    
     )
