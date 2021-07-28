@@ -3,17 +3,17 @@ import SidebarHeader from './SidebarHeader';
 import SidebarDetails from './SidebarDetails';
 import SidebarFooter from './SidebarFooter';
 
-const MainSidebar = () => {
+const MainSidebar = ({user, selected}) => {
     return(
         <div className={classes.mainSidebar}>
             <div className={classes.sidebarHeader}>
-                <SidebarHeader />
+                <SidebarHeader selected={selected} />
             </div>
             <div className={classes.sidebarDetails}>
                 <SidebarDetails/>
             </div>
             <div className={classes.sidebarFooter}>
-                <SidebarFooter />
+                <SidebarFooter user={user}/>
             </div>
         </div>
     )

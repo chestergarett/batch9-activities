@@ -1,27 +1,26 @@
-import {v4} from 'uuid';
+import {useContext, useEffect, useState} from 'react';
 import classes from './SidebarDetails.module.css';
-
 import {HiOutlineHashtag} from 'react-icons/hi'
 
-const DUMMY_CHANNELS = [
-    {name: 'Channel 1', id: v4()},
-    {name: 'Channel 2', id: v4()},
-    {name: 'Channel 3', id: v4()},
+import GameContext from '../../context/game-context.js'
 
-]
+
 const SidebarDetails = () => {
+
+    const {list, selectedTournaHandler} = useContext(GameContext)
+
     return(
         <ul>
-        {DUMMY_CHANNELS.map( channel => {
+        {list ? list.map( tourna => {
             return (
-                <li key={channel.id} id={channel.id} className={classes.listItems}>
+                <li key={tourna.id} id={tourna.id} className={classes.listItems} name={tourna.attributes.name} url={tourna.attributes.url} onClick={selectedTournaHandler}>
                     <HiOutlineHashtag/>
                     <span className={classes.channelName}>
-                        {channel.name}
+                        {tourna.attributes.name}
                     </span>
                 </li>
             )
-        })}
+        }) : 'test'}
     </ul>   
     )
 }

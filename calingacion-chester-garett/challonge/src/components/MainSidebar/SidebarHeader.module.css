@@ -8,6 +8,11 @@
     justify-content: space-between;
 }
 
+.heading{
+    cursor: pointer;
+}
+
 .toggle{
     margin-right: .5rem;
+    cursor: pointer;
 }

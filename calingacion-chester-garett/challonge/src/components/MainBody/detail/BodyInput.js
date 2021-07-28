@@ -10,9 +10,9 @@ const BodyInput = () => {
         <div className={classes.editor}>
             <input type='text' className={classes.input} placeholder="Message channel"/>
             <div className={classes.richText}>
-                <IoDocumentAttachOutline size={30}/>
-                <RiFileGifFill size={30}/>
-                <GrEmoji size={30}/>
+                <IoDocumentAttachOutline size={30} className="icons"/>
+                <RiFileGifFill size={30} className="icons"/>
+                <GrEmoji size={30} className="icons"/>
                 {/* <Picker/> */}
             </div>
         </div>

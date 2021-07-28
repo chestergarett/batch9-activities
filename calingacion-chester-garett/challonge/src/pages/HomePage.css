@@ -19,15 +19,3 @@
     background: var(--shade-color-3);
 }
 
-ul{
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-li{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-

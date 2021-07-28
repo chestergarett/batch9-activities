@@ -11,7 +11,9 @@ const IconContainer = (props) => {
         justifyContent: 'center',
         marginBottom: '.5rem',
         marginLeft: '.3rem',
-    }}>
+        cursor: 'pointer',
+    }}
+    >
         {props.children}
     </div>
     )

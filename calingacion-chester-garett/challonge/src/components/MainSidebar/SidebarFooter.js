@@ -4,22 +4,20 @@ import {IoMdHeadset} from 'react-icons/io';
 import {IoSettingsSharp} from 'react-icons/io5'
 import classes from './SidebarFooter.module.css';
 
-const DUMMY_USER = {
-    name: 'DUMMY_USER'
-}
+const SidebarFooter = ({user}) => {
 
-const SidebarFooter = () => {
+    const displayName = user.displayName.split(' ')[0] 
 
     return(
         <div className={classes.footer}>
             <div className={classes.user}>
                 <FaRegUserCircle />
-                <span>{DUMMY_USER.name}</span>
+                <span>{displayName}</span>
             </div>
             <div className={classes.icons}>
-                <IoMic />
-                <IoMdHeadset/>
-                <IoSettingsSharp/>
+                <IoMic className="icons"/>
+                <IoMdHeadset className="icons"/>
+                <IoSettingsSharp className="icons"/>
             </div>
         </div>
     )

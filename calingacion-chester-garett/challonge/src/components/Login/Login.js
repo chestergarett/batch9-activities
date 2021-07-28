@@ -3,9 +3,14 @@ import {FcGoogle} from 'react-icons/fc';
 import {FaFacebook} from 'react-icons/fa';
 import {Fab} from '@material-ui/core';
 
-const Login = () => {
-    const signInWithGoogle = () => {
+import 'firebase/firestore';
+import 'firebase/auth';
+import firebase from 'firebase/app';
 
+const Login = ({auth}) => {
+    const signInWithGoogle = () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider);
     }
 
     const signInWithFacebook = () => {
