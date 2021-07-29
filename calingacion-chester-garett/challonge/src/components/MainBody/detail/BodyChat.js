@@ -1,8 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-
-import {useAuthState} from 'react-firebase-hooks/auth';
 import {useCollectionData} from 'react-firebase-hooks/firestore';
 import ChatMessage from '../chat/ChatMessage';
 
@@ -17,10 +15,9 @@ const BodyChat = (props) => {
     const [messages] = useCollectionData(query, {idField: 'id'});
 
     return (
-            <div>
-                {/* {messages && messages.map( msg => <ChatMessage key={msg.id} message={msg} auth={auth} />)} */}
-                test
-            </div>
+            <>
+                {messages && messages.map( msg => <ChatMessage key={msg.id} message={msg} auth={auth} />)}
+            </>
     )
 }
 

@@ -41,17 +41,23 @@ const editTournament = ({url,starts_at,description}) => {
     })
 }
 
-const changeStateTournament = ({url, change_state}) => {
-    return axios.post(`./tournaments/${url}/change_state.json`),{
+const changeTournament = (url, change_state) => {
+    return axios.put(`./tournaments/${url}/change_state.json`,{
         data: {
             type: `TournamentState`,
             attributes: {
                 state: change_state
             }
         }
-    }
+    })
+}
+
+const getMatches = (url) => {
+    return axios.get(`./tournaments/${url}/matches.json`, {data: null})
+    .then(res => res)
+    .catch(err => console.error(err))
 }
 
 
 
-export {getTournaments, getTournament, postTournaments, editTournament, changeStateTournament};
+export {getTournaments, getTournament, postTournaments, editTournament, changeTournament, getMatches};

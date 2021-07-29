@@ -2,6 +2,7 @@ import classes from './BodyDetail.module.css';
 import BodyTournament from './detail/BodyTournament';
 import BodyChat from './detail/BodyChat';
 
+
 const BodyDetail = () => {
 
     return (

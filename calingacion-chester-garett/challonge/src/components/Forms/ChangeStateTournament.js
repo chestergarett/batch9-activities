@@ -1,31 +1,59 @@
 import {useState, useContext} from 'react';
-import {changeStateTournament} from '../utils/utils.js'; 
+import {changeTournament} from '../utils/utils.js'; 
 import GameContext from '../../context/game-context';
 import {Button} from '@material-ui/core';
 import Select from 'react-select';
 import classes from './ChangeStateTournament.module.css';
 import CenteredModal from '../UI/Modals/CenteredModal';
+import Errors from '../Errors/Errors';
+import Success from '../Success/Success';
 
 const ChangeStateTournament = (props) => {
 
-    const {selectedTourna} = useContext(GameContext)
-    const [formData, setFormData] = useState({})
-    
-    const submitHandler = () => {
-        console.log(formData)
-    }
+    const {selectedTourna,selectedURL} = useContext(GameContext)
+    const [formData, setFormData] = useState({
+        url: '',
+        state: '',
+    })
+    const [selectedOption, setSelectedOption] = useState('');
+    const [errorDiv,setErrorDiv] = useState(null);
+    const [successDiv, setSuccessDiv] = useState(false);
 
     const options = [
-        {value:'single elimination', label: 'single elimination'},
-        {value:'double elimination', label: 'double elimination'},
-        {value:'round robin', label: 'round robin'} 
+        {value:'process_checkin', label: 'process_checkin'},
+        {value:'abort_checkin', label: 'abort_checkin'},
+        {value:'start', label: 'start'},
+        {value:'finalize', label: 'finalize'}, 
+        {value:'reset', label: 'reset'},
+        {value:'open_predictions', label: 'open_predictions'},
     ]
 
-    const [selectedOption, setSelectedOption] = useState('single elimination')
-
-    const dropdownHandler = (e) =>{
-        setSelectedOption(e)
-        setFormData({...formData, tournament_type: e.value})
+    const submitHandler = () => {
+        setFormData({...formData, url: selectedURL, state: selectedOption.value})
+        
+        changeTournament(selectedURL,selectedOption.value)
+        .then(res=>{
+            setSuccessDiv(true)
+            setErrorDiv(null)
+            })
+        .catch(err=>{
+            if(err.response.status===404){
+                setErrorDiv("404")
+            }
+            if(err.response.status===401){
+                setErrorDiv("401")
+            }
+            if(err.response.status===406){
+                setErrorDiv("406")
+            }
+            if(err.response.status===415){
+                setErrorDiv("415")
+            }
+            if(err.response.status===422){
+                setErrorDiv("422")
+            }
+            setSuccessDiv(false)
+        })
     }
 
     const customStyles = {
@@ -42,18 +70,26 @@ const ChangeStateTournament = (props) => {
 
     return (
         <CenteredModal onClose={props.onClose}>
-            <form className={classes.form} onSubmit={submitHandler}>
+            <form className={classes.form}>
                 <div className={classes.header}> {selectedTourna}</div>
                 <Select
                     styles={customStyles}
                     className={classes.items}
                     name="Tournament Type"
                     options={options}
-                    onChange={dropdownHandler}
+                    onChange={setSelectedOption}
                     value={selectedOption}
+                    isSearchable
                 />
-
-                <Button variant="contained" style={{color: 'whitesmoke', backgroundColor:'#7289DA'}}>CHANGE STATE</Button>
+                {successDiv && <Success message="Successfully change state."/>}
+                {errorDiv && <Errors error={errorDiv}/>}
+                <Button 
+                    variant="contained" 
+                    style={{color: 'whitesmoke', backgroundColor:'#7289DA'}} 
+                    onClick={submitHandler}
+                >
+                    CHANGE STATE
+                </Button>
                 </form> 
         </CenteredModal>
     )

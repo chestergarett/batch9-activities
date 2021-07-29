@@ -14,11 +14,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
 
 .headerItems{
     display: flex;
     justify-content: space-between;
+    width: 90%;
+    padding: .5rem;
+    background: var(--discord-color);
+    text-transform: uppercase;
+    margin-bottom: .2rem;
+}
+
+.headerItems_2{
+    display: flex;
+    justify-content: center;
     width: 90%;
     padding: .5rem;
     background: var(--discord-color);
@@ -34,6 +45,7 @@
 
 .table{
     width: 50%;
+    margin-bottom: .5rem;
 }
 
 .table th{
@@ -42,5 +54,12 @@
 
 .seed{
     text-align: left;
+}
+
+.embedded{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 200px;
 }
 

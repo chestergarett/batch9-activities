@@ -33,7 +33,7 @@ const BodyInput = () => {
 
     return(
         <div className={classes.editor}>
-            <input type='text' className={classes.input} placeholder="Message channel"/>
+            <input type='text' className={classes.input} placeholder="Message channel" value={formValue} onChange={(e)=>setFormValue(e.target.value)}/>
             <div className={classes.richText}>
                 <RiFileGifFill size={30} className="icons"/>
                 <GrEmoji size={30} className="icons"/>

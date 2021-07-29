@@ -1,6 +1,6 @@
 import {useState,useContext, useEffect} from 'react';
 import GameContext from './game-context.js'
-import {getTournaments, getTournament} from '../components/utils/utils.js'; 
+import {getTournaments, getTournament, getMatches} from '../components/utils/utils.js'; 
 
 const GameProvider = (props) => {    
     const {game, tournaments} = useContext(GameContext);
@@ -9,6 +9,7 @@ const GameProvider = (props) => {
     const [selectedTournaDetails, setSelectedTournaDetails] = useState({
             name: '',
             state: '',
+            description: '',
             url: '',
             liveImageURL: '',
             startsAt: '',
@@ -50,6 +51,7 @@ const GameProvider = (props) => {
                     ...selectedTournaDetails,
                     name: res.data.data.attributes.name,
                     state: res.data.data.attributes.state,
+                    description: res.data.data.attributes.description,
                     url: res.data.data.attributes.url,
                     liveImageURL: res.data.data.attributes.liveImageUrl,
                     startsAt: res.data.data.attributes.timestamps.startsAt,
@@ -57,9 +59,17 @@ const GameProvider = (props) => {
                     matches: res.data.data.relationships.matches,
                     participants: res.data.included,
                 })
-                console.log(res)
             }
         )
+        .catch(error => console.log(error))
+    }, [selectedURL])
+
+    //get matches of a tournament
+    useEffect( () => {
+        getMatches(selectedURL)
+        .then(res => {
+                console.log(res)
+            })
         .catch(error => console.log(error))
     }, [selectedURL])
 

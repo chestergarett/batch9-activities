@@ -6,19 +6,18 @@ import dateHelper from '../../../helpers/formatDate';
 
 const BodyTournament = () => {
 
-    const{selectedTourna, selectedTournaDetails} = useContext(GameContext)
+    const{selectedURL, selectedTourna, selectedTournaDetails} = useContext(GameContext)
     const formattedDate = dateHelper(selectedTournaDetails.startsAt)
-    console.log(selectedTourna)
 
     return(
         <div className={classes.body}>
-            {/* {selectedTourna?.length==0 ? */}
             <div className={classes.mainStream}>
                 <div className={classes.headerItems}>
                     <span> {selectedTournaDetails.tournament_type} </span>
                     <span> {selectedTournaDetails.state} </span>
                     <span> {formattedDate} </span>
                 </div>
+                <p style={{fontSize: '12px'}}><em>{selectedTournaDetails.description}</em></p>
                 <table className={classes.table}>
                     <tr>
                         <th>Participants</th>
@@ -32,8 +31,14 @@ const BodyTournament = () => {
                         </tr>)
                     })} 
                 </table>
+                <div className={classes.headerItems_2}>
+                    <span> BRACKETS </span>
+                </div>
+                <div className={classes.embedded}>
+                    <iframe src={`http://challonge.com/${selectedURL}/module`} width="90%" height="400" frameBorder="0" scrolling="auto" allowtransparency="true"></iframe>
+                </div>
             </div>
-            {/* </div> : <div className={classes.mainStream}>Draft reminders here</div> } */}
+            
             <div className={classes.richText}>
                 <BodyInput/>
             </div>

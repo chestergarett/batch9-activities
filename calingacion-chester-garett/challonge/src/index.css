@@ -15,8 +15,11 @@ body {
   color: whitesmoke;
 }
 
-::selection {
-  background-color: rgba(0, 0, 0, 0.5);
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 input::placeholder{
