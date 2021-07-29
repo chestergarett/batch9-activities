@@ -1,12 +1,16 @@
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {changeStateTournament} from '../utils/utils.js'; 
+import GameContext from '../../context/game-context';
 import {Button} from '@material-ui/core';
 import Select from 'react-select';
+import classes from './ChangeStateTournament.module.css';
 import CenteredModal from '../UI/Modals/CenteredModal';
 
-const ChangeStateTournament = () => {
+const ChangeStateTournament = (props) => {
 
+    const {selectedTourna} = useContext(GameContext)
     const [formData, setFormData] = useState({})
+    
     const submitHandler = () => {
         console.log(formData)
     }
@@ -24,10 +28,24 @@ const ChangeStateTournament = () => {
         setFormData({...formData, tournament_type: e.value})
     }
 
+    const customStyles = {
+        control: (base,state) => {return {...base, background: 'whitesmoke'}},
+        menuPortal: base => { return {...base, zIndex: 9999, backgroundColor: "black"} },
+        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+          return {
+            ...styles,
+            backgroundColor: isFocused ? "#999999" : "whitesmoke",
+            color: "#333333",
+          };
+        }
+      };
+
     return (
-        <CenteredModal>
+        <CenteredModal onClose={props.onClose}>
             <form className={classes.form} onSubmit={submitHandler}>
+                <div className={classes.header}> {selectedTourna}</div>
                 <Select
+                    styles={customStyles}
                     className={classes.items}
                     name="Tournament Type"
                     options={options}
@@ -35,7 +53,7 @@ const ChangeStateTournament = () => {
                     value={selectedOption}
                 />
 
-                <Button type='submit'>Create Tournament</Button>
+                <Button variant="contained" style={{color: 'whitesmoke', backgroundColor:'#7289DA'}}>CHANGE STATE</Button>
                 </form> 
         </CenteredModal>
     )

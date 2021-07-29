@@ -8,9 +8,19 @@ body {
   --shade-color-1: #23272a;
   --shade-color-2: #2c2f33;
   --shade-color-3: #2c3539e8;
+  --discord-color: #7289DA;
   --font-color-main: whitesmoke;
   --box-shadow-bottom: 0 1px 1px -1px black;
   --box-shadow-top: 0px 0px 1px black;
+  color: whitesmoke;
+}
+
+::selection {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+input::placeholder{
+  color: white;
 }
 
 ul{

@@ -1,13 +1,18 @@
-
 .form{
-    color: transparent;
     display: flex;
     flex-direction: column;
-    width: 90%;
     align-items: center;
     justify-content: center;
-    margin-left: 1.5rem;
-    margin-top: .5rem;
+}
+
+.header{
+    border: none;
+    width: 90%;
+    background: transparent;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .items{

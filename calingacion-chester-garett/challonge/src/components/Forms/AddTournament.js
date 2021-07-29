@@ -58,28 +58,42 @@ const AddTournament = (props) => {
         // }).then(res=>console.log(res)).then(console.log(formData)).catch(error=>console.error)
     }
 
+    const customStyles = {
+        control: (base,state) => {return {...base, background: '#2c3539e8', border: 'none'}},
+        menuPortal: base => { return {...base, zIndex: 9999, backgroundColor: "#2c3539e8"} },
+        menuList: base => {return {...base, padding: 0}},
+        option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+          return {
+            ...styles,
+            backgroundColor: isFocused ? "#999999" : "#2c3539e8",
+            color: "whitesmoke",
+          };
+        }
+      };
+
     return (
         <>
             <CenteredModal onClose={props.onClose}>
                 <form className={classes.form} onSubmit={submitHandler}>
-                    <TextField  disabled 
+                    <input  disabled 
                     value="Tournaments"
-                    required
                     id="type" 
                     label="type" 
-                    name="type"  
+                    name="type"
+                    type="text"  
                     className={classes.items}
                     />
                     
-                    <TextField 
+                    <input 
                         required 
                         id="tournamentName" 
                         placeholder="Tournament Name" 
+                        type="text"
                         className={classes.items}
                         onChange={ (e) => setFormData({...formData, name: e.target.value})}
-                        />
+                    />
                     
-                    <TextField 
+                    <input
                         required
                         id="url" 
                         label="URL" 
@@ -89,35 +103,33 @@ const AddTournament = (props) => {
                     />
 
                     <Select
+                            menuPortalTarget={document.body}
                             className={classes.items}
+                            styles={customStyles}
                             name="Tournament Type"
                             options={options}
                             onChange={dropdownHandler}
                             value={selectedOption}
                     />
 
-                    <TextField
+                    <input
                         id="starts_at"
                         label="Starts at"
                         type="datetime-local"
                         defaultValue="2021-05-24T10:30"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
                         className={classes.items}
                         onChange = { (e) => setFormData({...formData, starts_at: dateHelper(e.target.value)})}
                     />
 
-                    <TextField
+                    <input
                         id="description"
                         label="Description"
                         placeholder="Describe Tournament here"
-                        multiline
                         className={classes.items}
                         onChange = { (e) => setFormData({...formData, description: e.target.value})}
                     /> 
 
-                    <Button type='submit'>Create Tournament</Button>
+                    <Button variant="contained" style={{color: 'whitesmoke', backgroundColor:'#7289DA'}}>Create Tournament</Button>
                 </form> 
             </CenteredModal>
         </>
