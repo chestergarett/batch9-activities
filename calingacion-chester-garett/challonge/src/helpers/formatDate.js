@@ -12,7 +12,12 @@ const dateHelper = (date) => {
     // current seconds
     const seconds = d.getSeconds();
 
-    return `${mm}/${dd}/${yyyy} ${hours}:${minutes}:0${seconds}`
+    if(date){
+        return `${mm}/${dd}/${yyyy} ${hours}:${minutes}:0${seconds}`
+    }else{
+        return;
+    }
+    
 }
 
 export default dateHelper;

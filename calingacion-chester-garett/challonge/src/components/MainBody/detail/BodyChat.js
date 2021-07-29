@@ -1,30 +1,26 @@
-import classes from './BodyChat.module.css';
-import {FaRegUserCircle } from 'react-icons/fa';
-import {v4} from 'uuid';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
-const DUMMY_MEMBERS = [
-    {id: v4(), name: 'Member_1', message: 'ambobo mo'},
-    {id: v4(), name: 'Member_2', message: 'push mid'},
-    {id: v4(), name: 'Member_3', message: 'tiktok ka nalang'},
-]
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {useCollectionData} from 'react-firebase-hooks/firestore';
+import ChatMessage from '../chat/ChatMessage';
 
-const BodyChat = () => {
+const BodyChat = (props) => {
+
+    const auth = firebase.auth();
+    const firestore = firebase.firestore();
+
+    const messagesRef = firestore.collection('messages');
+    const query = messagesRef.orderBy('createdAt').limit(25);
+
+    const [messages] = useCollectionData(query, {idField: 'id'});
 
     return (
-        <ul className={classes.chat}>
-            {DUMMY_MEMBERS.map( member => {
-                return (
-                    <li key={member.id} id={member.id} className={classes.listItem}>
-                        <span><FaRegUserCircle size={25}/></span>
-                        <div className={classes.userDetails}>
-                            <span className={classes.name}>{member.name}</span>
-                            <span className={classes.message}>{member.message}</span>
-                        </div>
-                    </li>
-                    )
-                }
-            )}
-        </ul>
+            <div>
+                {/* {messages && messages.map( msg => <ChatMessage key={msg.id} message={msg} auth={auth} />)} */}
+                test
+            </div>
     )
 }
 

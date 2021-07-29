@@ -6,11 +6,13 @@ import dateHelper from '../../../helpers/formatDate';
 
 const BodyTournament = () => {
 
-    const{selectedTournaDetails} = useContext(GameContext)
+    const{selectedTourna, selectedTournaDetails} = useContext(GameContext)
     const formattedDate = dateHelper(selectedTournaDetails.startsAt)
+    console.log(selectedTourna)
 
     return(
         <div className={classes.body}>
+            {/* {selectedTourna?.length==0 ? */}
             <div className={classes.mainStream}>
                 <div className={classes.headerItems}>
                     <span> {selectedTournaDetails.tournament_type} </span>
@@ -31,6 +33,7 @@ const BodyTournament = () => {
                     })} 
                 </table>
             </div>
+            {/* </div> : <div className={classes.mainStream}>Draft reminders here</div> } */}
             <div className={classes.richText}>
                 <BodyInput/>
             </div>
