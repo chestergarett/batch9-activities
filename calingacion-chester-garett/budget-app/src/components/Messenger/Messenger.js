@@ -16,7 +16,7 @@ import ChatMessage from './ChatMessage';
 
 if (firebase.apps.length === 0){
     firebase.initializeApp({
-    apiKey: "AIzaSyDjc8SuA3Xzg6odRfilRdz432DXq9S2y00",
+    apiKey: `${process.env.REACT_APP_FIREBASE_KEY}`,
     authDomain: "messengerapp-5f86d.firebaseapp.com",
     projectId: "messengerapp-5f86d",
     storageBucket: "messengerapp-5f86d.appspot.com",
