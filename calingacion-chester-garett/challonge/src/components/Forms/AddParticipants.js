@@ -40,6 +40,7 @@ const AddParticipants = (props) => {
             setSuccessDiv(false)
         })
     }
+    
     return (
     <CenteredModal onClose={props.onClose}>
         <div className={classes.form}>

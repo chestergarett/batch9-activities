@@ -8,9 +8,14 @@ import GameProvider from './context/game-provider.js';
 
 
 function App() {
+
+  require('dotenv').config()
+  
   if (firebase.apps.length === 0){
     firebase.initializeApp(firebaseConfig)
   }
+
+  console.log(process.env)
 
   const auth = firebase.auth();
 
