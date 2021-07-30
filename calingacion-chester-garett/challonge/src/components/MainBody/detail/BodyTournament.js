@@ -38,7 +38,6 @@ const BodyTournament = () => {
                     <iframe src={`http://challonge.com/${selectedURL}/module`} width="90%" height="400" frameBorder="0" scrolling="auto" allowtransparency="true"></iframe>
                 </div>
             </div>
-            
             <div className={classes.richText}>
                 <BodyInput/>
             </div>

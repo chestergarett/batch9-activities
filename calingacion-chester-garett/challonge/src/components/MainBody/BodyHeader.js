@@ -9,11 +9,13 @@ import {FaFlagCheckered} from 'react-icons/fa';
 import {FaUserFriends} from 'react-icons/fa';
 import {RiInboxFill} from 'react-icons/ri';
 import {IoExitOutline} from 'react-icons/io5';
+import {AiFillDelete} from 'react-icons/ai';
 
 import BodySearch from './header/BodySearch';
 import AddParticipants from '../Forms/AddParticipants';
 import ChangeStateTournament from '../Forms/ChangeStateTournament';
 import UpdateTournament from '../Forms/UpdateTournament';
+import DeleteTournament from '../Forms/DeleteTournament';
 
 const BodyHeader = ({auth}) => {
     
@@ -21,6 +23,7 @@ const BodyHeader = ({auth}) => {
     const [openParticipants, setOpenParticipants] = useState(false)
     const [openChangeState, setOpenChangeState] = useState(false)
     const [openUpdate, setOpenUpdate] = useState(false)
+    const [openDelete, setOpenDelete] = useState(false)
 
     const openParticipantsHandler = () => {
         setOpenParticipants(true)
@@ -45,6 +48,14 @@ const BodyHeader = ({auth}) => {
     const closeUpdateHandler = () => {
         setOpenUpdate(false)
     }
+    
+    const openDeleteHandler = () => {
+        setOpenDelete(true)
+    }
+
+    const closeDeleteHandler = () => {
+        setOpenDelete(false)
+    }
 
     return (
         <div className={classes.bodyHeader}>
@@ -56,6 +67,7 @@ const BodyHeader = ({auth}) => {
                 <AiOutlineEdit size={25} className='icons' onClick={openUpdateHandler}/>
                 <FaFlagCheckered size={25} className='icons' onClick={openChangeStateHandler}/>
                 <FaUserFriends size={25} className='icons' onClick={openParticipantsHandler}/>
+                <AiFillDelete size={25} className='icons' onClick={openDeleteHandler}/>
                 <BodySearch />
                 <RiInboxFill size={25} className='icons'/>
                 <IoExitOutline 
@@ -67,6 +79,7 @@ const BodyHeader = ({auth}) => {
             {openParticipants && <AddParticipants onClose={closeParticipantsHandler}/>}
             {openChangeState && <ChangeStateTournament onClose={closeChangeStateHandler}/>}
             {openUpdate && <UpdateTournament onClose={closeUpdateHandler}/>}
+            {openDelete && <DeleteTournament onClose={closeDeleteHandler}/>}
         </div>
     )
 }

@@ -14,14 +14,15 @@ const getTournament = (url) => {
     .catch(err => console.error(err))
 }
 
-const postTournaments = ({type, name, url, tournament_type, starts_at, description}) => {
+const postTournaments = (name, url, starts_at, description) => {
     return axios.post('./tournaments.json', {
         data: {
-            type: type,
+            type: "Tournaments",
             attributes: {
                 name: name,
                 url: url,
-                tournament_type: tournament_type,
+                tournament_type: "single elimination",
+                private: true,
                 starts_at: starts_at,
                 description: description
             }
@@ -29,11 +30,15 @@ const postTournaments = ({type, name, url, tournament_type, starts_at, descripti
     })
 }
 
-const editTournament = ({url,starts_at,description}) => {
-    return axios.post(`./tournaments/${url}.json`, {
+const editTournament = (selectedURL,name,url,starts_at, description) => {
+    return axios.put(`./tournaments/${selectedURL}.json`, {
         data: {
-            type: "tournament",
+            type: "Tournaments",
             attributes: {
+                name: name,
+                url: url,
+                tournament_type: 'single elimination',
+                private: true,
                 starts_at: starts_at,
                 description: description,
                 }
@@ -58,6 +63,27 @@ const getMatches = (url) => {
     .catch(err => console.error(err))
 }
 
+const addParticipants = (url, name, seed, misc, email, username) => {
+    return axios.post(`./tournaments/${url}/participants.json`,{
+        data: {
+            type: `Participants`,
+            attributes: {
+                name: name,
+                seed: seed,
+                misc: misc,
+                email: email,
+                username, username,
+            }
+        }
+    })
+}
+
+const deleteTournament = (url) => {
+    return axios.delete(`./tournaments/${url}.json`, {data: null})
+    .then(res => res)
+    .catch(err => console.error(err))
+}
 
 
-export {getTournaments, getTournament, postTournaments, editTournament, changeTournament, getMatches};
+
+export {getTournaments, getTournament, postTournaments, editTournament, changeTournament, getMatches, addParticipants, deleteTournament};

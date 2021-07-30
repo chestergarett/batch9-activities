@@ -4,13 +4,52 @@ import {TextField, Button} from '@material-ui/core';
 import CenteredModal from '../UI/Modals/CenteredModal';
 import classes from './UpdateTournament.module.css';
 import dateHelper from '../../helpers/formatDate';
+import { editTournament } from '../utils/utils';
+import axios from '../../api/challongeConfig';
+import Success from '../Success/Success';
+import Errors from '../Errors/Errors';
 
 const UpdateTournament = (props) => {
-    const {selectedTourna} = useContext(GameContext);
+    const {selectedURL,selectedTourna} = useContext(GameContext);
     const [formData, setFormData] = useState({})
-    
-    const submitHandler = () => {
-        console.log(formData)
+    const [errorDiv,setErrorDiv] = useState(null);
+    const [successDiv, setSuccessDiv] = useState(false);
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        editTournament(selectedURL,formData.name, formData.url, formData.starts_at, formData.description)
+        .then(res=>{
+            setSuccessDiv(true)
+            setErrorDiv(null)
+            })
+        .catch(err=>{
+            if(err.response.status===404){
+                setErrorDiv("404")
+            }
+            if(err.response.status===401){
+                setErrorDiv("401")
+            }
+            if(err.response.status===406){
+                setErrorDiv("406")
+            }
+            if(err.response.status===415){
+                setErrorDiv("415")
+            }
+            if(err.response.status===422){
+                setErrorDiv("422")
+            }
+            setSuccessDiv(false)
+        })
+
+        // return axios.put(`./tournaments/${selectedURL}.json`, {
+        //     data: {
+        //         type: "Tournaments",
+        //         attributes: {
+        //             starts_at: "10/10/2021 10:50:00",
+        //             description: "testcode",
+        //             }
+        //         }
+        // })
     }
 
     return(
@@ -18,11 +57,27 @@ const UpdateTournament = (props) => {
                 <form className={classes.form} onSubmit={submitHandler}>
                     <div className={classes.header}>{selectedTourna}</div>
                     <input
+                        id="name"
+                        label="name"
+                        type="text"
+                        palceholder="name"
+                        className={classes.items}
+                        onChange = { (e) => setFormData({...formData, name: (e.target.value)})}
+                    />
+                    <input
+                        id="url"
+                        label="url"
+                        placeholder="url"
+                        type="text"
+                        className={classes.items}
+                        onChange = { (e) => setFormData({...formData, url: (e.target.value)})}
+                    />
+                    <input
                         id="starts_at"
                         label="Starts at"
                         type="datetime-local"
                         className={classes.items}
-                        onChange = { (e) => setFormData({...formData, starts_at: dateHelper(e.target.value)})}
+                        onChange = { (e) => setFormData({...formData, starts_at: (e.target.value)})}
                     />
 
                     <input
@@ -33,7 +88,11 @@ const UpdateTournament = (props) => {
                         onChange = { (e) => setFormData({...formData, description: e.target.value})}
                     /> 
 
-                    <Button variant="contained" style={{color: 'whitesmoke', backgroundColor:'#7289DA'}}>Update Tournament</Button>
+                    <Button variant="contained" 
+                        style={{color: 'whitesmoke', backgroundColor:'#7289DA'}}
+                        type="submit">Update Tournament</Button>
+                    {successDiv && <Success message="Successfully updated tournament details."/>}
+                    {errorDiv && <Errors error={errorDiv}/>}
                 </form> 
             </CenteredModal>
     )

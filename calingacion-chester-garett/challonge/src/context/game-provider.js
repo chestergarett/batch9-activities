@@ -3,7 +3,7 @@ import GameContext from './game-context.js'
 import {getTournaments, getTournament, getMatches} from '../components/utils/utils.js'; 
 
 const GameProvider = (props) => {    
-    const {game, tournaments} = useContext(GameContext);
+    const {game} = useContext(GameContext);
     const [selected, setSelected] = useState('Basketball');
     const [selectedTourna, setSelectedTourna] = useState('Drafts')
     const [selectedTournaDetails, setSelectedTournaDetails] = useState({
@@ -18,6 +18,7 @@ const GameProvider = (props) => {
             participants: [],
     })
     const [selectedURL, setSelectedURL] = useState('')
+    let tournaments
     const [list, setList] = useState(tournaments)
 
     const selectedHandler = (e) => {
@@ -29,19 +30,19 @@ const GameProvider = (props) => {
         setSelectedURL(e.target.getAttribute('url'))
     }
 
+    
     let filteredTournaments
 
     //get all tournaments
-    useEffect( () => {
         getTournaments()
         .then(res => {
-                tournaments.push(...res?.data.data)
+                tournaments = new Array(...res?.data.data)
                 filteredTournaments = tournaments?.filter(tourna => tourna.id.includes('bball'))
                 setList(filteredTournaments)
             }
         )
         .catch(error => console.log(error))
-    }, [])
+    
 
     //get single tournament page
     useEffect( () => {
@@ -63,6 +64,8 @@ const GameProvider = (props) => {
         )
         .catch(error => console.log(error))
     }, [selectedURL])
+        
+
 
     //get matches of a tournament
     useEffect( () => {
