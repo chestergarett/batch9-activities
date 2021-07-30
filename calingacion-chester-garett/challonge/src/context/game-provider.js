@@ -45,7 +45,6 @@ const GameProvider = (props) => {
     
 
     //get single tournament page
-    useEffect( () => {
         getTournament(selectedURL)
         .then(res => {
                 setSelectedTournaDetails({
@@ -63,7 +62,6 @@ const GameProvider = (props) => {
             }
         )
         .catch(error => console.log(error))
-    }, [selectedURL])
         
 
 

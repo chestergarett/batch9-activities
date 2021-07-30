@@ -7,7 +7,7 @@ const instance =
                 'Content-Type': 'application/vnd.api+json',
                 'Accept': 'application/json',
                 'Authorization-Type': 'v1',
-                'Authorization': 'bpe7fofPHWdHH0IszXI55gAFGjdext1SjAQxkeYN',
+                'Authorization': process.env.REACT_APP_FIREBASE_KEY,
             }
         })
     
