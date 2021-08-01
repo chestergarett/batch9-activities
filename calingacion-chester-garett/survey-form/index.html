@@ -27,6 +27,7 @@
             </nav>
         </div>
 
+        <div class="signup-description" id="description">Bet on who will be crowned as S7 champion and win awesome rewards! </div> <!---User story 2-->
         <div class='personal-details-form'>
             <h1 id='title'>MPL S7 Predictions</h1> <!---User story 1: hiding in view; cluttering in design-->
             <div class="wrapper">
@@ -55,7 +56,6 @@
                         <input type="submit" value="Login">
                       </div>
                       <div class="signup-link">Not a member? <a href="">Signup now</a></div>
-                      <div class="signup-description" id="description">Bet on who will be crowned as S7 champion and win awesome rewards! </div> <!---User story 2-->
                     </form>
                     <form method="post" action="#" class="signup" id="contact-form">
                       <div class="field">
@@ -427,26 +427,28 @@
             </div>
              <!-----------champion rewards-------------------->
             <!--Creates the popup body-->
-            <div class='bg-modal'>
-                <div class='modal-content'>
-                    <div class='close'>+</div>
-                    <div class="mySlides fade">
-                        <div class="numbertext">1 / 2</div>
-                        <img src="images/natalia.jpg" style='width:50%; height:120px'>
-                    </div>
-                    
-                    <div class="mySlides fade">
-                        <div class="numbertext">2 / 2</div>
-                        <img src="images/tigreal.jpg" style='width:50%; height:120px'>
-                    </div>
+            <div class='modal-overlay'>
+                <div class='bg-modal'>
+                    <div class='modal-content'>
+                        <div class='close'>+</div>
+                        <div class="mySlides fade">
+                            <div class="numbertext">1 / 2</div>
+                            <img src="images/natalia.jpg" style='width:50%; height:120px'>
+                        </div>
+                        
+                        <div class="mySlides fade">
+                            <div class="numbertext">2 / 2</div>
+                            <img src="images/tigreal.jpg" style='width:50%; height:120px'>
+                        </div>
 
-                      <!-- Next and previous buttons -->
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                    <form action='' method='get' class='bet-form'>
-                    <input type='number' placeholder='diamonds' name='diamonds' class='diamonds' min=100 max=50000>
-                    <input type='submit' value='Bet' class='button', id='buy-in-button'>
-                    </form>
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        <form action='' method='get' class='bet-form'>
+                        <input type='number' placeholder='diamonds' name='diamonds' class='diamonds' min=100 max=50000>
+                        <input type='submit' value='Bet' class='button', id='buy-in-button'>
+                        </form>
+                    </div>
                 </div>
             </div>
 

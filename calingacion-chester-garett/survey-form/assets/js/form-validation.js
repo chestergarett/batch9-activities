@@ -45,6 +45,7 @@ $(document).ready(function() {
         $('.personal-details-form').hide();
         $('.main-content').show();
         $('.main-header').show();
+        $('.signup-description').hide();
         return false;
     }
   });
@@ -73,6 +74,7 @@ $(document).ready(function() {
     //to display main content
     submitHandler: function(form) {
       $('.personal-details-form').hide();
+      $('.signup-description').hide();
       $('.main-content').show();
       $('.main-header').show();
       return false;
@@ -144,6 +146,7 @@ $(document).ready(function() {
   /*shortcut to logout form */
   $(".logo").on('click', function(){
     $('.personal-details-form').show();
+    $('.signup-description').show();
     $('.main-content').hide();
     $('.main-header').hide();   
   });

@@ -1,14 +1,14 @@
 $(document).ready(function() {
-  /* For the sticky navigation
-  $('.js--main-content').waypoint(function(direction) {
-    if (direction == "down") {
-        $('.main-navigation').addClass('sticky');
-    } else {
-        $('.main-navigation').removeClass('sticky');
-    }
-  }, {
-  offset: '200px;'
-  });*/
+  /* For the sticky navigation*/
+  // $('.js--main-content').waypoint(function(direction) {
+  //   if (direction == "down") {
+  //       $('.main-navigation').addClass('sticky');
+  //   } else {
+  //       $('.main-navigation').removeClass('sticky');
+  //   }
+  // }, {
+  // offset: '200px;'
+  // });
 
   $("#booking-form").validate({
     errorClass: "error fail-alert",

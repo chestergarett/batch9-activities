@@ -241,6 +241,7 @@ body {
   height: 80px;
   width: 100%;
   border: none;
+  position: sticky;
 }
 
 .nav-logo {
@@ -315,6 +316,7 @@ body {
 
   .main-navigation {
     background: #2c3e50;
+    position: sticky;
   }
 
   .main-navigation ul {
@@ -365,7 +367,7 @@ body {
 }
 @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
   .header {
-    background-image: linear-gradient(to right bottom, rgba(87, 160, 211, 0.8), rgba(88, 139, 174, 0.8)), url(../images/hero-photo-waves.jpg);
+    background-image:  url(../images/hero-photo-waves.jpg);
   }
 }
 @media only screen and (max-width: 37.5em) {
@@ -532,6 +534,7 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  z-index: 3;
 }
 
 .back__price, .back__description, .back__button {
