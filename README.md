@@ -1,9 +1,6 @@
 # batch9-activities
 batch-9 activities repositories
 
-open temporary portfolio page here: 
-https://chestergarett.github.io/batch9-activities/
-
 deployed apps link here:
 1) tribute page - https://chestergarett-tribute-8e74b9.netlify.app
 2) survey form - https://chestergarett-surveyform-7f02d9.netlify.app
