@@ -6,7 +6,7 @@ deployed apps link here:
 2) survey form - https://chestergarett-surveyform-7f02d9.netlify.app
 3) product landing page - https://chestergarett-product-757941.netlify.app/
 4) momentum app - https://chestergarett-momentum-app.netlify.app/
-5) tic-tac-toe - https://chester-garett-tictactoe-8cbf72.netlify.app/
+5) tic-tac-toe - https://chestergarett-tictactoe-8cbf72.netlify.app
 
 for deployment:
 1) challonge
