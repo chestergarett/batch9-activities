@@ -8,6 +8,7 @@ deployed apps link here:
 1) tribute page - https://chestergarett-tribute-8e74b9.netlify.app
 2) survey form - https://chestergarett-surveyform-7f02d9.netlify.app
 3) product landing page - https://chestergarett-product-757941.netlify.app/
+4) momentum app - https://chestergarett-momentum-app.netlify.app/
 
 for deployment:
 1) tic tac toe
@@ -26,3 +27,5 @@ to-do's:
        b) add validation snackbar in budget app
        c) finish forest concept
        d) data table logic
+       
+4. debug slack clone app
