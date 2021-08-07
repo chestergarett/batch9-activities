@@ -243,6 +243,7 @@ function resetCountDown(){
 
 selectBtnX.onclick = ()=>{
     modeHoverAudio();
+    backgroundMusic.play();
     countDown();
     selectBox.classList.add("hide"); //hide select box
     selectPane.style.display = 'flex'; //show fight arena
@@ -253,6 +254,7 @@ selectBtnX.onclick = ()=>{
 
 selectBtnO.onclick = ()=>{ 
     modeHoverAudio();
+    backgroundMusic.play();
     countDown();
     selectBox.classList.add("hide"); //hide select box
     selectPane.style.display = 'flex';
@@ -634,16 +636,17 @@ blinkArea.addEventListener('click',enablePlayer2, {once: true})
 
 //APPLYING SPECIAL EFFECTS
 
-const charSelectedAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/system/char-selected.mp3");
-const gameStartAudio = new Audio("https://streetfighter2ttt.com/resources/audio/bgm/vs-screen-bgm-low.mp3");
+const charSelectedAudio = new Audio("../audio/tatsumaki-senpuu-kyaku.wav");
+const gameStartAudio = new Audio("https://vgmsite.com/soundtracks/street-fighter-2-turbo/iicfyvjk/04.%20Vs.mp3");
 const backgroundMusic = new Audio("https://vgmsite.com/soundtracks/street-fighter-2-turbo/ioknnojn/05.%20Ken%20Stage.mp3")
-const youWin = new Audio("https://streetfighter2ttt.com/resources/audio/round/you-win.mp3");
-const youLose = new Audio("https://streetfighter2ttt.com/resources/audio/round/you-lose.mp3");
-const attackAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/attack-audio.mp3");
-const hitAudio = new Audio("https://streetfighter2ttt.com/resources/audio/sfx/character/hit-audio.mp3");
+const you = new Audio("../audio/you.wav");
+const youWin = new Audio("../audio/win.wav");
+const youLose = new Audio("../audio/loose.wav");
+const attackAudio = new Audio("../audio/Swoosh 3-SoundBible.com-1573211927.mp3");
+const hitAudio = new Audio("../audio/1.wav");
 const challengerAudio = new Audio("https://vgmsite.com/soundtracks/street-fighter-2-turbo/iicfyvjk/04.%20Vs.mp3")
 
 function modeHoverAudio() {
-    let sound = new Audio("https://www.streetfighter2ttt.com/resources/audio/sfx/system/mode-hover.mp3");
+    let sound = new Audio("../audio/tasumaki-senpuu-kyaku.wav");
     sound.play();  
 }
