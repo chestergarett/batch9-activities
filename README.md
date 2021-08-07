@@ -12,9 +12,8 @@ deployed apps link here:
 
 for deployment:
 1) tic tac toe
-2) momentum app
-3) challonge
-4) budget_app + porfolio page
+2) challonge
+3) budget_app + porfolio page
 
 to-do's:
 1) find bugs on finished projects
