@@ -58,7 +58,7 @@ function todoMain() {
         let inputValue = inputElem.value;
         inputElem.value = "";
     
-        let inputValue2 = inputElem2.value;
+        let inputValue2 = inputElem2.value.toUpperCase();
         inputElem2.value = "";
     
         let dateValue = dateInput.value;
@@ -84,7 +84,7 @@ function todoMain() {
     
         updateSelectOptions();
     
-        addToDoModal.style.display='none';  
+        addToDoModal.style.display='none';    
     }else{
       alert('Enter valid inputs!')
     }
@@ -180,7 +180,7 @@ function todoMain() {
 
     // category cell
     let tdElem3 = document.createElement("td");
-    tdElem3.innerText = inputValue2;
+    tdElem3.innerText = inputValue2.toUpperCase();
     tdElem3.className = "categoryCell";
     trElem.appendChild(tdElem3);
 
