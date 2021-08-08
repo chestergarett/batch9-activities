@@ -39,6 +39,7 @@ const Login = ({auth}) => {
                             <FaFacebook style={{marginRight: '.5rem', color: '#4267B2'}} size={20}/>
                                 Sign In with Facebook
                         </Fab>
+                        <p>OAuth2 feature powered by Firebase.</p>
                     </div>
             </div>
         </div>

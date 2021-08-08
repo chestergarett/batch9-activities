@@ -11,7 +11,7 @@ import {v4} from 'uuid'
 import classes from './QuickShortcut.module.css';
 
 import IconContainer from '../UI/IconContainer';
-import CenteredModal from '../UI/Modals/CenteredModal';
+import FeatureUnavailable from '../Forms/FeatureUnavailable';
 
 const DUMMY_SHORTCUTS = [
     {id: v4(), game: 'Basketball', icon: <FaBasketballBall size={40} style={{color: 'red'}}/>},
@@ -35,24 +35,43 @@ const QuickShortcutSidebar = () => {
         <>
             <div className={classes.quickShortcut}>
                 <div className={classes.homeIcon}>
-                    <IconContainer><RiDiscordLine size={40} className="icons"/></IconContainer>
+                    <IconContainer>
+                        <li
+                           name="Home" 
+                           onClick={selectedHandler} 
+                           key="Home"
+                           id="Home"
+                        >
+                        <RiDiscordLine 
+                        size={40} 
+                        className="icons"
+                        />
+                        </li>
+                    </IconContainer>
                     <span></span>
                 </div>
                 <div className={classes.shortcutsMain}>
                     <ul>
                     {DUMMY_SHORTCUTS.map(shortcut => {
                         return (
-                            <IconContainer key={shortcut.id}><li key={shortcut.id} id={shortcut.id} name={shortcut.game} onClick={selectedHandler}>{shortcut.icon}</li></IconContainer>
+                            <IconContainer key={shortcut.id}>
+                                <li key={shortcut.id} 
+                                    id={shortcut.id} 
+                                    name={shortcut.game} 
+                                    onClick={selectedHandler}>
+                                    {shortcut.icon}
+                                </li>
+                            </IconContainer>
                         )
                     })}
                     </ul>
                 </div>
                 <div className={classes.shortcutsOther}>
                     <IconContainer><IoAddOutline size={40} onClick={addSportModalHandler}/></IconContainer>
-                    <IconContainer><IoIosCompass size={40} /></IconContainer>
+                    <IconContainer><IoIosCompass size={40} onClick={addSportModalHandler}/></IconContainer>
                 </div>
             </div>
-            {openSport && <CenteredModal onClose={closeSportHandler}/>}
+            {openSport && <FeatureUnavailable onClose={closeSportHandler}/>}
         </>
     )
 }

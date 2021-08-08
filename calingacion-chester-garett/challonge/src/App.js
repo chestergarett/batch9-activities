@@ -13,8 +13,6 @@ function App() {
     firebase.initializeApp(firebaseConfig)
   }
 
-  console.log(process.env)
-
   const auth = firebase.auth();
 
   const [user] = useAuthState(auth);

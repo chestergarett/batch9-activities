@@ -3,24 +3,27 @@ import GameContext from '../../context/game-context';
 import {TextField, Button} from '@material-ui/core';
 import CenteredModal from '../UI/Modals/CenteredModal';
 import classes from './UpdateTournament.module.css';
-import dateHelper from '../../helpers/formatDate';
+import generateUID from '../../helpers/idGenerator';
 import { editTournament } from '../utils/utils';
-import axios from '../../api/challongeConfig';
 import Success from '../Success/Success';
 import Errors from '../Errors/Errors';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 const UpdateTournament = (props) => {
     const {selectedURL,selectedTourna} = useContext(GameContext);
     const [formData, setFormData] = useState({})
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const submitHandler = (e) => {
         e.preventDefault()
-        editTournament(selectedURL,formData.name, formData.url, formData.starts_at, formData.description)
+        setIsLoading(true)
+        editTournament(selectedURL,formData.name, `${generateUID()}_bball`, formData.starts_at, formData.description)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)
+            setIsLoading(false)
             })
         .catch(err=>{
             if(err.response.status===404){
@@ -39,17 +42,8 @@ const UpdateTournament = (props) => {
                 setErrorDiv("422")
             }
             setSuccessDiv(false)
+            setIsLoading(false)
         })
-
-        // return axios.put(`./tournaments/${selectedURL}.json`, {
-        //     data: {
-        //         type: "Tournaments",
-        //         attributes: {
-        //             starts_at: "10/10/2021 10:50:00",
-        //             description: "testcode",
-        //             }
-        //         }
-        // })
     }
 
     return(
@@ -63,14 +57,6 @@ const UpdateTournament = (props) => {
                         palceholder="name"
                         className={classes.items}
                         onChange = { (e) => setFormData({...formData, name: (e.target.value)})}
-                    />
-                    <input
-                        id="url"
-                        label="url"
-                        placeholder="url"
-                        type="text"
-                        className={classes.items}
-                        onChange = { (e) => setFormData({...formData, url: (e.target.value)})}
                     />
                     <input
                         id="starts_at"
@@ -93,6 +79,7 @@ const UpdateTournament = (props) => {
                         type="submit">Update Tournament</Button>
                     {successDiv && <Success message="Successfully updated tournament details."/>}
                     {errorDiv && <Errors error={errorDiv}/>}
+                    {isLoading && <LoadingSpinner/>}
                 </form> 
             </CenteredModal>
     )

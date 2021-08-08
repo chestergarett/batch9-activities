@@ -4,8 +4,12 @@ import {getTournaments, getTournament, getMatches} from '../components/utils/uti
 
 const GameProvider = (props) => {    
     const {game} = useContext(GameContext);
-    const [selected, setSelected] = useState('Basketball');
-    const [selectedTourna, setSelectedTourna] = useState('Drafts')
+    const [selected, setSelected] = useState('Home');
+    const [urlCode, setUrlCode] = useState('');
+    const [urlLoading, setUrlLoading] = useState(false);
+    const [selectedURL, setSelectedURL] = useState('');
+    const [selectedTourna, setSelectedTourna] = useState('Home');
+    const [tournaLoading, setTournaLoading] = useState(false);
     const [selectedTournaDetails, setSelectedTournaDetails] = useState({
             name: '',
             state: '',
@@ -17,12 +21,14 @@ const GameProvider = (props) => {
             matches: [],
             participants: [],
     })
-    const [selectedURL, setSelectedURL] = useState('')
-    let tournaments
+
+    let tournaments = []
+
     const [list, setList] = useState(tournaments)
 
     const selectedHandler = (e) => {
         setSelected(e.target.getAttribute('name'))
+        e.target.getAttribute('name')==='Basketball' ? setUrlCode('bball') : setUrlCode('tableTennis')
     }
 
     const selectedTournaHandler = (e) => {
@@ -34,17 +40,29 @@ const GameProvider = (props) => {
     let filteredTournaments
 
     //get all tournaments
+    useEffect( () => {
+        setUrlLoading(true)
         getTournaments()
         .then(res => {
                 tournaments = new Array(...res?.data.data)
-                filteredTournaments = tournaments?.filter(tourna => tourna.id.includes('bball'))
+                if(selected==='Home'){
+                    filteredTournaments = tournaments
+                }else{
+                    filteredTournaments = tournaments?.filter(tourna => tourna.id.includes(urlCode))
+                }
                 setList(filteredTournaments)
+                setUrlLoading(false)
             }
         )
-        .catch(error => console.log(error))
-    
-
+        .catch(error => {
+            console.log(error)
+            setUrlLoading(false)
+        })
+    },[urlCode])
+        
     //get single tournament page
+    useEffect ( () => {
+        setTournaLoading(true)
         getTournament(selectedURL)
         .then(res => {
                 setSelectedTournaDetails({
@@ -59,26 +77,22 @@ const GameProvider = (props) => {
                     matches: res.data.data.relationships.matches,
                     participants: res.data.included,
                 })
+                setTournaLoading(false);
             }
         )
-        .catch(error => console.log(error))
-        
-
-
-    //get matches of a tournament
-    useEffect( () => {
-        getMatches(selectedURL)
-        .then(res => {
-                console.log(res)
-            })
-        .catch(error => console.log(error))
-    }, [selectedURL])
+        .catch(error => {
+            setTournaLoading(false);
+            console.log(error)})
+    },[selectedURL])        
 
     return <GameContext.Provider value={{
         game, 
-        tournaments, 
-        selected, 
-        selectedHandler, 
+        tournaments,
+        filteredTournaments, 
+        selected,
+        urlLoading,
+        tournaLoading,
+        selectedHandler,
         list,
         selectedTourna,
         selectedURL,

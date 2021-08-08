@@ -1,11 +1,12 @@
 import {useState} from 'react';
 import {postTournaments} from '../utils/utils.js';
 import CenteredModal from '../UI/Modals/CenteredModal';
-import {TextField,Button} from '@material-ui/core';
+import {Button} from '@material-ui/core';
 import generateUID from '../../helpers/idGenerator';
 import classes from './AddTournament.module.css';
 import Success from '../Success/Success';
 import Errors from '../Errors/Errors';
+import LoadingSpinner from '../UI/LoadingSpinner.js';
 
 
 const AddTournament = (props) => {
@@ -13,13 +14,16 @@ const AddTournament = (props) => {
     const [formData, setFormData] = useState({})
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const submitHandler = (e) => {
-        e.preventDefault()
+        e.preventDefault();
+        setIsLoading(true);
         postTournaments(formData.name, `${generateUID()}_bball`, formData.starts_at, formData.description)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)
+            setIsLoading(false)
             })
         .catch(err=>{
             if(err.response.status===404){
@@ -38,6 +42,7 @@ const AddTournament = (props) => {
                 setErrorDiv("422")
             }
             setSuccessDiv(false)
+            setIsLoading(false)
         })
         
     }
@@ -78,6 +83,7 @@ const AddTournament = (props) => {
                     >
                             Create Tournament
                     </Button>
+                    {isLoading && <LoadingSpinner/>}
                     {successDiv && <Success message="Successfully updated tournament details."/>}
                     {errorDiv && <Errors error={errorDiv}/>}
                 </form> 

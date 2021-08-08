@@ -6,6 +6,7 @@ import classes from './AddParticipants.module.css';
 import { addParticipants } from '../utils/utils';
 import Success from '../Success/Success';
 import Errors from '../Errors/Errors';
+import LoadingSpinner from '../UI/LoadingSpinner';
 
 const AddParticipants = (props) => {
 
@@ -13,13 +14,16 @@ const AddParticipants = (props) => {
     const {selectedURL, selectedTourna} = useContext(GameContext)
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const submitHandler = (e) => {
         e.preventDefault()
+        setIsLoading(true)
         addParticipants(selectedURL,formData.name, formData.seed, formData.misc, formData.email,formData.username)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)
+            setIsLoading(false)
             })
         .catch(err=>{
             if(err.response.status===404){
@@ -38,6 +42,7 @@ const AddParticipants = (props) => {
                 setErrorDiv("422")
             }
             setSuccessDiv(false)
+            setIsLoading(false)
         })
     }
     
@@ -70,6 +75,7 @@ const AddParticipants = (props) => {
             </Button>
             {successDiv && <Success message="Successfully added participants."/>}
             {errorDiv && <Errors error={errorDiv}/>}
+            {isLoading && <LoadingSpinner/>}
         </div>
     </CenteredModal>   
     )

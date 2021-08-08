@@ -6,6 +6,7 @@ import classes from './DeleteTournament.module.css';
 import CenteredModal from '../UI/Modals/CenteredModal';
 import Errors from '../Errors/Errors';
 import Success from '../Success/Success';
+import LoadingSpinner from '../UI/LoadingSpinner.js';
 
 const DeleteTournament = (props) => {
 
@@ -13,14 +14,15 @@ const DeleteTournament = (props) => {
 
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const submitHandler = () => {
-        
+        setIsLoading(true)
         deleteTournament(selectedURL)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)
-            console.log(selectedURL)
+            setIsLoading(false)
             })
         .catch(err=>{
             if(err.response.status===404){
@@ -39,7 +41,7 @@ const DeleteTournament = (props) => {
                 setErrorDiv("422")
             }
             setSuccessDiv(false)
-            console.log(selectedURL)
+            setIsLoading(false)
         })
     }
 
@@ -48,8 +50,6 @@ const DeleteTournament = (props) => {
             <form className={classes.form}>
                 <div className={classes.header}> {selectedTourna}</div>
                 <span className={classes.items}> Are you sure you want to delete tournament? </span>
-                {successDiv && <Success message="Successfully change state."/>}
-                {errorDiv && <Errors error={errorDiv}/>}
                 <Button 
                     variant="contained" 
                     style={{color: 'whitesmoke', backgroundColor:'#7289DA'}} 
@@ -58,6 +58,9 @@ const DeleteTournament = (props) => {
                     YES
                 </Button>
                 </form> 
+                {successDiv && <Success message="Successfully deleted tournament."/>}
+                {errorDiv && <Errors error={errorDiv}/>}
+                {isLoading && <LoadingSpinner/>}
         </CenteredModal>
     )
 }

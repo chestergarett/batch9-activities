@@ -7,6 +7,7 @@ import classes from './ChangeStateTournament.module.css';
 import CenteredModal from '../UI/Modals/CenteredModal';
 import Errors from '../Errors/Errors';
 import Success from '../Success/Success';
+import LoadingSpinner from '../UI/LoadingSpinner.js';
 
 const ChangeStateTournament = (props) => {
 
@@ -18,6 +19,7 @@ const ChangeStateTournament = (props) => {
     const [selectedOption, setSelectedOption] = useState('');
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const options = [
         {value:'process_checkin', label: 'process_checkin'},
@@ -29,12 +31,14 @@ const ChangeStateTournament = (props) => {
     ]
 
     const submitHandler = () => {
+        setIsLoading(true)
         setFormData({...formData, url: selectedURL, state: selectedOption.value})
         
         changeTournament(selectedURL,selectedOption.value)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)
+            setIsLoading(false)
             })
         .catch(err=>{
             if(err.response.status===404){
@@ -53,6 +57,7 @@ const ChangeStateTournament = (props) => {
                 setErrorDiv("422")
             }
             setSuccessDiv(false)
+            setIsLoading(false)
         })
     }
 
@@ -81,8 +86,6 @@ const ChangeStateTournament = (props) => {
                     value={selectedOption}
                     isSearchable
                 />
-                {successDiv && <Success message="Successfully change state."/>}
-                {errorDiv && <Errors error={errorDiv}/>}
                 <Button 
                     variant="contained" 
                     style={{color: 'whitesmoke', backgroundColor:'#7289DA'}} 
@@ -91,6 +94,9 @@ const ChangeStateTournament = (props) => {
                     CHANGE STATE
                 </Button>
                 </form> 
+                {successDiv && <Success message="Successfully change state."/>}
+                {errorDiv && <Errors error={errorDiv}/>}
+                {isLoading && <LoadingSpinner/>}
         </CenteredModal>
     )
 }
