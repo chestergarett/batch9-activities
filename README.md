@@ -20,4 +20,4 @@ to-do's:
        c) finish forest concept
        d) data table logic      
 3. debug slack clone app
-4. clean challonge-app code
+4. challonge app - add table tennis filter
