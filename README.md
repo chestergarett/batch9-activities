@@ -7,10 +7,10 @@ deployed apps link here:
 3) product landing page - https://chestergarett-product-757941.netlify.app/
 4) momentum app - https://chestergarett-momentum-app.netlify.app/
 5) tic-tac-toe - https://chestergarett-tictactoe-8cbf72.netlify.app
+6) challonge sports app - https://sportsapp-86653.firebaseapp.com/
 
 for deployment:
-1) challonge
-2) budget_app + porfolio page
+1) budget_app + porfolio page
 
 to-do's:
 1) find bugs on finished projects
@@ -20,4 +20,3 @@ to-do's:
        c) finish forest concept
        d) data table logic      
 3. debug slack clone app
-4. challonge app - add table tennis filter
