@@ -14,7 +14,8 @@ const Login = ({auth}) => {
     }
 
     const signInWithFacebook = () => {
-
+        const provider = new firebase.auth.FacebookAuthProvider();
+        auth.signInWithPopup(provider);
     }
 
     return(

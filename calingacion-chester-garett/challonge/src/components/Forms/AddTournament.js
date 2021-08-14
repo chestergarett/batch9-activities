@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState,useContext} from 'react';
 import {postTournaments} from '../utils/utils.js';
 import CenteredModal from '../UI/Modals/CenteredModal';
 import {Button} from '@material-ui/core';
@@ -7,10 +7,12 @@ import classes from './AddTournament.module.css';
 import Success from '../Success/Success';
 import Errors from '../Errors/Errors';
 import LoadingSpinner from '../UI/LoadingSpinner.js';
+import GameContext from '../../context/game-context.js';
 
 
 const AddTournament = (props) => {
 
+    const {urlCode} = useContext(GameContext)
     const [formData, setFormData] = useState({})
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
@@ -19,7 +21,7 @@ const AddTournament = (props) => {
     const submitHandler = (e) => {
         e.preventDefault();
         setIsLoading(true);
-        postTournaments(formData.name, `${generateUID()}_bball`, formData.starts_at, formData.description)
+        postTournaments(formData.name, `${generateUID()}_${urlCode}`, formData.starts_at, formData.description)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)

@@ -90,6 +90,7 @@ const GameProvider = (props) => {
         tournaments,
         filteredTournaments, 
         selected,
+        urlCode,
         urlLoading,
         tournaLoading,
         selectedHandler,

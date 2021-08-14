@@ -8,7 +8,7 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 
 const SidebarDetails = () => {
 
-    const {list, urlLoading, filteredTournaments, selectedTournaHandler} = useContext(GameContext)
+    const {list, urlLoading, selectedTournaHandler} = useContext(GameContext)
 
     return(
         <ul>

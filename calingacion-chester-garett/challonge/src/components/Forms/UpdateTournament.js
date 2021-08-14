@@ -10,7 +10,7 @@ import Errors from '../Errors/Errors';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 const UpdateTournament = (props) => {
-    const {selectedURL,selectedTourna} = useContext(GameContext);
+    const {selectedURL,selectedTourna, urlCode} = useContext(GameContext);
     const [formData, setFormData] = useState({})
     const [errorDiv,setErrorDiv] = useState(null);
     const [successDiv, setSuccessDiv] = useState(false);
@@ -19,7 +19,7 @@ const UpdateTournament = (props) => {
     const submitHandler = (e) => {
         e.preventDefault()
         setIsLoading(true)
-        editTournament(selectedURL,formData.name, `${generateUID()}_bball`, formData.starts_at, formData.description)
+        editTournament(selectedURL,formData.name, `${generateUID()}_${urlCode}`, formData.starts_at, formData.description)
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)

@@ -37,7 +37,7 @@ const BodyTournament = () => {
                         <span> BRACKETS </span>
                     </div>
                     <div className={classes.embedded}>
-                        <iframe src={`http://challonge.com/${selectedURL}/module`} width="90%" height="400" frameBorder="0" scrolling="auto" allowtransparency="true"></iframe>
+                        <iframe src={`https://challonge.com/${selectedURL}/module`} width="90%" height="400" frameBorder="0" scrolling="auto" allowtransparency="true"></iframe>
                     </div>
                 </div> : <LoadingSpinner/>}
             <div className={classes.richText}>

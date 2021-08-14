@@ -19,7 +19,7 @@ const AddParticipants = (props) => {
     const submitHandler = (e) => {
         e.preventDefault()
         setIsLoading(true)
-        addParticipants(selectedURL,formData.name, formData.seed, formData.misc, formData.email,formData.username)
+        addParticipants(selectedURL,formData.name, formData.seed, formData.misc, formData.email, "chestergarett")
         .then(res=>{
             setSuccessDiv(true)
             setErrorDiv(null)
@@ -41,6 +41,7 @@ const AddParticipants = (props) => {
             if(err.response.status===422){
                 setErrorDiv("422")
             }
+            console.log(err.response)
             setSuccessDiv(false)
             setIsLoading(false)
         })
@@ -62,9 +63,6 @@ const AddParticipants = (props) => {
             />
             <input type="email" name="email" placeholder="email" className={classes.items}
                 onChange = { (e) => setFormData({...formData, email: (e.target.value)})}
-            />
-            <input type="text" name="username" placeholder="username" className={classes.items}
-                onChange = { (e) => setFormData({...formData, username: (e.target.value)})}
             />
         
             <Button variant="contained" 
