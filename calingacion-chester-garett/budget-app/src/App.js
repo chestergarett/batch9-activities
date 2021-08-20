@@ -15,6 +15,7 @@ import ExpenseMain from './components/Expense/ExpenseMain';
 import IncomeMain from './components/Income/IncomeMain';
 import BudgetMain from './components/Budget/BudgetMain';
 import Sidebar from './components/Sidebar/Sidebar';
+import Profile from './components/Profile/Profile';
 
 const App =() => {
 
@@ -34,6 +35,7 @@ const App =() => {
                 <Route path='/chartsCompiled' component={ChartsCompiled} />
                 <Route path='/NewsCompiled' component={NewsCompiled} />
                 <Route path='/Messenger' component={Messenger} />
+                <Route path='/Profile' component={Profile} />
               </Switch>
           </Router>
           <Sidebar />

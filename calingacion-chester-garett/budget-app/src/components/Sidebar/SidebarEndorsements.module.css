@@ -3,6 +3,8 @@
     flex-direction: column;
     list-style-type: none;
     margin: 0;
+    height: 300px;
+    overflow-y: scroll;
 }
 
 .endorsements li{

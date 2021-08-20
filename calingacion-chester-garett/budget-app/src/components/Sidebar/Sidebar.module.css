@@ -11,6 +11,12 @@
     width: 15rem;
 }
 
+@media (max-width: 1200px) {
+    .sidebar{
+        display: none;
+    }
+}
+
 .division{
     border-bottom: 1px solid grey;
 }

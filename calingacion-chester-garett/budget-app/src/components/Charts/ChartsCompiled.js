@@ -1,6 +1,5 @@
 import ChartTotal from './ChartTotal';
 import ChartDetail from './ChartDetail';
-import ChartVariance from './ChartVariance';
 import ChartWeekly from './ChartWeekly';
 import MainContainer from '../UI/MainContainer'
 import useStyles from './styles';
@@ -12,6 +11,8 @@ const ChartsCompiled = () => {
     return (
         <MainContainer>   
             <div className={classes.main}>
+                <p>Set budget to view LIVE ANALYTICS</p>
+                <div><span>&nbsp;</span></div>
                 <ChartTotal title="Income"/> 
                 <ChartDetail title="Income" />
                 <ChartTotal title="Expense"/> 

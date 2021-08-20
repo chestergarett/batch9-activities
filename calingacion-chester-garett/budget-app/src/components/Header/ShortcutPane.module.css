@@ -75,3 +75,17 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 900px) {
+    .circle1 {
+        display: none;
+    }
+
+    .circle2 {
+        display: none;
+    }
+
+    .circle3 {
+        display: none;
+    }
+}

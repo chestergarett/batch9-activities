@@ -22,7 +22,7 @@ const SignIn = ({auth}) => {
                 <AirplayIcon style={{marginRight: '.5rem'}}/>
                 Sign In with Google
             </Fab>
-            <Paper elevation={0} style={{padding: '1rem', borderRadius: '12px'}}>Do not violate the community guidelines or you will be banned for life.</Paper>
+            <Paper elevation={0} style={{padding: '1rem', borderRadius: '12px', textAlign: 'center'}}>Let's talk business! Send me a message.<br/> OAuth2 connection powered by Firebase when signing in.</Paper>
         </Card>
     )
 }

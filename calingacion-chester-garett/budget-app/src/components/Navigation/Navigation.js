@@ -17,27 +17,27 @@ const Navigation = () => {
     return <ul className={classes.navigation}>
         <li key='1'>
             <Link to='/Income' className={classes.navigationItem}>
-                <FcMoneyTransfer className={classes.icons}/><span>Actual Cash Flows</span>
-            </Link>
-        </li>
-        <li key='2'>
-            <Link to='/Budget' className={classes.navigationItem}>
-                <FcBriefcase className={classes.icons}/><span>Budgeted Cash Flows</span>
-            </Link>
-        </li>
-        <li key='3'>
-            <Link to='/Investments' className={classes.navigationItem}>
-                <FcBullish className={classes.icons}/><span>Investments</span>
-            </Link>
-        </li>
-        <li key='4'>
-            <Link to='/Forest' className={classes.navigationItem}>
-                <FcGlobe className={classes.icons}/><span>Forest</span>
+                <FcMoneyTransfer className={classes.icons}/><span>Budget App</span>
             </Link>
         </li>
         <li key='5'>
             <Link to='/chartsCompiled' className={classes.navigationItem}>
                 <FcBarChart className={classes.icons}/><span>Analytics</span>
+            </Link>
+        </li>
+        <li key='3'>
+            <Link to='/Investments' className={classes.navigationItem}>
+                <FcBullish className={classes.icons}/><span>Coin Tracker</span>
+            </Link>
+        </li>
+        <li key='4'>
+            <Link to='/Forest' className={classes.navigationItem}>
+                <FcGlobe className={classes.icons}/><span>Blogs</span>
+            </Link>
+        </li>
+        <li key='2'>
+            <Link to='/' className={classes.navigationItem}>
+                <FcBriefcase className={classes.icons}/><span>Journals</span>
             </Link>
         </li>
         <li key='6'>

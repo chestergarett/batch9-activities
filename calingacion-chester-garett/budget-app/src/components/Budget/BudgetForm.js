@@ -52,10 +52,10 @@ const BudgetForm = () => {
     const createBudget = () => {
        
         if(formData.weekEnding === '' || 
-                (Number(formData.Netflix) === 0) || (Number(formData.Spotify) === 0) || (Number(formData.Rent) === 0) ||
-                (Number(formData.Breakfast) === 0) || (Number(formData.Lunch) === 0) || (Number(formData.Dinner) === 0) ||
-                (Number(formData.Snacks) === 0) || (Number(formData.Water) === 0) || (Number(formData.Electricity) === 0) ||
-                (Number(formData.Girlfriend) === 0) || (Number(formData.Internet) === 0) || (Number(formData.Load) === 0)){
+                (Number(formData.Netflix) === 0) && (Number(formData.Spotify) === 0) && (Number(formData.Rent) === 0) &&
+                (Number(formData.Breakfast) === 0) && (Number(formData.Lunch) === 0) && (Number(formData.Dinner) === 0) &&
+                (Number(formData.Snacks) === 0) && (Number(formData.Water) === 0) && (Number(formData.Electricity) === 0) &&
+                (Number(formData.Girlfriend) === 0) && (Number(formData.Internet) === 0) && (Number(formData.Load) === 0)){
                     setFormData(initialState);
                     return;
         } 
@@ -83,7 +83,7 @@ const BudgetForm = () => {
 
     return (
         <Paper style={{display: 'flex', flexDirection: 'column', width: '30rem'}} elevation={0}>
-            <BudgetDropdown title='Select' items={categories} multiSelect/>
+            {/* <BudgetDropdown title='Select' items={categories} multiSelect/> */}
             <Card style={{padding: '1rem', display: 'flex', justifyContent: 'center'}} elevation={0}>
                     <TextField 
                         id="WeekEnding"

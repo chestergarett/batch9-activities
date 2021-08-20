@@ -3,7 +3,6 @@ import pau_riosa from '../../assets/pau_riosa.png';
 import victor_rivera from '../../assets/victor_rivera.png';
 import classes from './SidebarEndorsements.module.css'
 import {v4} from 'uuid';
-import CustomScrollDiv from '../Scrollbar/CustomScrollDiv';
 
 const endorsees =[
     {
