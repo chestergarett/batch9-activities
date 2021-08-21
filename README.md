@@ -8,15 +8,9 @@ deployed apps link here:
 4) momentum app - https://chestergarett-momentum-app.netlify.app/
 5) tic-tac-toe - https://chestergarett-tictactoe-8cbf72.netlify.app
 6) challonge sports app - https://sportsapp-86653.firebaseapp.com/
+7) budget_app + portfolio page - https://chestergarett-portfolio-ff9f1e.netlify.app/
 
-for deployment:
-1) budget_app + porfolio page
 
 to-do's:
 1) find bugs on finished projects
-2) Budget app - to dos: 
-       a) make budget form custom dropdown where once item is selected form would appear
-       b) add validation snackbar in budget app
-       c) finish forest concept
-       d) data table logic      
-3. debug slack clone app
+2) debug slack clone app
