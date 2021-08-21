@@ -1,0 +1,78 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.container2{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%
+}
+
+.heading{
+    margin: .3rem;
+}
+
+.subHeading{
+    line-height: 1.6;
+}
+
+
+.horizontalContentRule{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid gray;
+    flex-grow: 1;
+    width: 100%;
+    padding: .3rem;
+  }
+
+  .techStack{
+      margin-top: 1rem;
+      display: flex;
+      border: 1px solid green;
+      border-radius: 5px;
+      padding: .5rem;
+      width: 70%;
+  }
+
+  .techItem{
+      width: 50px;
+      margin-left: .3rem;
+  }
+
+  .responsibility{
+      line-height: 1.5;
+  }
+
+  .set{
+      margin-bottom: 1rem;
+  }
+
+  .school{
+      display: flex;
+      align-items: center;
+      margin-bottom: .3rem;
+  }
+
+  .details{
+      display: flex;
+      flex-direction: column;
+      margin-left: 3.2rem;
+      font-size: 12px;
+  }
+
+  .licenseBlock{
+      display: flex;
+      align-items: center;
+      margin-bottom: .5rem;
+  }
+
+  .licenseItem{
+      margin-right: .5rem;
+      width: 10rem;
+      height: 10rem;
+  }

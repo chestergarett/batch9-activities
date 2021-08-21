@@ -16,6 +16,7 @@ import IncomeMain from './components/Income/IncomeMain';
 import BudgetMain from './components/Budget/BudgetMain';
 import Sidebar from './components/Sidebar/Sidebar';
 import Profile from './components/Profile/Profile';
+import NotFound from './components/NotFound/NotFound';
 
 const App =() => {
 
@@ -36,6 +37,7 @@ const App =() => {
                 <Route path='/NewsCompiled' component={NewsCompiled} />
                 <Route path='/Messenger' component={Messenger} />
                 <Route path='/Profile' component={Profile} />
+                <Route path='/NotFound' component={NotFound} />
               </Switch>
           </Router>
           <Sidebar />

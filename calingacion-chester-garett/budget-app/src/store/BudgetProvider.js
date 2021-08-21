@@ -21,7 +21,9 @@ const BudgetProvider = props => {
 
     const actualVSbudget = incomeBalance -budgetBalance;
 
-    const weekEndingBalance = (budgetItem) => budgetItem.Netflix + budgetItem.Spotify + budgetItem.Rent + budgetItem.Breakfast + budgetItem.Lunch + budgetItem.Dinner + budgetItem.Snacks + budgetItem.Water + budgetItem.Electricity + budgetItem.Girlfriend
+    const weekEndingBalance = (budgetItem) => {
+        return Number(budgetItem.Netflix) + Number(budgetItem.Spotify) + Number(budgetItem.Rent) + Number(budgetItem.Breakfast) + Number(budgetItem.Lunch) + Number(budgetItem.Dinner) + Number(budgetItem.Snacks) + Number(budgetItem.Water) + Number(budgetItem.Electricity) + Number(budgetItem.Girlfriend)
+    }
 
     return <BudgetContext.Provider value={{
         deleteBudget, addBudget, budget, budgetBalance, actualVSbudget, weekEndingBalance

@@ -21,6 +21,7 @@ const initialState = {
 
 const ExpenseForm = () => {
     const [formData, setFormData] = useState(initialState);
+    const [error, setError] = useState(false);
     const {addTransaction} = useContext(ActualContext)
     const iconIndex = Math.ceil(Math.random()*10)
 
@@ -29,13 +30,14 @@ const ExpenseForm = () => {
         if(typeof(Number(formData.amount))!=='number' || formData.amount === '' || formData.amount === '0' ||  Number(formData.amount) < 0 ||
         !formData.date.includes('-')){
             setFormData(initialState);
+            setError(true)
             return;
         } 
         
         const transaction = {...formData, amount: Number(formData.amount), id: v4(), weekEndingText: getWeekNumber(new Date(formData.date))[0], icon: iconIndex};
         
-        console.log(transaction);
         addTransaction(transaction);
+        setError(false);
         setFormData(initialState);
     }
 
@@ -73,6 +75,7 @@ const ExpenseForm = () => {
                     />
                 </Card>
                 <Card style={{padding: '1rem', display: 'flex', justifyContent: 'center'}} elevation={0}>
+                    {error && <p style={{color: '#8A0707'}}>Please record an amount.</p>}
                     <Button
                         variant="contained"
                         color="secondary"

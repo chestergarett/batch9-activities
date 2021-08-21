@@ -1,5 +1,5 @@
 import classes from './InfoPane.module.css';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import {IconContext} from 'react-icons';
 import {FaGithub} from 'react-icons/fa';
 import {IoChatbubbleEllipsesOutline} from 'react-icons/io5';
@@ -14,11 +14,11 @@ const InfoPane = () => {
 
     return <ul className={classes['info-pane']} data-testid="infobar">
         <Tooltip title="Profile">
-            <Link to='/Profile'>
+            <NavLink to='/Profile'>
                 <li className={classes['profile-pic']}>
                     <img src={profilePic} alt="Chester-Garett"/>{profileName}
                 </li> 
-            </Link>
+            </NavLink>
         </Tooltip>
         <IconContext.Provider value={{size: '20', color: 'black', fill: 'whitesmoke'}}>
             <Tooltip title="Github">
@@ -30,9 +30,9 @@ const InfoPane = () => {
             </Tooltip>
             <Tooltip title="Messenger">
                 <li>
-                    <Link to='Messenger'>
+                    <NavLink to='Messenger'>
                         <IoChatbubbleEllipsesOutline className={classes.icons}/>
-                    </Link>
+                    </NavLink>
                 </li> 
             </Tooltip>
             <Tooltip title="LinkedIn">

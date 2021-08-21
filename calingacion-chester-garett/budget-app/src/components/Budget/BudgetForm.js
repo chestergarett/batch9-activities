@@ -12,18 +12,18 @@ import useStyles from './listStyles';
 
 const initialState = {
     weekEnding: '2021-W28',
-    Netflix: '0',
-    Spotify: '0',
-    Rent: '0',
-    Breakfast: '0',
-    Lunch: '0',
-    Dinner: '0',
-    Snacks: '0',
-    Water: '0',
-    Electricity: '0',
-    Girlfriend: '0',
-    Internet: '0',
-    Load: '0',
+    Netflix: 0,
+    Spotify: 0,
+    Rent: 0,
+    Breakfast: 0,
+    Lunch: 0,
+    Dinner: 0,
+    Snacks: 0,
+    Water: 0,
+    Electricity: 0,
+    Girlfriend: 0,
+    Internet: 0,
+    Load: 0,
     type: 'Budget',
 }
 
@@ -47,6 +47,7 @@ const BudgetForm = () => {
     const classes = useStyles();
 
     const [formData, setFormData] = useState(initialState);
+    const [error, setError] = useState(false);
     const {addBudget} = useContext(BudgetContext)
 
     const createBudget = () => {
@@ -57,6 +58,7 @@ const BudgetForm = () => {
                 (Number(formData.Snacks) === 0) && (Number(formData.Water) === 0) && (Number(formData.Electricity) === 0) &&
                 (Number(formData.Girlfriend) === 0) && (Number(formData.Internet) === 0) && (Number(formData.Load) === 0)){
                     setFormData(initialState);
+                    setError(true);
                     return;
         } 
         
@@ -76,8 +78,8 @@ const BudgetForm = () => {
             Load: Number(formData.Load),
         }
 
-        console.log(budgetItem)
         addBudget(budgetItem);
+        setError(false);
         setFormData(initialState);
     }
 
@@ -237,6 +239,7 @@ const BudgetForm = () => {
                 
                 </Card>
                 <Card style={{padding: '1rem', display: 'flex', justifyContent: 'center'}} elevation={0}>
+                    {error && <p style={{color: 'red'}}>You must at least budget one item.</p>}
                     <Button
                         variant="contained"
                         style={{backgroundColor: '#fada5f',color: 'black'}}

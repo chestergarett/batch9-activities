@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import {IconContext} from 'react-icons';
 import classes from './ShortcutPane.module.css'
@@ -12,14 +12,14 @@ const ShortcutPane = () =>{
     return (
         <div className={classes.shortcut} data-testid="shortcuts">
             <IconContext.Provider value={{size: '30', color: 'black'}}>
-                <Link to='/'>
+                <NavLink exact to='/'>
                     <Tooltip title="Home">
-                        <div className={`${classes.iconsGroup} ${classes.selected}`}>
-                            <IoHomeOutline className={classes.icons} color='green'/>
+                        <div className={`${classes.iconsGroup}`}>
+                            <IoHomeOutline className={classes.icons}/>
                             <span className={classes.circle1}><span>3</span></span>
                         </div>
                     </Tooltip>
-                </Link>
+                </NavLink>
                 <Tooltip title="this feature will come out soon!">
                     <div className={classes.iconsGroup}>
                         <IoPlayCircleOutline className={classes.icons}/>

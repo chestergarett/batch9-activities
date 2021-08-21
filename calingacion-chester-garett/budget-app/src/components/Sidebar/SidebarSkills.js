@@ -43,17 +43,6 @@ const skills = [
 
 const SidebarSkills = () => {
     
-    // skills.map((s)=>{
-    //     return (
-    //     <li key={s.id}>
-    //         <div>
-    //             <div><img src={s.icon}/></div>
-    //             <div>{s.title}</div>
-    //         </div>
-    //     </li>
-    //     )
-    // })
-
     return (
         <ul className={classes.skillsList}>
             <li key={skills[0].id}>

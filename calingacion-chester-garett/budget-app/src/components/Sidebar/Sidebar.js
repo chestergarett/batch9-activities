@@ -10,7 +10,7 @@ const Sidebar = () => {
                 <SidebarSkills />
             </div>
             <div> 
-                <h4>Endorsements </h4>
+                <h4>Referrals </h4>
                 <SidebarEndorsements />
             </div>
         </div>

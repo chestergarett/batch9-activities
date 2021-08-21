@@ -6,6 +6,7 @@ import {FcGlobe} from "react-icons/fc"; //Gforest
 import {FcBarChart} from "react-icons/fc"; //Analytics
 import {FcReading} from "react-icons/fc"; //Analytics
 import {FcOnlineSupport} from "react-icons/fc" //Account maintenance
+import {FcSalesPerformance} from "react-icons/fc" //trading
 import {IoArrowDownCircle} from 'react-icons/io5'; //See more
 
 
@@ -20,7 +21,7 @@ const Navigation = () => {
                 <FcMoneyTransfer className={classes.icons}/><span>Budget App</span>
             </Link>
         </li>
-        <li key='5'>
+        <li key='2'>
             <Link to='/chartsCompiled' className={classes.navigationItem}>
                 <FcBarChart className={classes.icons}/><span>Analytics</span>
             </Link>
@@ -31,12 +32,12 @@ const Navigation = () => {
             </Link>
         </li>
         <li key='4'>
-            <Link to='/Forest' className={classes.navigationItem}>
+            <a href='https://chestergarett-blog-68244.herokuapp.com/' target="_blank" className={classes.navigationItem}>
                 <FcGlobe className={classes.icons}/><span>Blogs</span>
-            </Link>
+            </a>
         </li>
-        <li key='2'>
-            <Link to='/' className={classes.navigationItem}>
+        <li key='5'>
+            <Link exact to='/NotFound' className={classes.navigationItem}>
                 <FcBriefcase className={classes.icons}/><span>Journals</span>
             </Link>
         </li>
@@ -51,6 +52,11 @@ const Navigation = () => {
             </Link>
         </li>
         <li key='8'>
+            <Link to ='/NotFound' className={classes.navigationItem}>
+                <FcSalesPerformance className={classes.icons}/><span>Trading</span>
+            </Link>
+        </li>
+        <li key='9'>
             <div className={classes.navigationItem}>
                 <IoArrowDownCircle className={classes.icons}/><span>See more</span>
             </div>
