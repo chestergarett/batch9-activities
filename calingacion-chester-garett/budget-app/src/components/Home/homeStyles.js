@@ -32,6 +32,30 @@ export default makeStyles(() => ({
         display: 'flex',
         alignItems: 'space-between',
         justifyContent: 'space-between',
+    },
+    storiesContainer:{
+        display: 'flex',
+    },
+    storyCard:{
+        display: 'flex', 
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginRight: '.3rem',
+        marginBottom: '1rem',
+        cursor: 'pointer',
+    },
+    storyCreate:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '7rem',
+        textAlign: 'center',
+    },
+    storyImage:{
+        width: '7rem',
+        height: '10rem',
     }
   }
 ));

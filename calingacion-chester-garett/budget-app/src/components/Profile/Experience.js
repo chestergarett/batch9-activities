@@ -47,7 +47,7 @@ const Experience = () => {
         responsibilities: [
             "I am responsible for reconciling financial data of different clients using Audit Command Language or Alteryx to hasten audit procedures.",
         ],
-        tools: [{label: "ACL", tool: acl},{label: "Alteryx", tool: alteryx}]
+        tools: [{label: "Audit Command Language", tool: acl},{label: "Alteryx", tool: alteryx}]
         },
     ];
     return (
