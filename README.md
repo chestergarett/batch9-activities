@@ -9,6 +9,7 @@ deployed apps link here:
 5) tic-tac-toe - https://chestergarett-tictactoe-8cbf72.netlify.app
 6) challonge sports app - https://sportsapp-86653.firebaseapp.com/
 7) budget_app + portfolio page - https://chestergarett-portfolio-ff9f1e.netlify.app/
+8) practice blog - https://chestergarett-blog-68244.herokuapp.com/
 
 
 to-do's:
